@@ -56,7 +56,7 @@ export default function Navbar() {
     { href: '/services', label: 'Çözümlerimiz' },
     { href: '/contact', label: 'İletişim' },
     { href: '/careers', label: 'Kariyer' },
-    { href: '/references', label: 'Referanslar' },
+    { href: '/references', label: '' },
   ]
 
   if (!mounted) return null
