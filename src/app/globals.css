@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark mod geçişleri için smooth */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Opsiyonel: html.dark ile arka plan ve yazı renkleri */
+html.dark body {
+  background-color: #111827; /* dark arka plan */
+  color: #f3f4f6;            /* dark yazı rengi */
+}
