@@ -6,7 +6,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Facebook, Linkedin, Twitter, Instagram, Mail, Phone, MapPin, ArrowRight, Sparkles } from 'lucide-react'
+import { Linkedin, Mail, Phone, MapPin, ArrowRight, Sparkles } from 'lucide-react'
 import clsx from 'clsx'
 
 export default function Footer() {
@@ -18,33 +18,27 @@ export default function Footer() {
     { href: '/services', label: 'Çözümlerimiz' },
     { href: '/contact', label: 'İletişim' },
     { href: '/careers', label: 'Kariyer' },
-    { href: '/references', label: 'Referanslar' },
   ]
 
   const services = [
-    { href: '/services#ai-camera', label: 'AI Kamera Sistemleri' },
-    { href: '/services#data-analysis', label: 'Veri Analizi' },
-    { href: '/services#automation', label: 'Endüstriyel Otomasyon' },
-    { href: '/services#consulting', label: 'Danışmanlık' },
+    { href: '/services#ai-camera', label: 'Yapay Zeka (AI) Sistemleri' },
+    { href: '/services#data-analysis', label: 'Aktif Uyarı Sistemleri' },
   ]
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook', color: 'hover:bg-blue-600' },
     { icon: Linkedin, href: '#', label: 'LinkedIn', color: 'hover:bg-blue-700' },
-    { icon: Twitter, href: '#', label: 'Twitter', color: 'hover:bg-sky-500' },
-    { icon: Instagram, href: '#', label: 'Instagram', color: 'hover:bg-pink-600' },
   ]
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 text-gray-300">
       {/* Decorative Top Border */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"></div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        
+
         {/* Main Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          
+
           {/* Şirket Bilgisi */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
@@ -59,10 +53,10 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-gray-400 leading-relaxed mb-6">
-              Yapay zeka ve ileri teknoloji ile işletmenizi geleceğe taşıyoruz. 
+              Yapay zeka ve ileri teknoloji ile işletmenizi geleceğe taşıyoruz.
               Güvenli, verimli ve akıllı çözümler sunuyoruz.
             </p>
-            
+
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm">
@@ -95,8 +89,8 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map(link => (
                 <li key={link.href}>
-                  <Link 
-                    href={link.href} 
+                  <Link
+                    href={link.href}
                     className="group flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-all duration-300"
                   >
                     <ArrowRight className="w-4 h-4 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
@@ -116,8 +110,8 @@ export default function Footer() {
             <ul className="space-y-3">
               {services.map(service => (
                 <li key={service.href}>
-                  <Link 
-                    href={service.href} 
+                  <Link
+                    href={service.href}
                     className="group flex items-center gap-2 text-gray-400 hover:text-purple-400 transition-all duration-300"
                   >
                     <ArrowRight className="w-4 h-4 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
@@ -154,8 +148,8 @@ export default function Footer() {
             <div className="mt-8">
               <h4 className="text-sm font-semibold text-white mb-3">Bülten Aboneliği</h4>
               <div className="flex gap-2">
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   placeholder="E-posta adresiniz"
                   className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm focus:outline-none focus:border-blue-500 transition-colors"
                 />

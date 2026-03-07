@@ -9,7 +9,6 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900">
       <HeroSection />
       <ServicesSection />
-      
     </div>
   )
 }

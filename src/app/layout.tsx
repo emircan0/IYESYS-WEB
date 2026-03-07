@@ -3,6 +3,7 @@ import '../styles/globals.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { LanguageProvider } from '../contexts/LanguageContext'
+import { ThemeProvider } from '../components/ThemeProvider'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -22,15 +23,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr" className="scroll-smooth">
-      <body className="bg-gray-50 text-gray-900 antialiased" suppressHydrationWarning={true}>
-        <LanguageProvider>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main className="flex-1 pt-16">{children}</main>
-            <Footer />
-          </div>
-        </LanguageProvider>
+    <html lang="tr" className="scroll-smooth" suppressHydrationWarning>
+      <body className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased" suppressHydrationWarning>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <LanguageProvider>
+            <div className="flex flex-col min-h-screen">
+              <Navbar />
+              <main className="flex-1 pt-16">{children}</main>
+              <Footer />
+            </div>
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

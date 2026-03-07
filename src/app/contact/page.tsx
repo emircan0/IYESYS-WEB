@@ -18,8 +18,8 @@ export default function Contact() {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Telefon",
-      content: "+90 (XXX) XXX XX XX",
-      link: "tel:+90XXXXXXXXXX"
+      content: "+90 (500) 123 45 67",
+      link: "tel:+905001234567"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
@@ -62,7 +62,7 @@ export default function Contact() {
             {/* Sağ Kolon - Form */}
             <div className="lg:col-span-2">
               <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-10 shadow-2xl border border-gray-100">
-                
+
                 {/* Başarı Mesajı */}
                 {state.succeeded ? (
                   <div className="text-center py-12">
@@ -71,8 +71,8 @@ export default function Contact() {
                     </div>
                     <h2 className="text-2xl font-bold text-gray-900 mb-2">Mesajınız Alındı!</h2>
                     <p className="text-gray-600">En kısa sürede size geri dönüş yapacağız.</p>
-                    <button 
-                      onClick={() => window.location.reload()} 
+                    <button
+                      onClick={() => window.location.reload()}
                       className="mt-6 text-blue-600 font-semibold hover:underline"
                     >
                       Yeni bir mesaj gönder
@@ -85,19 +85,19 @@ export default function Contact() {
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Ad Soyad *</label>
                         <input
                           id="name"
-                          type="text" 
+                          type="text"
                           name="name"
                           required
-className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white text-gray-900"                        />
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white text-gray-900" />
                       </div>
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">E-posta *</label>
                         <input
                           id="email"
-                          type="email" 
+                          type="email"
                           name="email"
                           required
-className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white text-gray-900"                        />
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white text-gray-900" />
                         <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-xs mt-1" />
                       </div>
                     </div>
@@ -107,17 +107,17 @@ className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Telefon</label>
                         <input
                           id="phone"
-                          type="tel" 
+                          type="tel"
                           name="phone"
-className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white text-gray-900"                        />
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white text-gray-900" />
                       </div>
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Konu</label>
                         <input
                           id="subject"
-                          type="text" 
+                          type="text"
                           name="subject"
-className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white text-gray-900"                        />
+                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white text-gray-900" />
                       </div>
                     </div>
 
@@ -128,7 +128,7 @@ className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus
                         name="message"
                         required
                         rows={6}
-className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white text-gray-900"                      />
+                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white text-gray-900" />
                       <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-xs mt-1" />
                     </div>
 

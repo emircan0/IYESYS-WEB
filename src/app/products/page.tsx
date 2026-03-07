@@ -1,16 +1,16 @@
 export default function ProductsPage() {
   const products = [
     {
-      name: "AI Kamera Sistemi",
-      desc: "Forklift ve depo güvenliği için yapay zekâ destekli kamera çözümleri."
+      name: "Forklift - Yaya Güvenliği",
+      desc: "AI ve UWB tabanlı gelişmiş sistemlerimizle forklift ve yayalar arasındaki olası çarpışmaları önleyin. Depo içi operasyonlarınızda maksimum güvenlik sağlayın."
     },
     {
-      name: "RTLS Personel Takip Cihazı",
-      desc: "Gerçek zamanlı konumlama ile çalışanlarınızı izleyin ve verimliliği artırın."
+      name: "Bölge Yaya Güvenliği",
+      desc: "Kavşak, kör nokta ve yasaklı alan kontrollerini otomatikleştirin. Riskli bölgelerde yaya trafiğini akıllı sensörlerle yöneterek iş kazalarının önüne geçin."
     },
     {
-      name: "Endüstriyel IoT Sensörleri",
-      desc: "Üretim hattınızı sensörler ile akıllı ve veri odaklı hale getirin."
+      name: "Yükleme Rampası Güvenliği",
+      desc: "TIR yanaşma ve rampa yükleme/boşaltma operasyonlarını güvenle yönetin. Akıllı uyarı sistemleriyle lojistik süreçlerinizde saha güvenliğini ve verimliliği artırın."
     }
   ]
 
@@ -22,14 +22,16 @@ export default function ProductsPage() {
         </h1>
         <div className="grid md:grid-cols-3 gap-8">
           {products.map((product, idx) => (
-            <div 
-              key={idx} 
-              className="p-6 border rounded-2xl bg-gray-50 dark:bg-gray-800 hover:shadow-lg transition"
+            <div
+              key={idx}
+              className="p-6 border border-gray-200 dark:border-gray-700 rounded-2xl bg-gray-50 dark:bg-gray-800 hover:shadow-lg transition duration-300"
             >
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 {product.name}
               </h2>
-              <p className="text-gray-700 dark:text-gray-400">{product.desc}</p>
+              <p className="text-gray-700 dark:text-gray-400 leading-relaxed">
+                {product.desc}
+              </p>
             </div>
           ))}
         </div>

@@ -140,7 +140,7 @@ export const translations = {
       rights: "All rights reserved"
     }
   }
-} as const;
+}
 
 export type Language = keyof typeof translations;
 export type TranslationKeys = typeof translations.tr;
