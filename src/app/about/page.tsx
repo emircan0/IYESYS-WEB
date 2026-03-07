@@ -12,7 +12,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-100 text-red-700 font-bold text-sm tracking-wide">
-              <Award className="w-4 h-4" /> %100 Yerli Yazılım
+              <Award className="w-4 h-4" /> %100 Yerli Teknoloji
             </div>
 
             <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-slate-900">
@@ -30,9 +30,9 @@ export default function About() {
 
           {/* Görsel Alanı */}
           <div className="relative">
-            <div className="aspect-[4/3] bg-white rounded-[2rem] overflow-hidden border border-slate-200 shadow-2xl relative">
+            <div className="bg-white rounded-[2rem] overflow-hidden border border-slate-200 shadow-2xl relative">
               <img
-                src="/img/15.png"
+                src="/img/13.png"
                 alt="IYESYS Ar-Ge Çalışmaları"
                 className="w-full h-full object-cover"
               />

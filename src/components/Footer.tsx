@@ -41,16 +41,20 @@ export default function Footer() {
 
           {/* Şirket Bilgisi */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center mb-4">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur-lg opacity-50"></div>
-                <div className="relative bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
-                  <Sparkles className="w-5 h-5 text-white" />
+                {/* Logo Işığı (Hafif beyaz/gri tonlu ışık patlaması) */}
+                <div className="absolute inset-0 bg-white/10 dark:bg-white/10 rounded-full blur-xl opacity-80 group-hover:opacity-100 transition-opacity"></div>
+
+                {/* Logo Görseli (Metin içeren yatay formata uygun boyutlandırıldı) */}
+                <div className="relative p-1 overflow-hidden flex items-center">
+                  <img
+                    src="/img/11.png"
+                    alt="IYESYS Logo"
+                    className="h-20 w-auto object-contain relative z-10"
+                  />
                 </div>
               </div>
-              <span className="text-2xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                IYESYS
-              </span>
             </div>
             <p className="text-gray-400 leading-relaxed mb-6">
               Yapay zeka ve ileri teknoloji ile işletmenizi geleceğe taşıyoruz.
