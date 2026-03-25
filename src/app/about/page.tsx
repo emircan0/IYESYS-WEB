@@ -29,10 +29,11 @@ export default function About() {
           </div>
 
           {/* Görsel Alanı */}
-          <div className="relative">
-            <div className="bg-white rounded-[2rem] overflow-hidden border border-slate-200 shadow-2xl relative">
+          <div className="relative max-w-7xl mx-auto px-4">
+            {/* aspect-[3/2] oranı dikeyde 16:9'a göre daha fazla alan sağlar */}
+            <div className="bg-white rounded-[2rem] overflow-hidden border border-slate-200 shadow-2xl relative aspect-[16/9] md:aspect-[16/10]">
               <img
-                src="/img/13.png"
+                src="/img/16.png"
                 alt="IYESYS Ar-Ge Çalışmaları"
                 className="w-full h-full object-cover"
               />

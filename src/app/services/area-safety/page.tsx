@@ -17,8 +17,8 @@ export default function AreaSafetyPage() {
             Endüstriyel sahalarda akıllı güvenlik katmanı. AI kameralar ile kritik noktaları görünür kılın ve riskli alanlarda anlık uyarı sistemleri devreye alın.
           </p>
 
-          <div className="relative max-w-5xl mx-auto">
-            <div className="aspect-[21/9] bg-slate-50 rounded-[2rem] border border-slate-200 shadow-2xl overflow-hidden relative">
+          <div className="relative max-w-6xl mx-auto">
+            <div className="aspect-[21/11] bg-slate-50 rounded-[2rem] border border-slate-100 shadow-2xl overflow-hidden relative">
               <img
                 src="/img/1.png"
                 alt="Fabrika Kuşbakışı Görünümü"

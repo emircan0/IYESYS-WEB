@@ -15,12 +15,12 @@ export default function Contact() {
       content: "info@iyesys.com.tr",
       link: "mailto:info@iyesys.com.tr"
     },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Telefon",
-      content: "+90 (500) 123 45 67",
-      link: "tel:+905001234567"
-    },
+    /*  {
+        icon: <Phone className="w-6 h-6" />,
+        title: "Telefon",
+        content: "+90 (500) 123 45 67",
+        link: "tel:+905001234567"
+      },   */
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Adres",

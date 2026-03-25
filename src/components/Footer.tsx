@@ -69,12 +69,12 @@ export default function Footer() {
                   info@iyesys.com
                 </a>
               </div>
-              <div className="flex items-center gap-3 text-sm">
+              {/*      <div className="flex items-center gap-3 text-sm">
                 <Phone className="w-4 h-4 text-blue-400" />
                 <a href="tel:+905001234567" className="hover:text-blue-400 transition-colors">
                   +90 500 123 45 67
                 </a>
-              </div>
+              </div>  */}
               <div className="flex items-start gap-3 text-sm">
                 <MapPin className="w-4 h-4 text-blue-400 mt-0.5" />
                 <span className="text-gray-400">
@@ -132,7 +132,7 @@ export default function Footer() {
               <span className="w-1 h-6 bg-gradient-to-b from-pink-600 to-red-600 rounded-full"></span>
               Bizi Takip Edin
             </h3>
-            <div className="flex gap-3 mb-6">
+            {/*   <div className="flex gap-3 mb-6">
               {socialLinks.map(({ icon: Icon, href, label, color }) => (
                 <a
                   key={label}
@@ -146,7 +146,7 @@ export default function Footer() {
                   <Icon size={18} />
                 </a>
               ))}
-            </div>
+            </div>  */}
 
             {/* Newsletter */}
             <div className="mt-8">
