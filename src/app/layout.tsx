@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import { LanguageProvider } from '../contexts/LanguageContext'
 import { ThemeProvider } from '../components/ThemeProvider'
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Footer />
             </div>
             <Analytics />
+            <SpeedInsights />
           </LanguageProvider>
         </ThemeProvider>
       </body>
