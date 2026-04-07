@@ -3,7 +3,7 @@ import { Resend } from 'resend';
 import fs from 'fs';
 import path from 'path';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
   try {
@@ -31,8 +31,10 @@ export async function POST(request: Request) {
     fs.writeFileSync(dataPath, JSON.stringify(submissions, null, 2));
 
     // 2. Bildirim e-postası gönder
-    if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== 're_your_api_key_here') {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (apiKey && apiKey !== 're_your_api_key_here') {
       try {
+        const resend = new Resend(apiKey);
         await resend.emails.send({
           from: 'IYESYS Sunum <onboarding@resend.dev>', // Resend domain doğrulaması yapılana kadar bu varsayılan kullanılır
           to: process.env.NOTIFICATION_EMAIL || 'info@iyesys.com.tr',
