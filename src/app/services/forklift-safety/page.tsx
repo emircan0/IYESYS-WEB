@@ -40,7 +40,7 @@ export default function ForkliftSafetyPage() {
           <div className="relative">
             <div className="aspect-[4/3] bg-slate-50 rounded-[3rem] overflow-hidden border border-slate-100 shadow-2xl relative">
               <img
-                src="/img/4.png"
+                src="/img/18.png"
                 alt="Forklift 360 Derece Güvenlik"
                 className="w-full h-full object-cover"
               />
@@ -81,7 +81,7 @@ export default function ForkliftSafetyPage() {
           </div>
           <div className="aspect-video bg-white rounded-3xl border border-slate-200 shadow-lg overflow-hidden">
             <img
-              src="/img/5.png"
+              src="/img/22.png"
               alt="Otomatik Yavaşlatma Müdahalesi"
               className="w-full h-full object-cover"
             />

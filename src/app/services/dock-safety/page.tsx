@@ -32,7 +32,7 @@ export default function DockSafetyPage() {
           <div className="relative">
             <div className="aspect-[4/3] bg-white rounded-[3rem] overflow-hidden border border-slate-200 shadow-2xl relative">
               <img
-                src="/img/7.png"
+                src="/img/17.png"
                 alt="Yükleme Rampası Lojistik Yönetimi"
                 className="w-full h-full object-cover"
               />
@@ -44,12 +44,23 @@ export default function DockSafetyPage() {
       {/* 2. SÜREÇ YÖNETİMİ (ZIG ZAG) */}
       <section className="py-24 max-w-7xl mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <div className="order-2 lg:order-1 aspect-video bg-white rounded-3xl border border-slate-200 shadow-lg overflow-hidden">
-            <img
-              src="/img/8.png"
-              alt="Rampa Kapısı ve Kontrollü Güvenlik Sistemi"
-              className="w-full h-full object-cover"
-            />
+          <div className="order-2 lg:order-1 aspect-video bg-white rounded-3xl border border-slate-200 shadow-lg overflow-hidden group">
+            <div className="flex flex-col md:flex-row h-full">
+              <div className="relative flex-1 overflow-hidden">
+                <img
+                  src="/img/23.png"
+                  alt="Rampa Kapısı ve Kontrollü Güvenlik Sistemi"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+              <div className="relative flex-1 overflow-hidden border-t md:border-t-0 md:border-l border-slate-200">
+                <img
+                  src="/img/24.png"
+                  alt="Yapay Zeka Destekli Rampa Analizi"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+            </div>
           </div>
           <div className="order-1 lg:order-2 space-y-6">
             <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-4">
