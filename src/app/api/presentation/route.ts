@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     // 1. Veriyi kaydet (data/submissions.json)
     const dataPath = path.join(process.cwd(), 'data', 'submissions.json');
     let submissions = [];
-    
+
     if (fs.existsSync(dataPath)) {
       const fileContent = fs.readFileSync(dataPath, 'utf-8');
       submissions = JSON.parse(fileContent);
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
         const resend = new Resend(apiKey);
         await resend.emails.send({
           from: 'IYESYS Sunum <onboarding@resend.dev>', // Resend domain doğrulaması yapılana kadar bu varsayılan kullanılır
-          to: process.env.NOTIFICATION_EMAIL || 'info@iyesys.com.tr',
+          to: process.env.NOTIFICATION_EMAIL || 'info@iyesys.com',
           subject: 'Yeni Sunum İndirme Talebi',
           html: `<p><strong>${email}</strong> adresi ile sunum dosyası indirildi.</p><p>Tarih: ${new Date().toLocaleString('tr-TR')}</p>`,
         });

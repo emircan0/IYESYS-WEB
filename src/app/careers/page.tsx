@@ -90,11 +90,11 @@ export default function CareersPage() {
                     Gelecekteki fırsatlar için özgeçmişinizi bizimle paylaşmak isterseniz:
                   </p>
                   <a 
-                    href="mailto:info@iyesys.com.tr" 
+                    href="mailto:info@iyesys.com" 
                     className="inline-flex items-center gap-2 text-xl font-semibold text-blue-600 hover:text-purple-600 transition-colors"
                   >
                     <Mail className="w-5 h-5" />
-                    info@iyesys.com.tr
+                    info@iyesys.com
                   </a>
                 </div>
               </div>

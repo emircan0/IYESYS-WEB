@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'tr_TR',
-    url: 'https://iyesys.com.tr',
+    url: 'https://iyesys.com',
     siteName: 'IYESYS',
     title: 'IYESYS - Yapay Zeka ile Endüstriyel Güvenlik',
     description: 'Endüstriyel güvenliği sağlamak için yapay zeka teknolojisi',

@@ -12,8 +12,8 @@ export default function Contact() {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "E-posta",
-      content: "info@iyesys.com.tr",
-      link: "mailto:info@iyesys.com.tr"
+      content: "info@iyesys.com",
+      link: "mailto:info@iyesys.com"
     },
     /*  {
         icon: <Phone className="w-6 h-6" />,
