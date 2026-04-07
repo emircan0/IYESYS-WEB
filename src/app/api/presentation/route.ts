@@ -13,22 +13,29 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Geçerli bir e-posta adresi gerekli.' }, { status: 400 });
     }
 
-    // 1. Veriyi kaydet (data/submissions.json)
-    const dataPath = path.join(process.cwd(), 'data', 'submissions.json');
-    let submissions = [];
-
-    if (fs.existsSync(dataPath)) {
-      const fileContent = fs.readFileSync(dataPath, 'utf-8');
-      submissions = JSON.parse(fileContent);
+    // 1. Veriyi kaydet (data/submissions.json) 
+    // NOT: Vercel üzerinde dosya sistemi salt okunurdu; bu yüzden hata fırlatabilir.
+    try {
+      const dataPath = path.join(process.cwd(), 'data', 'submissions.json');
+      let submissions = [];
+      
+      const dirPath = path.join(process.cwd(), 'data');
+      if (fs.existsSync(dirPath)) {
+        if (fs.existsSync(dataPath)) {
+          const fileContent = fs.readFileSync(dataPath, 'utf-8');
+          submissions = JSON.parse(fileContent);
+        }
+        submissions.push({ email, timestamp: new Date().toISOString() });
+        // Veriyi sadece dosya sistemi izin verirse yazıyoruz
+        try {
+          fs.writeFileSync(dataPath, JSON.stringify(submissions, null, 2));
+        } catch (e) {
+          console.warn('Could not write to file (Expected on Vercel):', e);
+        }
+      }
+    } catch (fsError) {
+      console.error('Data storage error:', fsError);
     }
-
-    const newSubmission = {
-      email,
-      timestamp: new Date().toISOString(),
-    };
-
-    submissions.push(newSubmission);
-    fs.writeFileSync(dataPath, JSON.stringify(submissions, null, 2));
 
     // 2. Bildirim e-postası gönder
     const apiKey = process.env.RESEND_API_KEY;
