@@ -41,39 +41,58 @@ export default function DockSafetyPage() {
         </div>
       </section>
 
-      {/* 2. SÜREÇ YÖNETİMİ (ZIG ZAG) */}
+      {/* 2. SÜREÇ YÖNETİMİ (DÜŞEY YERLEŞİM) */}
       <section className="py-24 max-w-7xl mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <div className="order-2 lg:order-1 aspect-video bg-white rounded-3xl border border-slate-200 shadow-lg overflow-hidden group">
-            <div className="flex flex-col md:flex-row h-full">
-              <div className="relative flex-1 overflow-hidden">
-                <img
-                  src="/img/23.png"
-                  alt="Rampa Kapısı ve Kontrollü Güvenlik Sistemi"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-              <div className="relative flex-1 overflow-hidden border-t md:border-t-0 md:border-l border-slate-200">
-                <img
-                  src="/img/24.png"
-                  alt="Yapay Zeka Destekli Rampa Analizi"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="order-1 lg:order-2 space-y-6">
-            <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-4">
+        <div className="flex flex-col gap-16">
+          
+          {/* 1. Başlık Alanı */}
+          <div className="max-w-4xl mx-auto text-center space-y-4">
+            <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm shadow-blue-100">
               <Lock className="w-8 h-8" />
             </div>
-            <h2 className="text-4xl font-bold text-slate-900">Yükleme Rampalarında Akıllı ve Kontrollü Güvenlik</h2>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              Yükleme rampalarında tır yanaşma sırasında, arka bölgede bulunan personel ciddi güvenlik riski oluşturur. Yapay zeka destekli kamera sistemi, tırın arkasındaki insan varlığını anlık olarak algılayarak hem sürücüyü hem de personeli sesli ve görsel uyarılarla bilgilendirir.
-            </p>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              Personel güvenli alana geçmeden sistem uyarı üretmeye devam eder. Tır rampaya doğru şekilde yanaştığında ise kapının açılmasına izin verilerek yükleme sürecinin kontrollü ve güvenli şekilde başlatılması sağlanır.
-            </p>
+            <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
+              Yükleme Rampalarında <br />
+              <span className="text-blue-600">Akıllı ve Kontrollü Güvenlik</span>
+            </h2>
           </div>
+
+          {/* 2. Görsel Alanı */}
+          <div className="w-full aspect-[21/10] md:aspect-[21/7] bg-white rounded-[2rem] md:rounded-[3rem] border border-slate-200 shadow-2xl overflow-hidden relative group">
+            <img
+              src="/img/26.png"
+              alt="Yükleme Rampası AI Analiz Süreci"
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent pointer-events-none" />
+          </div>
+
+          {/* 3. Alt Metin Alanı */}
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-10 text-left">
+              <div className="space-y-4">
+                <p className="text-xl text-slate-700 leading-relaxed font-light border-l-4 border-blue-500 pl-6">
+                  Yükleme rampalarında tır yanaşma sırasında, arka bölgede bulunan personel ciddi güvenlik riski oluşturur.
+                </p>
+                <p className="text-lg text-slate-600 leading-relaxed font-light pl-7">
+                  Yapay zeka destekli kamera sistemi, tırın arkasındaki insan varlığını anlık olarak algılayarak hem sürücüyü hem de personeli sesli ve görsel uyarılarla bilgilendirir.
+                </p>
+              </div>
+              <div className="space-y-4 pt-1">
+                <p className="text-lg text-slate-600 leading-relaxed font-light">
+                  Personel güvenli alana geçmeden sistem uyarı üretmeye devam eder. Tır rampaya doğru şekilde yanaştığında ise kapının açılmasına izin verilerek yükleme sürecinin kontrollü ve güvenli şekilde başlatılması sağlanır.
+                </p>
+                <div className="flex gap-4 pt-4">
+                  <div className="px-4 py-2 bg-slate-50 border border-slate-100 rounded-lg text-sm font-bold text-slate-600">
+                    # AI Tespit
+                  </div>
+                  <div className="px-4 py-2 bg-slate-50 border border-slate-100 rounded-lg text-sm font-bold text-slate-600">
+                    # Güvenli Kapı
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </section>
 

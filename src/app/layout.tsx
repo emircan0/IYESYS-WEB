@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { LanguageProvider } from '../contexts/LanguageContext'
 import { ThemeProvider } from '../components/ThemeProvider'
+import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     url: 'https://iyesys.com.tr',
     siteName: 'IYESYS',
     title: 'IYESYS - Yapay Zeka ile Endüstriyel Güvenlik',
-    description: 'Endüstriyel güvenlik çözümlerinde yapay zeka teknolojisi',
+    description: 'Endüstriyel güvenliği sağlamak için yapay zeka teknolojisi',
   }
 }
 
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <main className="flex-1 pt-16">{children}</main>
               <Footer />
             </div>
+            <Analytics />
           </LanguageProvider>
         </ThemeProvider>
       </body>

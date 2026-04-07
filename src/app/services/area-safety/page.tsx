@@ -17,27 +17,13 @@ export default function AreaSafetyPage() {
             Endüstriyel sahalarda akıllı güvenlik katmanı. AI kameralar ile kritik noktaları görünür kılın ve riskli alanlarda anlık uyarı sistemleri devreye alın.
           </p>
 
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row bg-white rounded-[2.5rem] border border-slate-100 shadow-2xl overflow-hidden group">
-              {/* İlk Görsel */}
-              <div className="relative flex-1 aspect-[4/3] md:aspect-[1/1] overflow-hidden">
-                <img
-                  src="/img/20.png"
-                  alt="Alan Güvenliği Analizi - Görünüm 1"
-                  className="w-full h-full object-cover scale-[1.65] transition-transform duration-700 group-hover:scale-[1.7]"
-                />
-                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-              
-              {/* İkinci Görsel */}
-              <div className="relative flex-1 aspect-[4/3] md:aspect-[1/1] overflow-hidden">
-                <img
-                  src="/img/21.png"
-                  alt="Alan Güvenliği Analizi - Görünüm 2"
-                  className="w-full h-full object-cover scale-[1.65] transition-transform duration-700 group-hover:scale-[1.7]"
-                />
-                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
+          <div className="relative max-w-6xl mx-auto">
+            <div className="aspect-[21/11] bg-slate-50 rounded-[2rem] border border-slate-100 shadow-2xl overflow-hidden relative">
+              <img
+                src="/img/25.png"
+                alt="Fabrika Kuşbakışı Görünümü"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
