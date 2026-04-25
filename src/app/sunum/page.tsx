@@ -40,8 +40,8 @@ export default function SunumPage() {
   const triggerDownload = () => {
     const link = document.createElement('a')
     // Dosya adındaki boşluğu %20 olarak kodluyoruz
-    link.href = '/iyesys/sunum/IYESYS%20.pdf'
-    link.download = 'IYESYS_Sunum.pdf'
+    link.href = '/iyesys/sunum/IYESYS_COZUMLERI.pdf'
+    link.download = 'IYESYS_COZUMLERI.pdf'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -55,13 +55,13 @@ export default function SunumPage() {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="max-w-md w-full"
       >
         <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20 dark:border-gray-800 text-center">
-          
+
           <AnimatePresence mode="wait">
             {status !== 'success' ? (
               <motion.div
@@ -74,11 +74,11 @@ export default function SunumPage() {
                 <div className="inline-flex w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl items-center justify-center text-white mb-4 shadow-lg shadow-blue-500/30">
                   <Download className="w-8 h-8" />
                 </div>
-                
+
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
                   IYESYS Sunumu
                 </h1>
-                
+
                 <p className="text-gray-600 dark:text-gray-400">
                   Endüstriyel güvenlik çözümlerimiz hakkında detaylı bilgi içeren sunumumuzu indirmek için e-posta adresinizi girin.
                 </p>
@@ -116,7 +116,7 @@ export default function SunumPage() {
                 </form>
 
                 {status === 'error' && (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     className="flex items-center gap-2 text-red-500 text-sm justify-center bg-red-500/10 py-3 rounded-xl border border-red-500/20"
@@ -136,11 +136,11 @@ export default function SunumPage() {
                 <div className="inline-flex w-20 h-20 bg-green-100 dark:bg-green-500/20 rounded-full items-center justify-center text-green-600 dark:text-green-400 mb-4">
                   <CheckCircle2 className="w-12 h-12" />
                 </div>
-                
+
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                   Hazır!
                 </h2>
-                
+
                 <p className="text-gray-600 dark:text-gray-400 pb-4">
                   Sunum indirme işlemi başladı. Eğer başlamadıysa aşağıdaki butona tıklayabilirsiniz.
                 </p>
