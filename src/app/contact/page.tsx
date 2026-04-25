@@ -1,12 +1,11 @@
 'use client'
 
 import React from 'react'
-import { useForm, ValidationError } from '@formspree/react'
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react'
 
 export default function Contact() {
-  // Formspree kancası (ID'nizi buraya ekledim)
-  const [state, handleSubmit] = useForm("mkovokdj");
+  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   const contactInfo = [
     {
@@ -15,12 +14,6 @@ export default function Contact() {
       content: "info@iyesys.com",
       link: "mailto:info@iyesys.com"
     },
-    /*  {
-        icon: <Phone className="w-6 h-6" />,
-        title: "Telefon",
-        content: "+90 (500) 123 45 67",
-        link: "tel:+905001234567"
-      },   */
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Adres",
@@ -28,6 +21,39 @@ export default function Contact() {
       link: null
     }
   ]
+
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.error || 'Mesaj gönderilemedi.');
+        setStatus('error');
+      }
+    } catch (error) {
+      setErrorMessage('Bağlantı hatası oluştu.');
+      setStatus('error');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
@@ -64,7 +90,7 @@ export default function Contact() {
               <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-10 shadow-2xl border border-gray-100">
 
                 {/* Başarı Mesajı */}
-                {state.succeeded ? (
+                {status === 'success' ? (
                   <div className="text-center py-12">
                     <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                       <CheckCircle className="w-12 h-12" />
@@ -72,14 +98,14 @@ export default function Contact() {
                     <h2 className="text-2xl font-bold text-gray-900 mb-2">Mesajınız Alındı!</h2>
                     <p className="text-gray-600">En kısa sürede size geri dönüş yapacağız.</p>
                     <button
-                      onClick={() => window.location.reload()}
+                      onClick={() => setStatus('idle')}
                       className="mt-6 text-blue-600 font-semibold hover:underline"
                     >
                       Yeni bir mesaj gönder
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleFormSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">Ad Soyad *</label>
@@ -98,7 +124,6 @@ export default function Contact() {
                           name="email"
                           required
                           className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white text-gray-900" />
-                        <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-xs mt-1" />
                       </div>
                     </div>
 
@@ -129,17 +154,22 @@ export default function Contact() {
                         required
                         rows={6}
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-white text-gray-900" />
-                      <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-xs mt-1" />
                     </div>
+
+                    {status === 'error' && (
+                      <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm border border-red-100 flex items-center gap-2">
+                        <AlertCircle className="w-4 h-4" /> {errorMessage}
+                      </div>
+                    )}
 
                     <div className="flex items-center justify-between pt-4">
                       <p className="text-sm text-gray-500">* Zorunlu alanlar</p>
                       <button
                         type="submit"
-                        disabled={state.submitting}
+                        disabled={status === 'loading'}
                         className="group flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all hover:scale-105 shadow-lg disabled:opacity-50"
                       >
-                        {state.submitting ? (
+                        {status === 'loading' ? (
                           <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                         ) : (
                           <>
