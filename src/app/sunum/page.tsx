@@ -1,5 +1,6 @@
 'use client'
 
+// Triggering redeploy for environment variables
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, Download, ArrowRight, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
