@@ -10,8 +10,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'IYESYS - Yapay Zeka ile Endüstriyel Güvenlik Çözümleri',
-  description: 'AI Kamera Sistemleri, UWB Teknolojisi ve IoT çözümleri ile endüstriyel güvenliği artırın. Forklift güvenliği, düşme algılama ve akıllı yükleme rampası sistemleri.',
-  keywords: 'yapay zeka, endüstriyel güvenlik, AI kamera, forklift güvenliği, UWB teknoloji, IoT çözümleri',
+  description: 'AI Kamera Sistemleri, UWB Teknolojisi ve IoT çözümleri ile endüstriyel güvenliği artırın. Hareketli ekipman güvenliği, düşme algılama ve akıllı yükleme rampası sistemleri.',
+  keywords: 'yapay zeka, endüstriyel güvenlik, AI kamera, hareketli ekipman güvenliği, UWB teknoloji, IoT çözümleri',
   authors: [{ name: 'IYESYS' }],
   openGraph: {
     type: 'website',

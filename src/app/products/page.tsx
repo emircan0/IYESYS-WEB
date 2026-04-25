@@ -1,8 +1,8 @@
 export default function ProductsPage() {
   const products = [
     {
-      name: "Forklift - Yaya Güvenliği",
-      desc: "AI ve UWB tabanlı gelişmiş sistemlerimizle forklift ve yayalar arasındaki olası çarpışmaları önleyin. Depo içi operasyonlarınızda maksimum güvenlik sağlayın."
+      name: "Hareketli Ekipman - Yaya Güvenliği",
+      desc: "AI ve UWB tabanlı gelişmiş sistemlerimizle hareketli ekipman ve yayalar arasındaki olası çarpışmaları önleyin. Depo içi operasyonlarınızda maksimum güvenlik sağlayın."
     },
     {
       name: "Bölge Yaya Güvenliği",

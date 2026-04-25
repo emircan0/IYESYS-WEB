@@ -37,7 +37,7 @@ export default function TermsOfServicePage() {
                     <section>
                         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">2. Hizmetlerin Kapsamı ve Sınırları (Sorumluluk Reddi)</h2>
                         <p className="mb-4">
-                            IYESYS, endüstriyel sahalarda (forklift, yükleme rampası, fabrika içi yaya bölgeleri vb.) kaza risklerini azaltmayı hedefleyen yapay zeka destekli kamera ve sensör uyarı sistemleri üretir. Ancak Kullanıcı aşağıdaki hususları peşinen kabul eder:
+                            IYESYS, endüstriyel sahalarda (hareketli ekipman, yükleme rampası, fabrika içi yaya bölgeleri vb.) kaza risklerini azaltmayı hedefleyen yapay zeka destekli kamera ve sensör uyarı sistemleri üretir. Ancak Kullanıcı aşağıdaki hususları peşinen kabul eder:
                         </p>
                         <ul className="list-disc pl-6 space-y-2 font-medium text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-gray-800 p-6 rounded-xl border border-slate-200 dark:border-gray-700">
                             <li>Sistemlerimiz birer <strong>"Erken Uyarı ve Destek"</strong> sistemidir. İnsan dikkatinin, operatör eğitiminin ve fiziksel iş güvenliği önlemlerinin yerini tutmaz.</li>

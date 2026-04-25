@@ -24,10 +24,13 @@ export const translations = {
     },
     services: {
       title: "Çözümlerimiz",
+      securitySolutions: "Güvenlik Çözümleri",
+      softwareSolutions: "Yazılım Çözümleri",
+      automationSolutions: "Otomasyon Çözümleri",
       subtitle: "Yapay zeka ve IoT teknolojileriyle desteklenen endüstriyel güvenlik çözümlerimiz",
       forklift: {
-        title: "Akıllı Forklift & Yaya Güvenliği",
-        desc: "AI kameralar ile kör nokta ve kavşaklarda forklift/insan hareketlerini algılayın"
+        title: "Hareketli Ekipman Güvenliği",
+        desc: "AI kameralar ile kör nokta ve kavşaklarda araç ve insan hareketlerini algılayın"
       },
       fall: {
         title: "Düşme / Bayılma Algılama",
@@ -38,8 +41,8 @@ export const translations = {
         desc: "TIR algılama ve plaka okuma ile yanaşma süreçlerini kaydedin"
       },
       uwb: {
-        title: "Forklift-Forklift Haberleşmesi",
-        desc: "UWB tag'ler ile forkliftler arası mesafeyi hassas biçimde ölçün"
+        title: "Ekipmanlar Arası Haberleşme",
+        desc: "UWB tag'ler ile hareketli ekipmanlar arası mesafeyi hassas biçimde ölçün"
       }
     },
     about: {
@@ -94,10 +97,13 @@ export const translations = {
     },
     services: {
       title: "Our Solutions",
+      securitySolutions: "Security Solutions",
+      softwareSolutions: "Software Solutions",
+      automationSolutions: "Automation Solutions",
       subtitle: "Industrial safety solutions powered by artificial intelligence and IoT technologies",
       forklift: {
-        title: "Smart Forklift & Pedestrian Safety",
-        desc: "Detect forklift/human movements in blind spots and intersections with AI cameras"
+        title: "Mobile Equipment Safety",
+        desc: "Detect vehicle/human movements in blind spots and intersections with AI cameras"
       },
       fall: {
         title: "Fall / Fainting Detection",
@@ -108,8 +114,8 @@ export const translations = {
         desc: "Record docking processes with truck detection and license plate recognition"
       },
       uwb: {
-        title: "Forklift-to-Forklift Communication",
-        desc: "Precisely measure distance between forklifts with UWB tags"
+        title: "Equipment-to-Equipment Communication",
+        desc: "Precisely measure distance between mobile equipment with UWB tags"
       }
     },
     about: {

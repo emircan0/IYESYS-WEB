@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Sun, Moon, Menu, X, ChevronDown, Car, ShieldCheck, Warehouse } from 'lucide-react'
+import { Sun, Moon, Menu, X, ChevronDown, Car, ShieldCheck, Warehouse, ArrowRight, Zap, BarChart2, Cpu } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 import clsx from 'clsx'
@@ -31,25 +31,47 @@ export default function Navbar() {
   }
 
   // Alt menü verileri
-  const solutionLinks = [
+  const solutions = [
     {
-      href: '/services/forklift-safety',
-      label: 'Forklift - Yaya Güvenliği',
-      desc: 'AI & UWB tabanlı çarpışma önleme',
-      icon: <Car className="w-5 h-5" />
+      category: 'Güvenlik Çözümleri',
+      items: [
+        {
+          href: '/services/forklift-safety',
+          label: 'Hareketli Ekipman - Yaya Güvenliği',
+          desc: 'Hareketli ekipman ve yaya çarpışma önleme',
+          icon: <Car className="w-5 h-5" />
+        },
+        {
+          href: '/services/area-safety',
+          label: 'Bölge Yaya Güvenliği',
+          desc: 'Kavşak ve yasaklı alan kontrolü',
+          icon: <ShieldCheck className="w-5 h-5" />
+        },
+        {
+          href: '/services/dock-safety',
+          label: 'Yükleme Rampası Güvenliği',
+          desc: 'TIR ve rampa operasyon yönetimi',
+          icon: <Warehouse className="w-5 h-5" />
+        },
+      ]
     },
     {
-      href: '/services/area-safety',
-      label: 'Bölge Yaya Güvenliği',
-      desc: 'Kavşak ve yasaklı alan kontrolü',
-      icon: <ShieldCheck className="w-5 h-5" />
-    },
-    {
-      href: '/services/dock-safety',
-      label: 'Yükleme Rampası Güvenliği',
-      desc: 'TIR ve rampa operasyon yönetimi',
-      icon: <Warehouse className="w-5 h-5" />
-    },
+      category: 'Diğer Çözümler',
+      items: [
+        {
+          href: '/services/custom-solutions',
+          label: 'İşletmelere Özel Çözümler',
+          desc: 'IoT ve AI destekli saha yönetimi',
+          icon: <Zap className="w-5 h-5" />
+        },
+        {
+          href: '/services/warning-systems',
+          label: 'Aktif Uyarı Sistemleri',
+          desc: 'Sesli ve görsel aktif ikazlar',
+          icon: <Zap className="w-5 h-5" />
+        },
+      ]
+    }
   ]
 
   if (!mounted) return null
@@ -65,10 +87,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <div className="relative">
-              {/* Daha beyaz/açık tonlu ışık patlaması */}
               <div className="absolute inset-0 bg-white/10 dark:bg-white/10 rounded-full blur-xl opacity-80 group-hover:opacity-100 transition-opacity"></div>
-
-              {/* Logo Görseli (Metin içeren yatay formata uygun boyutlandırıldı) */}
               <div className="relative p-1 overflow-hidden flex items-center">
                 <img
                   src="/img/11.png"
@@ -95,26 +114,36 @@ export default function Navbar() {
 
               {/* Dropdown Content */}
               <div className="absolute left-0 mt-2 w-80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 p-4 overflow-hidden">
-                  <div className="grid gap-2">
-                    {solutionLinks.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="flex items-start gap-4 p-3 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors group/item"
-                      >
-                        <div className="bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-300 p-2 rounded-lg group-hover/item:scale-110 transition-transform">
-                          {item.icon}
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 p-5 overflow-hidden">
+                  <div className="grid grid-cols-1 gap-6">
+                    {solutions.map((section) => (
+                      <div key={section.category}>
+                        <h3 className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-4">
+                          {section.category}
+                        </h3>
+                        <div className="grid gap-2">
+                          {section.items.map((item) => (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              className="flex flex-col gap-1 p-2 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors group/item"
+                            >
+                              <div className="text-sm font-bold text-gray-900 dark:text-white group-hover/item:text-blue-600 transition-colors">
+                                {item.label}
+                              </div>
+                              <div className="text-[11px] text-gray-500 dark:text-gray-400 leading-tight">
+                                {item.desc}
+                              </div>
+                            </Link>
+                          ))}
                         </div>
-                        <div>
-                          <div className="text-sm font-bold text-gray-900 dark:text-white">{item.label}</div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400">{item.desc}</div>
-                        </div>
-                      </Link>
+                      </div>
                     ))}
-                    <div className="border-t border-gray-100 dark:border-gray-700 mt-2 pt-2">
-                      <Link href="/services" className="text-xs font-bold text-blue-600 px-3 hover:underline">Tümünü Gör →</Link>
-                    </div>
+                  </div>
+                  <div className="border-t border-gray-100 dark:border-gray-700 mt-6 pt-4">
+                    <Link href="/services" className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1">
+                      Tüm Çözümleri Gör <ArrowRight className="w-3 h-3" />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -126,16 +155,6 @@ export default function Navbar() {
 
           {/* Sağ Taraf Butonlar */}
           <div className="flex items-center gap-2">
-            {/* Theme Toggle 
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-              aria-label="Toggle Dark Mode"
-            >
-              {resolvedTheme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>   */}
-
-            {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
@@ -147,17 +166,25 @@ export default function Navbar() {
         </div>
 
         {/* Mobil Menü */}
-        <div className={clsx("lg:hidden overflow-hidden transition-all duration-300", mobileOpen ? "max-h-[500px] pb-6" : "max-h-0")}>
+        <div className={clsx("lg:hidden overflow-hidden transition-all duration-300", mobileOpen ? "max-h-[1000px] pb-6" : "max-h-0")}>
           <div className="flex flex-col gap-2 pt-4 border-t border-gray-200 dark:border-gray-800">
             <Link href="/" className="px-4 py-3 font-medium text-gray-800 dark:text-gray-200" onClick={() => setMobileOpen(false)}>Ana Sayfa</Link>
-            <div className="px-4 py-2 font-bold text-xs uppercase text-gray-400 tracking-widest mt-2 border-t border-gray-100 dark:border-gray-800 pt-4">Çözümlerimiz</div>
-            {solutionLinks.map(link => (
-              <Link key={link.href} href={link.href} className="px-8 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 flex items-center gap-2" onClick={() => setMobileOpen(false)}>
-                {link.icon} {link.label}
-              </Link>
-            ))}
             <Link href="/about" className="px-4 py-3 font-medium text-gray-800 dark:text-gray-200 border-t border-gray-100 dark:border-gray-800 mt-2" onClick={() => setMobileOpen(false)}>Hakkımızda</Link>
-            <Link href="/contact" className="px-4 py-3 font-medium text-gray-800 dark:text-gray-200" onClick={() => setMobileOpen(false)}>İletişim</Link>
+            
+            <div className="px-4 py-2 font-bold text-xs uppercase text-gray-400 tracking-widest mt-2 border-t border-gray-100 dark:border-gray-800 pt-4">Çözümlerimiz</div>
+            
+            {solutions.map(section => (
+              <div key={section.category} className="px-4 py-2">
+                <div className="text-[10px] font-bold text-blue-600/60 uppercase mb-2 ml-2">{section.category}</div>
+                {section.items.map(link => (
+                  <Link key={link.href} href={link.href} className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 flex items-center gap-2" onClick={() => setMobileOpen(false)}>
+                    {link.icon} {link.label}
+                  </Link>
+                ))}
+              </div>
+            ))}
+
+            <Link href="/contact" className="px-4 py-3 font-medium text-gray-800 dark:text-gray-200 border-t border-gray-100 dark:border-gray-800 mt-2" onClick={() => setMobileOpen(false)}>İletişim</Link>
             <Link href="/careers" className="px-4 py-3 font-medium text-gray-800 dark:text-gray-200" onClick={() => setMobileOpen(false)}>Kariyer</Link>
           </div>
         </div>

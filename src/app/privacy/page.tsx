@@ -48,7 +48,7 @@ export default function PrivacyPolicyPage() {
                         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">3. Kişisel Verilerin İşlenme Amaçları</h2>
                         <p className="mb-4">Topladığımız kişisel veriler, KVKK'nın 5. ve 6. maddelerinde belirtilen şartlara uygun olarak aşağıdaki amaçlarla işlenmektedir:</p>
                         <ul className="list-disc pl-6 space-y-2">
-                            <li>Endüstriyel iş güvenliği çözümlerimizin (Forklift güvenliği, bölge güvenliği vb.) kurulumu, işletilmesi ve optimizasyonunun sağlanması,</li>
+                            <li>Endüstriyel iş güvenliği çözümlerimizin (Hareketli ekipman güvenliği, bölge güvenliği vb.) kurulumu, işletilmesi ve optimizasyonunun sağlanması,</li>
                             <li>Olası iş kazalarını önlemek amacıyla yapay zeka algoritmalarımızın eğitilmesi ve sistem doğruluk oranlarının artırılması (veriler anonimleştirilerek kullanılır),</li>
                             <li>Müşteri taleplerinin, teknik destek ve demo süreçlerinin yönetilmesi,</li>
                             <li>Bilgi güvenliği süreçlerinin yürütülmesi ve yasal yükümlülüklerimizin yerine getirilmesi.</li>

@@ -76,7 +76,7 @@ export default function ServicesSection() {
         <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto w-full">
 
           {/* Kart 1: AI Sistem */}
-          <div className="group relative p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 overflow-hidden text-left hover:-translate-y-1">
+          <div className="group relative p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 overflow-hidden text-left hover:-translate-y-1">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
             <div className="relative z-10 flex items-start gap-5">
@@ -88,14 +88,14 @@ export default function ServicesSection() {
                   Yapay Zeka (AI) Sistemleri
                 </h3>
                 <p className="text-gray-400 leading-relaxed text-sm">
-                  Görüntü işleme teknolojisi ile forklift, yaya ve ekipman hareketlerini anlık analiz eder. Kör noktaları ve riskli durumları insan gözünden daha hızlı tespit eder.
+                  Görüntü işleme teknolojisi ile hareketli ekipman, yaya ve araç hareketlerini anlık analiz eder. Kör noktaları ve riskli durumları insan gözünden daha hızlı tespit eder.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Kart 2: Uyarı Sistemleri */}
-          <div className="group relative p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 overflow-hidden text-left hover:-translate-y-1">
+          <div className="group relative p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 overflow-hidden text-left hover:-translate-y-1">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
             <div className="relative z-10 flex items-start gap-5">
