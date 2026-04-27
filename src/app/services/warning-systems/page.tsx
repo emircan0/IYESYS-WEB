@@ -19,26 +19,26 @@ export default function WarningSystems() {
     <div className="bg-white text-slate-900 font-sans">
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 font-bold text-sm tracking-wide shadow-sm">
+      <section className="relative pt-20 pb-12 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="space-y-6 lg:space-y-8 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 font-bold text-xs lg:text-sm tracking-wide shadow-sm">
               <ShieldAlert className="w-4 h-4 text-blue-600" /> Modüler İkaz Donanımları
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight text-slate-900">
-              Endüstriyel <br />
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight text-slate-900">
+              Endüstriyel <br className="hidden lg:block" />
               <span className="text-blue-600">Sinyalizasyon Çözümleri</span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl font-light">
+            <p className="text-base lg:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-light">
               Endüstriyel sinyalizasyon çözümlerimiz, yaya ve ekipman etkileşiminin yoğun olduğu alanlarda güvenliği artırmak ve operasyon akışını desteklemek için geliştirilmektedir. İhtiyaca özel tasarlanan sistemlerimiz kapsamında; yüksek sesli ve konuşabilen anons sistemleri, kapı ve geçişler için renkli şerit LED uyarı sistemleri, trafik lambaları ve talebe göre cam logolu logo projektörleri sunuyoruz. Her çözüm, sahadaki risk senaryolarına ve işletme süreçlerine uygun olarak özelleştirilebilmektedir.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4">
               <Link
                 href="/contact"
-                className="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all hover:scale-105 shadow-xl shadow-blue-500/20 flex items-center gap-2"
+                className="bg-blue-600 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-xl font-bold hover:bg-blue-700 transition-all hover:scale-105 shadow-xl shadow-blue-500/20 flex items-center gap-2 text-sm lg:text-base"
               >
                 Donanımlarımızı İnceleyin <ArrowRight className="w-5 h-5" />
               </Link>

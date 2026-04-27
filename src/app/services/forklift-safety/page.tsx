@@ -18,10 +18,10 @@ export default function MobileEquipmentSafetyPage() {
     <div className="bg-white text-slate-900 font-sans">
 
       {/* 1. HERO BÖLÜMÜ */}
-      <section className="relative pt-24 pb-16 lg:pt-40 lg:pb-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 w-full grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8 animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-bold text-sm tracking-wide">
+      <section className="relative pt-20 pb-12 lg:pt-40 lg:pb-32 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 w-full grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="space-y-6 lg:space-y-8 animate-fade-in-up text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-bold text-xs lg:text-sm tracking-wide">
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-600"></span>
@@ -29,13 +29,13 @@ export default function MobileEquipmentSafetyPage() {
               AI & UWB Hibrit Koruma
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-slate-900">
-              Hareketli Ekipman Çevresinde <br />
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-slate-900">
+              Hareketli Ekipman Çevresinde <br className="hidden lg:block" />
               <span className="text-blue-600">Anlık Güvenlik</span>
             </h1>
 
-            <div className="space-y-4 max-w-lg">
-              <p className="text-lg sm:text-xl text-slate-800 leading-relaxed font-medium">
+            <div className="space-y-4 max-w-lg mx-auto lg:mx-0">
+              <p className="text-base lg:text-xl text-slate-800 leading-relaxed font-medium">
                 Yapay zeka tabanlı kamera ve UWB teknolojisi ile; insanı, ekipmanı ve riskli bölgeleri anlık izleyerek, senaryoya özel sesli anonslar üretir ve ekipmanı otomatik yavaşlatır.
               </p>
             </div>

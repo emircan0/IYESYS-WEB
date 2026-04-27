@@ -8,25 +8,25 @@ export default function CustomSolutions() {
     <div className="bg-white font-sans text-slate-900">
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-50">
+      <section className="relative pt-20 pb-12 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-bold text-sm tracking-wide mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-bold text-xs lg:text-sm tracking-wide mb-6 lg:mb-8">
             <Settings className="w-4 h-4" /> Size Özel Mühendislik
           </div>
 
-          <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight text-slate-900 mb-8 max-w-4xl mx-auto">
-            İşletmenizin İhtiyaçlarına <br />
+          <h1 className="text-4xl lg:text-7xl font-extrabold leading-tight tracking-tight text-slate-900 mb-6 lg:mb-8 max-w-4xl mx-auto">
+            İşletmenizin İhtiyaçlarına <br className="hidden lg:block" />
             <span className="text-blue-600">Özel Teknoloji Çözümleri</span>
           </h1>
 
-          <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto font-light mb-10">
+          <p className="text-base lg:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto font-light mb-8 lg:mb-10">
             IYESYS olarak, standart paketlerin ötesine geçerek operasyonel süreçlerinizi dijitalleştiren ve verimliliğinizi artıran uçtan uca yazılım ve IoT sistemleri tasarlıyoruz.
           </p>
 
           <div className="flex justify-center gap-4">
             <Link
               href="/contact"
-              className="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all hover:scale-105 shadow-xl shadow-blue-500/20 flex items-center gap-2"
+              className="bg-blue-600 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-xl font-bold hover:bg-blue-700 transition-all hover:scale-105 shadow-xl shadow-blue-500/20 flex items-center gap-2 text-sm lg:text-base"
             >
               Projenizi Başlatın <ArrowRight className="w-5 h-5" />
             </Link>
