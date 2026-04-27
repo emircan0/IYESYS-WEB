@@ -10,13 +10,13 @@ export default function CustomSolutions() {
       {/* Hero Section */}
       <section className="relative pt-20 pb-12 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-bold text-xs lg:text-sm tracking-wide mb-6 lg:mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-50 border border-violet-100 text-violet-700 font-bold text-xs lg:text-sm tracking-wide mb-6 lg:mb-8">
             <Settings className="w-4 h-4" /> Size Özel Mühendislik
           </div>
 
           <h1 className="text-4xl lg:text-7xl font-extrabold leading-tight tracking-tight text-slate-900 mb-6 lg:mb-8 max-w-4xl mx-auto">
             İşletmenizin İhtiyaçlarına <br className="hidden lg:block" />
-            <span className="text-blue-600">Özel Teknoloji Çözümleri</span>
+            <span className="text-violet-600">Özel Teknoloji Çözümleri</span>
           </h1>
 
           <p className="text-base lg:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto font-light mb-8 lg:mb-10">
@@ -26,7 +26,7 @@ export default function CustomSolutions() {
           <div className="flex justify-center gap-4">
             <Link
               href="/contact"
-              className="bg-blue-600 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-xl font-bold hover:bg-blue-700 transition-all hover:scale-105 shadow-xl shadow-blue-500/20 flex items-center gap-2 text-sm lg:text-base"
+              className="bg-violet-600 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-xl font-bold hover:bg-violet-700 transition-all hover:scale-105 shadow-xl shadow-violet-500/20 flex items-center gap-2 text-sm lg:text-base"
             >
               Projenizi Başlatın <ArrowRight className="w-5 h-5" />
             </Link>
@@ -38,7 +38,7 @@ export default function CustomSolutions() {
       <section className="py-24 max-w-7xl mx-auto px-4 border-b border-slate-100">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
-            <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center shadow-sm shadow-blue-100">
+            <div className="w-16 h-16 bg-violet-100 text-violet-600 rounded-2xl flex items-center justify-center shadow-sm shadow-violet-100">
               <Database className="w-8 h-8" />
             </div>
 
@@ -53,14 +53,14 @@ export default function CustomSolutions() {
 
             <div className="grid grid-cols-1 gap-4 pt-4">
               <div className="flex gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                <LineChart className="w-6 h-6 text-blue-600 flex-shrink-0" />
+                <LineChart className="w-6 h-6 text-violet-600 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-900">Özel Dashboard & Raporlama</h4>
                   <p className="text-sm text-slate-600 mt-1">Saha verilerini, üretim metriklerini veya satış performansınızı gerçek zamanlı izleyebileceğiniz web tabanlı yönetim ekranları.</p>
                 </div>
               </div>
               <div className="flex gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                <Smartphone className="w-6 h-6 text-blue-600 flex-shrink-0" />
+                <Smartphone className="w-6 h-6 text-violet-600 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-900">Mobil Uygulama & CRM</h4>
                   <p className="text-sm text-slate-600 mt-1">Saha personelinin iş emirlerini yönetebileceği, müşteri ilişkileri takibi yapabileceğiniz iOS ve Android uyumlu kurumsal uygulamalar.</p>
@@ -96,7 +96,7 @@ export default function CustomSolutions() {
           </div>
 
           <div className="space-y-8 order-1 lg:order-2">
-            <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center shadow-sm shadow-emerald-100">
+            <div className="w-16 h-16 bg-violet-100 text-violet-600 rounded-2xl flex items-center justify-center shadow-sm shadow-violet-100">
               <Wifi className="w-8 h-8" />
             </div>
 
@@ -111,14 +111,14 @@ export default function CustomSolutions() {
 
             <div className="grid grid-cols-1 gap-4 pt-4">
               <div className="flex gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                <Zap className="w-6 h-6 text-emerald-600 flex-shrink-0" />
+                <Zap className="w-6 h-6 text-violet-600 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-900">Sensör Ağları ve Veri Toplama</h4>
                   <p className="text-sm text-slate-600 mt-1">Sıcaklık, nem, basınç veya titreşim gibi verileri kablosuz sensörlerle toplayıp merkezi veritabanına iletiyoruz.</p>
                 </div>
               </div>
               <div className="flex gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                <Layers className="w-6 h-6 text-emerald-600 flex-shrink-0" />
+                <Layers className="w-6 h-6 text-violet-600 flex-shrink-0" />
                 <div>
                   <h4 className="font-bold text-slate-900">Otonom Otomasyon Entegrasyonu</h4>
                   <p className="text-sm text-slate-600 mt-1">Toplanan verilerdeki anomalilere göre makine PLC'lerini veya ikaz sistemlerini insan müdahalesi olmadan tetikleme yeteneği.</p>
