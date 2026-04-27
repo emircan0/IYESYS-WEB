@@ -6,11 +6,11 @@ import { useState, useEffect } from 'react'
 
 export default function WarningSystems() {
   const [activeImage, setActiveImage] = useState(0)
-  const images = ['/img/32.png', '/img/33.png']
+  const sliderImages = ['/img/32.png', '/img/33.png']
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveImage((prev) => (prev + 1) % images.length)
+      setActiveImage((prev) => (prev + 1) % sliderImages.length)
     }, 4000)
     return () => clearInterval(timer)
   }, [])
@@ -27,12 +27,12 @@ export default function WarningSystems() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight text-slate-900">
-              Endüstriyel Görsel ve İşitsel <br />
-              <span className="text-blue-600">Uyarı Birimleri</span>
+              Endüstriyel <br />
+              <span className="text-blue-600">Sinyalizasyon Çözümleri</span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-xl font-light">
-              Tesisinizdeki mevcut otomasyon sistemlerine, PLC panolarına veya manuel kontrol butonlarına tam uyumlu olarak entegre edilebilen modüler uyarı donanımları. Sizin belirlediğiniz özel senaryolarda, tam istediğiniz anda devreye giren esnek ikaz çözümleri.
+            <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl font-light">
+              Endüstriyel sinyalizasyon çözümlerimiz, yaya ve ekipman etkileşiminin yoğun olduğu alanlarda güvenliği artırmak ve operasyon akışını desteklemek için geliştirilmektedir. İhtiyaca özel tasarlanan sistemlerimiz kapsamında; yüksek sesli ve konuşabilen anons sistemleri, kapı ve geçişler için renkli şerit LED uyarı sistemleri, trafik lambaları ve talebe göre cam logolu logo projektörleri sunuyoruz. Her çözüm, sahadaki risk senaryolarına ve işletme süreçlerine uygun olarak özelleştirilebilmektedir.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -46,29 +46,12 @@ export default function WarningSystems() {
           </div>
 
           <div className="relative">
-            <div className="bg-white rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-2xl relative aspect-[4/3] min-h-[400px]">
-              {images.map((src, idx) => (
-                <img
-                  key={src}
-                  src={src}
-                  alt={`Uyarı Donanımları ${idx + 1}`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                    activeImage === idx ? 'opacity-100' : 'opacity-0'
-                  }`}
-                />
-              ))}
-
-              {/* Slider Indicators */}
-              <div className="absolute bottom-6 right-6 flex gap-2 z-20">
-                {images.map((_, idx) => (
-                  <div 
-                    key={idx}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      activeImage === idx ? 'bg-blue-600 w-6' : 'bg-white/50'
-                    }`}
-                  />
-                ))}
-              </div>
+            <div className="bg-white rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-2xl relative aspect-[10/9] min-h-[400px] transform lg:scale-[1.05] lg:translate-x-4 transition-transform duration-500 hover:scale-[1.08]">
+              <img
+                src="/img/35.png"
+                alt="Uyarı Donanımları"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -77,35 +60,35 @@ export default function WarningSystems() {
       {/* Main Components Grid */}
       <section className="py-24 max-w-7xl mx-auto px-4">
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">İhtiyacınıza Özel Donanım Seçenekleri</h2>
-          <p className="text-slate-600 max-w-3xl mx-auto font-light leading-relaxed">
-            Kendi güvenlik senaryolarınızı oluşturabilmeniz için tasarlanmış, harici tetikleyicilerle (sensör, buton, yazılım, röle) anında çalışabilen tak-çalıştır donanımlarımız.
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">Teknik Donanım ve Entegrasyon Kapsamı</h2>
+          <p className="text-slate-600 max-w-4xl mx-auto font-light leading-relaxed">
+            İhtiyaca özel tasarlanan sistemlerimiz kapsamında; yüksek sesli ve konuşabilen anons sistemleri, kapı ve geçişler için renkli şerit LED uyarı sistemleri, trafik lambaları ve talebe göre cam logolu logo projektörleri sunuyoruz.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
-            { 
-              title: "LED Uyarı Projeksiyonları", 
-              desc: "Belirlediğiniz alana uyarı logoları veya yaya geçidi yansıtan, kuru kontak veya PLC ile tetiklenebilen yüksek güçlü endüstriyel LED'ler.", 
+            {
+              title: "Endüstriyel Logo Projektörleri",
+              desc: "Kritik risk bölgelerinde ve yaya yollarında, zemine veya duvara yüksek kontrastlı uyarı logoları yansıtan gelişmiş projeksiyon sistemleri.",
               icon: Lightbulb,
               color: "blue"
             },
-            { 
-              title: "Modüler Sesli Anons", 
-              desc: "Gürültülü ortamlara özel, dışarıdan tetikleyici sinyal geldiğinde istenilen dildeki anonsu anında oynatan donanım modülleri.", 
+            {
+              title: "Akıllı Sesli Anons Sistemleri",
+              desc: "Gürültülü ortamlarda net duyulabilen, senaryoya göre çok dilli ve özelleştirilebilir konuşan uyarı donanımları.",
               icon: Mic2,
               color: "indigo"
             },
-            { 
-              title: "3D Holografik Cihazlar", 
-              desc: "Dikkat çekilmesi gereken özel bölgelerde havada 3D görseller oluşturan, harici sinyallerle kontrol edilebilir yenilikçi donanımlar.", 
-              icon: Hexagon,
+            {
+              title: "Renkli Şerit LED Sistemleri",
+              desc: "Kapı geçişleri ve yükleme alanlarında, sistem durumuna göre renk değiştiren yüksek görünürlüklü görsel ikaz çözümleri.",
+              icon: Zap,
               color: "cyan"
             },
-            { 
-              title: "Endüstriyel Trafik Lambası", 
-              desc: "Kavşak ve kapı girişlerinde trafiği yönetmek için harici röle ve otomasyon sistemlerinize bağlanabilen dayanıklı ışık birimleri.", 
+            {
+              title: "Sinyalizasyon Trafik Lambaları",
+              desc: "Araç ve forklift trafiğini yönetmek için otomasyon sistemlerine entegre edilebilen, dayanıklı ve yüksek performanslı ışık birimleri.",
               icon: Activity,
               color: "emerald"
             }
@@ -129,19 +112,22 @@ export default function WarningSystems() {
               <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center shadow-sm">
                 <Bell className="w-8 h-8" />
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">Sizin Senaryonuz, <br />Sizin Kontrolünüz</h2>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">Operasyonel Farkındalık ve <br />Güvenli Hareket Akışı</h2>
               <p className="text-lg text-slate-600 leading-relaxed font-light">
-                Uyarı sistemlerimiz kapalı kutu ürünler değildir. Tesisinizdeki bir sensörden gelen sinyal, bir buton basımı, makine PLC'sinden alınan bir hata kodu veya saat bazlı bir zamanlayıcı... Donanımlarımızın ne zaman, nerede ve nasıl çalışacağına tamamen siz karar verirsiniz. Amacımız, işletmenizin mevcut altyapısına kolayca entegre edilebilen güvenilir ikaz donanımları sağlamaktır.
+                Çözümlerimiz yalnızca görsel ve sesli uyarı üretmekle kalmaz, aynı zamanda sahada farkındalık oluşturarak kontrollü ve güvenli hareket akışına katkı sağlar. Forklift geçişleri, yaya yolları, yükleme alanları ve kritik risk bölgelerinde; sesli anons, ışıklı yönlendirme ve projeksiyon tabanlı uyarılar birlikte kullanılarak güçlü bir sinyalizasyon altyapısı oluşturulur.
+              </p>
+              <p className="text-lg text-slate-600 leading-relaxed font-light">
+                Modüler yapısı sayesinde bu sistemler, talebe bağlı olarak IoT, AI ve farklı elektronik kontrol altyapılarıyla entegre çalışabilecek şekilde kurgulanabilir; böylece ihtiyaçlara göre genişleyebilen esnek ve ölçeklenebilir çözümler sunar.
               </p>
               <ul className="space-y-4 pt-4">
                 {[
-                  "Kuru kontak, röle, PLC veya yazılım tabanlı harici tetikleyicilerle tam uyumluluk",
-                  "Mevcut sistemlerinizi değiştirmeden kolay ve hızlı donanım entegrasyonu",
-                  "Toz, nem ve titreşim gibi endüstriyel ortam şartlarına dayanıklı donanım yapısı",
-                  "Tamamen işletmenizin kendi senaryolarına ve iş kurallarına göre çalışma esnekliği"
+                  "Risk senaryolarına ve işletme süreçlerine tam uyumlu özelleştirme",
+                  "Yüksek sesli ve akıllı anons sistemleri ile işitsel farkındalık",
+                  "Şerit LED ve logo projektörleri ile görsel yönlendirme",
+                  "IoT ve AI altyapılarıyla genişletilebilir modüler mimari"
                 ].map((text, i) => (
                   <li key={i} className="flex items-start gap-4 text-slate-700 font-medium">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div> 
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                     <span className="leading-relaxed">{text}</span>
                   </li>
                 ))}
@@ -149,12 +135,24 @@ export default function WarningSystems() {
             </div>
             <div className="relative">
               <div className="bg-slate-50 p-4 rounded-[3rem] border border-slate-200 shadow-inner">
-                <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
-                  <img
-                    src="/img/32.png"
-                    alt="Esnek Donanım Entegrasyonu"
-                    className="w-full h-full object-cover"
-                  />
+                <div className="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl relative">
+                  {sliderImages.map((src, idx) => (
+                    <img
+                      key={src}
+                      src={src}
+                      alt={`Saha Uygulaması ${idx + 1}`}
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${activeImage === idx ? 'opacity-100' : 'opacity-0'}`}
+                    />
+                  ))}
+                  {/* Slider Indicators */}
+                  <div className="absolute bottom-6 right-6 flex gap-2 z-20">
+                    {sliderImages.map((_, idx) => (
+                      <div
+                        key={idx}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${activeImage === idx ? 'bg-blue-600 w-6' : 'bg-white/50'}`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

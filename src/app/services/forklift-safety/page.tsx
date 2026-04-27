@@ -26,7 +26,7 @@ export default function MobileEquipmentSafetyPage() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-600"></span>
               </span>
-              AI Koruma
+              AI & UWB Hibrit Koruma
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-slate-900">
@@ -36,7 +36,7 @@ export default function MobileEquipmentSafetyPage() {
 
             <div className="space-y-4 max-w-lg">
               <p className="text-lg sm:text-xl text-slate-800 leading-relaxed font-medium">
-                AI kamera ve UWB teknolojisi ile yaya ve diğer araç hareketlerini anlık izleyerek, riskli durumlarda operatörü uyarır ve ekipmanı otomatik yavaşlatır.
+                Yapay zeka tabanlı kamera ve UWB teknolojisi ile; insanı, ekipmanı ve riskli bölgeleri anlık izleyerek, senaryoya özel sesli anonslar üretir ve ekipmanı otomatik yavaşlatır.
               </p>
             </div>
           </div>
@@ -104,13 +104,15 @@ export default function MobileEquipmentSafetyPage() {
               </div>
 
               <p className="text-lg sm:text-xl text-slate-600 leading-relaxed font-light">
-                IYESYS sistemi, <span className="font-bold text-slate-900">AI kamera</span> ile yayaları ve <span className="font-bold text-slate-900">UWB teknolojisi</span> ile diğer hareketli araçları anlık tespit eder. Sistem, riskli yakınlaşmalarda ekipmanı <span className="text-blue-600 font-bold italic underline decoration-blue-200">otomatik olarak güvenli hıza düşürerek</span> olası kazaların önüne geçer.
+                IYESYS sistemi, <span className="font-bold text-slate-900">AI kamera</span> ile yayaları ve <span className="font-bold text-slate-900">UWB teknolojisi</span> ile diğer hareketli ekipmanları anlık tespit eder. Piyasada benzersiz olan <span className="font-bold text-slate-900">konuşan sistem</span> altyapısı sayesinde, her risk senaryosu için farklı ses dosyaları tetikleyerek operatörü uyarır ve ekipmanı <span className="text-blue-600 font-bold italic underline decoration-blue-200">otomatik olarak güvenli hıza düşürür.</span>
               </p>
 
               <div className="grid sm:grid-cols-2 gap-6 pt-4">
                 {[
-                  { title: "AI & UWB Hibrit", desc: "Canlılar ve tüm ekipmanlar için tam kapsamlı koruma.", icon: <ShieldAlert className="w-5 h-5" /> },
-                  { title: "Hız Müdahalesi", desc: "Operatörden bağımsız aktif yavaşlatma sistemi.", icon: <Zap className="w-5 h-5" /> }
+                  { title: "AI & UWB Hibrit", desc: "Kamera ve radar ile canlılar ve araçlar için tam koruma.", icon: <ShieldAlert className="w-5 h-5" /> },
+                  { title: "Konuşan Uyarı Sistemi", desc: "Risk senaryosuna göre özel sesli anons desteği.", icon: <Radio className="w-5 h-5" /> },
+                  { title: "360° Anlık İzleme", desc: "Operatör için kör nokta bırakmayan tam görüş.", icon: <Activity className="w-5 h-5" /> },
+                  { title: "Aktif Hız Kontrolü", desc: "Operatörden bağımsız otomatik yavaşlatma.", icon: <Zap className="w-5 h-5" /> }
                 ].map((item, i) => (
                   <div key={i} className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:border-blue-100 transition-all duration-300 group">
                     <div className="w-10 h-10 bg-white shadow-sm rounded-xl flex items-center justify-center text-blue-600 mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">

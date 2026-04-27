@@ -41,7 +41,7 @@ export default function CustomSolutions() {
             <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center shadow-sm shadow-blue-100">
               <Database className="w-8 h-8" />
             </div>
-            
+
             <div className="space-y-4">
               <h2 className="text-4xl font-extrabold text-slate-900 leading-tight">
                 Yazılım ve Uygulama <br />Geliştirme
@@ -70,9 +70,9 @@ export default function CustomSolutions() {
           </div>
 
           <div className="relative">
-            <div className="w-full bg-white rounded-[2.5rem] border border-slate-200 shadow-2xl overflow-hidden relative aspect-[4/3] md:aspect-[4/3]">
+            <div className="w-full bg-slate-50 rounded-[2.5rem] border border-slate-200 shadow-2xl overflow-hidden relative aspect-[4/3]">
               <img
-                src="/img/custom-software.png"
+                src="/img/34.png"
                 alt="Yazılım ve Dashboard Çözümleri"
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -84,11 +84,11 @@ export default function CustomSolutions() {
       {/* 2. Endüstriyel IoT Çözümleri */}
       <section className="py-24 max-w-7xl mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
+
           <div className="relative order-2 lg:order-1">
-            <div className="w-full bg-white rounded-[2.5rem] border border-slate-200 shadow-2xl overflow-hidden relative aspect-[4/3] md:aspect-[4/3]">
+            <div className="w-full bg-slate-50 rounded-[2.5rem] border border-slate-200 shadow-2xl overflow-hidden relative aspect-[4/3]">
               <img
-                src="/img/custom-iot.png"
+                src="/img/36.png"
                 alt="Endüstriyel IoT Sistemleri"
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -99,7 +99,7 @@ export default function CustomSolutions() {
             <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center shadow-sm shadow-emerald-100">
               <Wifi className="w-8 h-8" />
             </div>
-            
+
             <div className="space-y-4">
               <h2 className="text-4xl font-extrabold text-slate-900 leading-tight">
                 Endüstriyel IoT <br />Sistemleri
