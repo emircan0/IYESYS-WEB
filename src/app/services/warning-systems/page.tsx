@@ -45,8 +45,8 @@ export default function WarningSystems() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="bg-white rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-2xl relative aspect-[10/9] min-h-[400px] transform lg:scale-[1.05] lg:translate-x-4 transition-transform duration-500 hover:scale-[1.08]">
+          <div className="relative mt-12 lg:mt-0">
+            <div className="bg-white rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-2xl relative aspect-video lg:aspect-[10/9] min-h-[280px] lg:min-h-[450px] transform lg:scale-[1.1] lg:translate-x-8 transition-transform duration-500 hover:scale-[1.12]">
               <img
                 src="/img/35.png"
                 alt="Uyarı Donanımları"
