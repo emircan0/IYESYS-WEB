@@ -16,7 +16,7 @@ export default function WarningSystems() {
   }, [])
 
   return (
-    <div className="bg-white text-slate-900 font-sans">
+    <div className="bg-white text-slate-900 font-sans overflow-x-hidden">
 
       {/* Hero Section */}
       <section className="relative pt-20 pb-12 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-50">
@@ -45,8 +45,8 @@ export default function WarningSystems() {
             </div>
           </div>
 
-          <div className="relative mt-12 lg:mt-0">
-            <div className="bg-white rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-2xl relative aspect-video lg:aspect-[10/9] min-h-[280px] lg:min-h-[450px] transform lg:scale-[1.1] lg:translate-x-8 transition-transform duration-500 hover:scale-[1.12]">
+          <div className="relative mt-8 lg:mt-0">
+            <div className="w-full rounded-[2rem] overflow-hidden border border-slate-200 shadow-2xl relative aspect-[4/3]">
               <img
                 src="/img/35.png"
                 alt="Uyarı Donanımları"
