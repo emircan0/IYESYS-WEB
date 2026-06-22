@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, ChevronDown, Car, ShieldCheck, Warehouse, ArrowRight, Zap } from 'lucide-react'
+import { Menu, X, ChevronDown, Car, ShieldCheck, Warehouse, ArrowRight, Zap, Settings } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
@@ -51,7 +51,7 @@ export default function Navbar() {
           href: '/services/custom-solutions',
           label: 'İşletmelere Özel Çözümler',
           desc: 'IoT ve AI destekli saha yönetimi',
-          icon: <Zap className="w-5 h-5" />
+          icon: <Settings className="w-5 h-5" />
         },
         {
           href: '/services/warning-systems',

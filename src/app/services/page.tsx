@@ -42,7 +42,7 @@ export default function ServicesPage() {
       href: "/services/custom-solutions"
     },
     {
-      title: "İkaz Sistemleri",
+      title: "Aktif Uyarı Sistemleri",
       desc: "İşletmenizin özel senaryolarına göre tetiklenebilen, PLC ve otomasyon sistemleri ile tam uyumlu modüler uyarı donanımları. Görsel ve işitsel ikaz birimlerini ihtiyacınıza göre yapılandırın.",
       icon: <Zap className="w-8 h-8" />,
       color: "from-amber-500 to-orange-600",
