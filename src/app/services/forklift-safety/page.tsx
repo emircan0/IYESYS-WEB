@@ -129,7 +129,7 @@ export default function MobileEquipmentSafetyPage() {
             <div className="lg:col-span-6 relative">
               <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.15)] border-8 border-white">
                 <img
-                  src="/img/22.png"
+                  src="/img/hareketliekipman-yaya1.png"
                   alt="AI & UWB Otomatik Müdahale"
                   className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
                 />

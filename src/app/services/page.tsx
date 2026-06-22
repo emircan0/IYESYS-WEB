@@ -9,7 +9,8 @@ export default function ServicesPage() {
       title: "Hareketli Ekipman - Yaya Güvenliği",
       desc: "AI tabanlı görüntü işleme teknolojisi ile kör noktaları ve yaya hareketlerini anlık analiz eden aktif koruma sistemi. Riskli durumlarda otonom yavaşlatma ve operatör uyarı protokollerini devreye sokar.",
       icon: <Shield className="w-8 h-8" />,
-      color: "from-blue-500 to-cyan-500",
+      color: "from-blue-600 to-cyan-500",
+      checkColor: "text-blue-500",
       features: ["Otonom Hız Kontrolü", "AI Nesne Tanıma", "Aktif Operatör Arayüzü"],
       href: "/services/forklift-safety"
     },
@@ -18,6 +19,7 @@ export default function ServicesPage() {
       desc: "Tesis içerisindeki kritik bölgeleri kesintisiz izleyen ve izinsiz girişleri milisaniyeler içinde raporlayan güvenlik ağı. Entegre ikaz birimleri ile sahadaki durumsal farkındalığı maksimize eder.",
       icon: <AlertTriangle className="w-8 h-8" />,
       color: "from-emerald-500 to-teal-500",
+      checkColor: "text-emerald-500",
       features: ["Sürekli Alan Analizi", "Otonom İkaz Yönetimi", "Erişim Kontrol Protokolleri"],
       href: "/services/area-safety"
     },
@@ -25,7 +27,8 @@ export default function ServicesPage() {
       title: "Rampa Güvenliği",
       desc: "Lojistik operasyonlarında tır yanaşma ve yükleme süreçlerini denetleyen akıllı kontrol sistemi. Personel güvenliğini önceliklendirerek rampa kapılarını ve uyarı sistemlerini otonom olarak yönetir.",
       icon: <Truck className="w-8 h-8" />,
-      color: "from-purple-500 to-pink-500",
+      color: "from-blue-600 to-slate-500",
+      checkColor: "text-blue-500",
       features: ["AI Arka Bölge Tespiti", "Akıllı Kapı Kilit Entegrasyonu", "Sürücü Rehberlik Sistemleri"],
       href: "/services/dock-safety"
     },
@@ -34,6 +37,7 @@ export default function ServicesPage() {
       desc: "İşletmenizin operasyonel verimliliğini artıran özel yazılım ve IoT altyapıları. Mevcut ERP/MES sistemlerinizle tam entegre, ölçeklenebilir ve yüksek güvenlikli teknoloji çözümleri.",
       icon: <Settings className="w-8 h-8" />,
       color: "from-blue-600 to-indigo-600",
+      checkColor: "text-indigo-500",
       features: ["Özel Yazılım & Dashboard", "Endüstriyel IoT Sensör Ağları", "Sistem Entegrasyonları"],
       href: "/services/custom-solutions"
     },
@@ -41,7 +45,8 @@ export default function ServicesPage() {
       title: "İkaz Sistemleri",
       desc: "İşletmenizin özel senaryolarına göre tetiklenebilen, PLC ve otomasyon sistemleri ile tam uyumlu modüler uyarı donanımları. Görsel ve işitsel ikaz birimlerini ihtiyacınıza göre yapılandırın.",
       icon: <Zap className="w-8 h-8" />,
-      color: "from-slate-600 to-slate-800",
+      color: "from-amber-500 to-orange-600",
+      checkColor: "text-amber-500",
       features: ["Modüler Uyarı Birimleri", "PLC & Buton Entegrasyonu", "Özel Senaryo Desteği"],
       href: "/services/warning-systems"
     }
@@ -71,7 +76,7 @@ export default function ServicesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-300 via-blue-200 to-slate-300">
       <section className="max-w-7xl mx-auto px-4 py-12 sm:py-20">
         {/* Header */}
         <div className="text-center mb-16">
@@ -90,10 +95,10 @@ export default function ServicesPage() {
             <Link
               key={idx}
               href={service.href}
-              className="group relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-blue-200 hover:-translate-y-2 overflow-hidden block"
+              className="group relative bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 hover:border-slate-300 hover:-translate-y-2 overflow-hidden block"
             >
               {/* Gradient Background on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity`}></div>
 
               <div className="relative z-10">
                 {/* Icon */}
@@ -115,7 +120,7 @@ export default function ServicesPage() {
                 <div className="space-y-2">
                   {service.features.map((feature, fIdx) => (
                     <div key={fIdx} className="flex items-center gap-2 text-sm text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                      <CheckCircle className={`w-4 h-4 ${service.checkColor} flex-shrink-0`} />
                       <span>{feature}</span>
                     </div>
                   ))}
@@ -123,7 +128,7 @@ export default function ServicesPage() {
               </div>
 
               {/* Corner Accent */}
-              <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-10 rounded-bl-full transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform`}></div>
+              <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-20 rounded-bl-full transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform`}></div>
             </Link>
           ))}
         </div>

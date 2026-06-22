@@ -2,21 +2,14 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Sun, Moon, Menu, X, ChevronDown, Car, ShieldCheck, Warehouse, ArrowRight, Zap, BarChart2, Cpu } from 'lucide-react'
+import { Menu, X, ChevronDown, Car, ShieldCheck, Warehouse, ArrowRight, Zap } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { useTheme } from 'next-themes'
 import clsx from 'clsx'
 
 export default function Navbar() {
   const pathname = usePathname()
-  const { theme, resolvedTheme, setTheme } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,10 +18,6 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  const toggleDarkMode = () => {
-    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
-  }
 
   // Alt menü verileri
   const solutions = [
@@ -74,12 +63,16 @@ export default function Navbar() {
     }
   ]
 
-  if (!mounted) return null
+  const navLinkClass = (active: boolean) =>
+    clsx(
+      'px-4 py-2 rounded-lg font-medium transition-all hover:text-blue-300',
+      active ? 'text-blue-300' : 'text-slate-200'
+    )
 
   return (
     <nav className={clsx(
-      "bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl fixed top-0 left-0 w-full z-50 transition-all duration-300",
-      scrolled ? "shadow-lg border-b border-gray-200/50 dark:border-gray-800/50" : "shadow-md"
+      "bg-[#0b1324]/95 text-white backdrop-blur-xl fixed top-0 left-0 w-full z-50 border-b border-white/10 transition-all duration-300",
+      scrolled ? "shadow-lg shadow-black/25" : "shadow-md shadow-black/10"
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
@@ -87,7 +80,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <div className="relative">
-              <div className="absolute inset-0 bg-white/10 dark:bg-white/10 rounded-full blur-xl opacity-80 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-blue-400/10 rounded-full blur-xl opacity-80 group-hover:opacity-100 transition-opacity"></div>
               <div className="relative p-1 overflow-hidden flex items-center">
                 <img
                   src="/img/11.png"
@@ -100,25 +93,28 @@ export default function Navbar() {
 
           {/* Masaüstü Menü */}
           <div className="hidden lg:flex items-center gap-1">
-            <Link href="/" className={clsx('px-4 py-2 rounded-lg font-medium transition-all', pathname === '/' ? 'text-blue-600' : 'text-gray-700 dark:text-gray-300')}>Ana Sayfa</Link>
-            <Link href="/about" className={clsx('px-4 py-2 rounded-lg font-medium transition-all', pathname === '/about' ? 'text-blue-600' : 'text-gray-700 dark:text-gray-300')}>Hakkımızda</Link>
+            <Link href="/" className={navLinkClass(pathname === '/')}>Ana Sayfa</Link>
+            <Link href="/about" className={navLinkClass(pathname === '/about')}>Hakkımızda</Link>
 
             {/* Çözümlerimiz Dropdown */}
             <div className="relative group px-4 py-2 cursor-pointer">
-              <div className={clsx(
-                "flex items-center gap-1 font-medium transition-all group-hover:text-blue-600",
-                pathname.startsWith('/services') ? "text-blue-600" : "text-gray-700 dark:text-gray-300"
+              <Link href="/services" className={clsx(
+                "flex items-center gap-1 font-medium transition-all group-hover:text-blue-300",
+                pathname.startsWith('/services') ? "text-blue-300" : "text-slate-200"
               )}>
                 Çözümlerimiz <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
-              </div>
+              </Link>
 
               {/* Dropdown Content */}
-              <div className="absolute left-0 mt-2 w-80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 p-5 overflow-hidden">
-                  <div className="grid grid-cols-1 gap-6">
-                    {solutions.map((section) => (
-                      <div key={section.category}>
-                        <h3 className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest mb-4">
+              <div className="absolute left-1/2 mt-2 w-[620px] max-w-[calc(100vw-2rem)] -translate-x-1/2 translate-y-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300">
+                <div className="bg-[#101a2d]/95 rounded-2xl shadow-2xl border border-white/10 p-5 overflow-hidden">
+                  <div className="grid grid-cols-[1.15fr_0.85fr] gap-5">
+                    {solutions.map((section, sectionIndex) => (
+                      <div
+                        key={section.category}
+                        className={clsx("min-w-0", sectionIndex > 0 && "border-l border-white/10 pl-5")}
+                      >
+                        <h3 className="text-xs font-bold text-blue-300 uppercase tracking-widest mb-4">
                           {section.category}
                         </h3>
                         <div className="grid gap-2">
@@ -126,12 +122,12 @@ export default function Navbar() {
                             <Link
                               key={item.href}
                               href={item.href}
-                              className="flex flex-col gap-1 p-2 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors group/item"
+                              className="flex flex-col gap-1 p-2 rounded-xl hover:bg-white/10 transition-colors group/item"
                             >
-                              <div className="text-sm font-bold text-gray-900 dark:text-white group-hover/item:text-blue-600 transition-colors">
+                              <div className="text-sm font-bold text-white group-hover/item:text-blue-300 transition-colors">
                                 {item.label}
                               </div>
-                              <div className="text-[11px] text-gray-500 dark:text-gray-400 leading-tight">
+                              <div className="text-[11px] text-slate-400 leading-tight">
                                 {item.desc}
                               </div>
                             </Link>
@@ -140,8 +136,8 @@ export default function Navbar() {
                       </div>
                     ))}
                   </div>
-                  <div className="border-t border-gray-100 dark:border-gray-700 mt-6 pt-4">
-                    <Link href="/services" className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1">
+                  <div className="border-t border-white/10 mt-6 pt-4">
+                    <Link href="/services" className="text-xs font-bold text-blue-300 hover:underline flex items-center gap-1">
                       Tüm Çözümleri Gör <ArrowRight className="w-3 h-3" />
                     </Link>
                   </div>
@@ -149,15 +145,15 @@ export default function Navbar() {
               </div>
             </div>
 
-            <Link href="/contact" className={clsx('px-4 py-2 rounded-lg font-medium transition-all', pathname === '/contact' ? 'text-blue-600' : 'text-gray-700 dark:text-gray-300')}>İletişim</Link>
-            <Link href="/careers" className={clsx('px-4 py-2 rounded-lg font-medium transition-all', pathname === '/careers' ? 'text-blue-600' : 'text-gray-700 dark:text-gray-300')}>Kariyer</Link>
+            <Link href="/contact" className={navLinkClass(pathname === '/contact')}>İletişim</Link>
+            <Link href="/careers" className={navLinkClass(pathname === '/careers')}>Kariyer</Link>
           </div>
 
           {/* Sağ Taraf Butonlar */}
           <div className="flex items-center gap-2">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              className="lg:hidden p-2 rounded-xl bg-white/10 text-white border border-white/10 hover:bg-white/15 transition-colors"
               aria-label="Toggle Mobile Menu"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -167,25 +163,31 @@ export default function Navbar() {
 
         {/* Mobil Menü */}
         <div className={clsx("lg:hidden overflow-hidden transition-all duration-300", mobileOpen ? "max-h-[1000px] pb-6" : "max-h-0")}>
-          <div className="flex flex-col gap-2 pt-4 border-t border-gray-200 dark:border-gray-800">
-            <Link href="/" className="px-4 py-3 font-medium text-gray-800 dark:text-gray-200" onClick={() => setMobileOpen(false)}>Ana Sayfa</Link>
-            <Link href="/about" className="px-4 py-3 font-medium text-gray-800 dark:text-gray-200 border-t border-gray-100 dark:border-gray-800 mt-2" onClick={() => setMobileOpen(false)}>Hakkımızda</Link>
+          <div className="flex flex-col gap-2 pt-4 border-t border-white/10">
+            <Link href="/" className="px-4 py-3 font-medium text-slate-100 hover:text-blue-300" onClick={() => setMobileOpen(false)}>Ana Sayfa</Link>
+            <Link href="/about" className="px-4 py-3 font-medium text-slate-100 hover:text-blue-300 border-t border-white/10 mt-2" onClick={() => setMobileOpen(false)}>Hakkımızda</Link>
             
-            <div className="px-4 py-2 font-bold text-xs uppercase text-gray-400 tracking-widest mt-2 border-t border-gray-100 dark:border-gray-800 pt-4">Çözümlerimiz</div>
+            <Link
+              href="/services"
+              className="px-4 py-2 font-bold text-xs uppercase text-slate-400 hover:text-blue-300 tracking-widest mt-2 border-t border-white/10 pt-4"
+              onClick={() => setMobileOpen(false)}
+            >
+              Çözümlerimiz
+            </Link>
             
             {solutions.map(section => (
               <div key={section.category} className="px-4 py-2">
-                <div className="text-[10px] font-bold text-blue-600/60 uppercase mb-2 ml-2">{section.category}</div>
+                <div className="text-[10px] font-bold text-blue-300 uppercase mb-2 ml-2">{section.category}</div>
                 {section.items.map(link => (
-                  <Link key={link.href} href={link.href} className="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 flex items-center gap-2" onClick={() => setMobileOpen(false)}>
+                  <Link key={link.href} href={link.href} className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white flex items-center gap-2" onClick={() => setMobileOpen(false)}>
                     {link.icon} {link.label}
                   </Link>
                 ))}
               </div>
             ))}
 
-            <Link href="/contact" className="px-4 py-3 font-medium text-gray-800 dark:text-gray-200 border-t border-gray-100 dark:border-gray-800 mt-2" onClick={() => setMobileOpen(false)}>İletişim</Link>
-            <Link href="/careers" className="px-4 py-3 font-medium text-gray-800 dark:text-gray-200" onClick={() => setMobileOpen(false)}>Kariyer</Link>
+            <Link href="/contact" className="px-4 py-3 font-medium text-slate-100 hover:text-blue-300 border-t border-white/10 mt-2" onClick={() => setMobileOpen(false)}>İletişim</Link>
+            <Link href="/careers" className="px-4 py-3 font-medium text-slate-100 hover:text-blue-300" onClick={() => setMobileOpen(false)}>Kariyer</Link>
           </div>
         </div>
       </div>

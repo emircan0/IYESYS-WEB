@@ -88,7 +88,7 @@ export default function CustomSolutions() {
           <div className="relative order-2 lg:order-1">
             <div className="w-full bg-slate-50 rounded-[2.5rem] border border-slate-200 shadow-2xl overflow-hidden relative aspect-[4/3]">
               <img
-                src="/img/36.png"
+                src="/img/isletmeye-ozel-yazilim-iot-cozumleri.png"
                 alt="Endüstriyel IoT Sistemleri"
                 className="absolute inset-0 w-full h-full object-cover"
               />

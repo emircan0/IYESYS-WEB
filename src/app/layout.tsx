@@ -13,6 +13,16 @@ export const metadata: Metadata = {
   description: 'AI Kamera Sistemleri, UWB Teknolojisi ve IoT çözümleri ile endüstriyel güvenliği artırın. Hareketli ekipman güvenliği, düşme algılama ve akıllı yükleme rampası sistemleri.',
   keywords: 'yapay zeka, endüstriyel güvenlik, AI kamera, hareketli ekipman güvenliği, UWB teknoloji, IoT çözümleri',
   authors: [{ name: 'IYESYS' }],
+  icons: {
+    icon: [
+      { url: '/favicon.ico?v=2', sizes: 'any' },
+      { url: '/favicon-32x32.png?v=2', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-16x16.png?v=2', type: 'image/png', sizes: '16x16' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png?v=2', type: 'image/png', sizes: '180x180' },
+    ],
+  },
   openGraph: {
     type: 'website',
     locale: 'tr_TR',

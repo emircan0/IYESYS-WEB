@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 
 export default function WarningSystems() {
   const [activeImage, setActiveImage] = useState(0)
-  const sliderImages = ['/img/32.png', '/img/33.png']
+  const sliderImages = ['/img/kapikirmizi.png', '/img/33.png']
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -48,7 +48,7 @@ export default function WarningSystems() {
           <div className="relative mt-8 lg:mt-0">
             <div className="w-full rounded-[2rem] overflow-hidden border border-slate-200 shadow-2xl relative aspect-[4/3]">
               <img
-                src="/img/35.png"
+                src="/img/warning-systems-showcase-v4.png"
                 alt="Uyarı Donanımları"
                 className="absolute inset-0 w-full h-full object-cover"
               />

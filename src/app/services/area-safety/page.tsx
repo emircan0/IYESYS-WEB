@@ -120,9 +120,9 @@ export default function AreaSafetyPage() {
              <div className="absolute -inset-4 bg-emerald-600/5 rounded-[3rem] blur-2xl transition-colors"></div>
              <div className="relative aspect-square bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
                 <img
-                  src="/img/19.png"
+                  src="/img/alan-guvenligi.png"
                   alt="Görünmeyen Riskler için Anlık Tespit"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-[70%_center]"
                 />
              </div>
           </div>
