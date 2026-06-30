@@ -6,44 +6,44 @@ import { Cpu, BarChart2, Cog, X, Zap, CheckCircle } from 'lucide-react'
 const services = [
   {
     title: "AI Kamera Sistemleri",
-    desc: "Üretim hattınızı izleyen akıllı kameralar ile kalite kontrolünü otomatikleştirin.",
+    desc: "Yapay zekalı kameralar ile forklift kazalarını ve ihlalleri otomatik tespit edin.",
     icon: Cpu,
     colorClass: "text-blue-600",
     gradient: "from-blue-500 to-cyan-500",
-    detail: "AI Kamera Sistemleri, üretim hattınızı izleyip kalite kontrolünü otomatikleştirir. Gerçek zamanlı analizler sayesinde hataları önler ve verimliliği artırır.",
+    detail: "Yapay zeka kamera sistemlerimiz, fabrikanızdaki hareketli ekipmanları, yaya hareketlerini ve kör noktaları anlık izleyerek iş kazası önleme sistemleri kurar. Forklift çevresine yaklaşma uyarılarıyla tehlikeyi proaktif olarak engeller.",
     features: [
-      "Gerçek zamanlı hata tespiti",
+      "Forklift ve yaya algılama",
+      "Kör nokta uyarı sistemleri",
       "7/24 otomatik izleme",
-      "Yüksek doğruluk oranı",
-      "Kolay entegrasyon"
+      "Gerçek zamanlı hız takibi"
     ]
   },
   {
-    title: "Veri Analizi & Optimizasyon",
-    desc: "IoT cihazlarından gelen verileri analiz ederek operasyonel verimliliği artırın.",
+    title: "KKD Kontrolü & Veri Analizi",
+    desc: "Yapay zeka destekli donanım kontrolü ile İSG kurallarına tam uyum sağlayın.",
     icon: BarChart2,
     colorClass: "text-purple-600",
     gradient: "from-purple-500 to-pink-500",
-    detail: "Veri Analizi & Optimizasyon hizmetimiz, IoT cihazlarından gelen verileri işleyerek operasyonel süreçlerinizi iyileştirir ve karar alma süreçlerinizi hızlandırır.",
+    detail: "Yapay zeka destekli kişisel koruyucu donanım kontrolü ile baret, yelek ve güvenlik ekipmanı kullanımının takibi yapılabilir. IoT cihazlarından gelen verilerle kaza risklerini analiz edin.",
     features: [
-      "Detaylı performans raporları",
-      "Tahmine dayalı analizler",
-      "Özelleştirilebilir dashboardlar",
-      "API entegrasyonu"
+      "Baret ve yelek algılama",
+      "IoT iş kazaları analizi",
+      "Kural ihlali raporlama",
+      "Gelişmiş risk gösterge paneli"
     ]
   },
   {
-    title: "Endüstriyel Otomasyon",
-    desc: "Üretim süreçlerinizi otomatikleştirerek zaman ve maliyet tasarrufu sağlayın.",
+    title: "Forklift Hız Yavaşlatma",
+    desc: "Akıllı yavaşlatma mekanizmalarıyla tesis içi araç trafik güvenliğini artırın.",
     icon: Cog,
     colorClass: "text-emerald-600",
     gradient: "from-emerald-500 to-teal-500",
-    detail: "Endüstriyel Otomasyon çözümlerimiz üretim süreçlerinizi otomatikleştirir, iş gücü maliyetlerini düşürür ve süreçlerinizi daha verimli hale getirir.",
+    detail: "Forklift hız yavaşlatma sistemi ve otomatik durdurucu mekanizmalarımız sayesinde, yaya ve araç çarpışmalarını sıfıra indirmeyi hedefliyoruz. Endüstriyel otomasyon ile güvenlik standartlarınızı en üst seviyeye taşıyın.",
     features: [
-      "Tam süreç otomasyonu",
-      "Akıllı kaynak yönetimi",
-      "Uzaktan kontrol imkanı",
-      "Enerji tasarrufu"
+      "Otomatik hız kesme",
+      "Çarpışma önleyici sensörler",
+      "Bölgesel hız limiti belirleme",
+      "Mekanik durdurma entegrasyonu"
     ]
   }
 ]
@@ -85,10 +85,10 @@ export default function ServicesSection() {
               </div>
               <div className="space-y-2">
                 <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
-                  Yapay Zeka (AI) Sistemleri
+                  İş Güvenliğinde Yapay Zeka Uygulamaları
                 </h3>
                 <p className="text-gray-400 leading-relaxed text-sm">
-                  Görüntü işleme teknolojisi ile hareketli ekipman, yaya ve araç hareketlerini anlık analiz eder. Kör noktaları ve riskli durumları insan gözünden daha hızlı tespit eder.
+                  Görüntü işleme teknolojisi ile fabrika içi yaya ve araç hareketlerini anlık analiz eder. Forklift kazalarını ve riskli durumları insan gözünden daha hızlı tespit eden kaza önleyici sistem sunar.
                 </p>
               </div>
             </div>
@@ -104,10 +104,10 @@ export default function ServicesSection() {
               </div>
               <div className="space-y-2">
                 <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
-                  Aktif Uyarı Sistemleri
+                  Aktif Çarpışma ve Uyarı Sistemleri
                 </h3>
                 <p className="text-gray-400 leading-relaxed text-sm">
-                  Tehlike anında sesli ve görsel alarmları otomatik tetikler. Operatörleri ve yayaları milisaniyeler içinde uyararak proaktif koruma sağlar.
+                  Tehlike anında sesli ve görsel alarmları otomatik tetikler. Forklift operatörü ve yayaları milisaniyeler içinde uyararak, fabrika iş kazası oranlarını sıfıra indirmeyi hedefler.
                 </p>
               </div>
             </div>

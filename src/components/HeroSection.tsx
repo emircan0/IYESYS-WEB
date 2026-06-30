@@ -36,17 +36,17 @@ export default function HeroSection() {
 
           {/* Ana Başlık */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight">
-            Yapay Zeka ile <br />
+            Yapay Zeka Destekli <br />
             <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
-              İş Güvenliğini Yeniden Tanımlayın
+              İş Kazası Önleme Sistemleri
             </span>
           </h1>
 
           {/* Alt Başlık */}
           <p className="mt-6 text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
-            AI destekli kamera sistemlerimizle işinizi daha güvenli ve verimli hale getirin.
-            Gerçek zamanlı analiz ve otomatik uyarılarla iş güvenliğini sağlayın,
-            <span className="text-white font-medium"> iş kazalarını oluşmadan önleyin.</span>
+            AI destekli endüstriyel güvenlik teknolojilerimizle fabrikanızı koruma altına alın.
+            Forklift kazaları, yaya ihlalleri ve gerçek zamanlı risk analizi ile
+            <span className="text-white font-medium"> İş Sağlığı ve Güvenliği (İSG) standartlarınızı yükseltin.</span>
           </p>
 
           {/* CTA Butonları */}

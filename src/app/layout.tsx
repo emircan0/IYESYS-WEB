@@ -9,9 +9,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'IYESYS - Yapay Zeka ile Endüstriyel Güvenlik Çözümleri',
-  description: 'AI Kamera Sistemleri, UWB Teknolojisi ve IoT çözümleri ile endüstriyel güvenliği artırın. Hareketli ekipman güvenliği, düşme algılama ve akıllı yükleme rampası sistemleri.',
-  keywords: 'yapay zeka, endüstriyel güvenlik, AI kamera, hareketli ekipman güvenliği, UWB teknoloji, IoT çözümleri',
+  title: 'Yapay Zeka Destekli İSG ve Forklift Kazası Önleme Sistemleri | IYESYS',
+  description: 'IYESYS, fabrikalar ve endüstriyel sahalar için yapay zeka destekli iş güvenliği, forklift kazası önleme, yaya algılama ve İSG kamera sistemleri geliştirir.',
+  keywords: 'Yapay Zeka, İş Sağlığı ve Güvenliği, İSG, IoT İş Kazaları ve Güvenliği, İş Kazası Önleme Sistemleri, Forklift Kaza Sistemleri, Forklift Yavaşlatma Sistemleri, Forklift Kamera Sistemleri, İş Güvenliği Yapay Zeka, Fabrika İş Kazası Önleyici',
   authors: [{ name: 'IYESYS' }],
   icons: {
     icon: [
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     locale: 'tr_TR',
     url: 'https://iyesys.com',
     siteName: 'IYESYS',
-    title: 'IYESYS - Yapay Zeka ile Endüstriyel Güvenlik',
-    description: 'Endüstriyel güvenliği sağlamak için yapay zeka teknolojisi',
+    title: 'Yapay Zeka Destekli İSG ve Forklift Kazası Önleme Sistemleri | IYESYS',
+    description: 'IYESYS, fabrikalar ve endüstriyel sahalar için yapay zeka destekli iş güvenliği ve forklift kazası önleme sistemleri geliştirir.',
   }
 }
 
