@@ -671,11 +671,13 @@ function SafetyHero({ page, family }: ServiceDetailPageProps & { family: Service
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <HeroIntro page={page} family={family} />
 
-        <div className="relative pb-9">
+        <div className="relative sm:pb-12">
           <div className="overflow-hidden rounded-[1.75rem] border bg-white shadow-2xl" style={{ borderColor: theme.border, boxShadow: `0 28px 70px ${tint(theme.accentRgb, 0.18)}` }}>
             <VisualRotator visuals={heroVisuals} className={`${heroAspect} w-full`} imageClassName="h-full w-full object-cover" />
           </div>
-          <HeroStats page={page} family={family} className="absolute inset-x-4 bottom-0" />
+          <div className="relative z-10 mt-[-3rem] px-4 sm:absolute sm:inset-x-4 sm:bottom-0 sm:mt-0 sm:px-0">
+            <HeroStats page={page} family={family} />
+          </div>
         </div>
       </div>
     </section>

@@ -4,8 +4,9 @@ import Link from 'next/link'
 
 const articles = [
   {
-    title: "Endüstri 4.0'da Otonom İş Güvenliği Standartları",
-    excerpt: "Geleneksel iş güvenliği yaklaşımlarının yerini alan yapay zeka destekli otonom sistemlerin fabrikalardaki kaza oranlarına doğrudan etkisi ve verimlilik analizi.",
+    title: "Yapay Zeka Destekli İş Güvenliği (İSG) Sistemleri Nelerdir?",
+    slug: "/insights/yapay-zeka-destekli-is-guvenligi",
+    excerpt: "Klasik İSG yöntemlerinin eksiklikleri ve yapay zeka tabanlı görüntü işleme sistemlerinin fabrikalardaki kaza oranlarını nasıl düşürdüğü hakkında kapsamlı inceleme.",
     author: "IYESYS Engineering",
     authorInitials: "IE",
     date: "Mar 12",
@@ -15,8 +16,9 @@ const articles = [
     reposts: "41"
   },
   {
-    title: "Forklift ve Yaya Etkileşiminde Kör Nokta Yönetimi",
-    excerpt: "Lojistik depolarında en çok karşılaşılan forklift-yaya kazalarının temel nedenleri, kör nokta dinamikleri ve Uç Bilişim (Edge Computing) ile otonom çözüm yolları.",
+    title: "Forklift ve Yaya Çarpışma Önleyici Uyarı Sistemleri Nasıl Çalışır?",
+    slug: "/insights/forklift-yaya-uyari-sistemleri",
+    excerpt: "Depolardaki forklift kazalarının nedenleri, kör nokta problemleri ve kamera destekli AI çözümleri ile yaya tespitinin nasıl yapıldığı.",
     author: "IYESYS Ar-Ge",
     authorInitials: "AR",
     date: "Feb 28",
@@ -26,8 +28,9 @@ const articles = [
     reposts: "12"
   },
   {
-    title: "PLC Sistemlerine Görüntü İşleme Entegrasyonu",
-    excerpt: "Saha kameralarından alınan anlık verilerin milisaniyelik gecikmelerle (low-latency) PLC ve SCADA sistemlerine aktarılması ve makine durdurma protokolleri.",
+    title: "Görüntü İşleme Sistemlerinin PLC ve SCADA ile Entegrasyonu",
+    slug: "/insights/goruntu-isleme-plc-entegrasyonu",
+    excerpt: "Kameralardan alınan AI verilerinin milisaniye seviyesinde gecikmeyle (low-latency) PLC'lere nasıl aktarıldığı ve otomatik makine durdurma senaryoları.",
     author: "IYESYS Tech",
     authorInitials: "IT",
     date: "Feb 15",
@@ -37,8 +40,9 @@ const articles = [
     reposts: "8"
   },
   {
-    title: "Gıda Sektöründe Yapay Zeka ile Hijyen Denetimi",
-    excerpt: "İnsan faktörünün yetersiz kaldığı kritik hijyen alanlarında bone, maske ve eldiven denetimlerinin 7/24 otonom olarak nasıl sağlandığına dair saha raporları.",
+    title: "Gıda Üretiminde Kamera Sistemleri ile Otonom Hijyen ve Kalite Kontrolü",
+    slug: "/insights/gida-uretiminde-otonom-hijyen-denetimi",
+    excerpt: "Gıda tesislerinde bone, maske, eldiven gibi kritik hijyen kurallarının 7/24 otonom kameralarla denetlenmesi ve üretim hattındaki firelerin azaltılması.",
     author: "IYESYS Sektörel",
     authorInitials: "IS",
     date: "Jan 30",
@@ -65,7 +69,7 @@ export default function InsightsPage() {
         {/* Article Feed */}
         <div className="flex flex-col">
           {articles.map((article, index) => (
-            <Link key={index} href="#" className="py-8 border-b border-slate-100 flex gap-6 sm:gap-8 items-start group cursor-pointer">
+            <Link key={index} href={article.slug} className="py-8 border-b border-slate-100 flex gap-6 sm:gap-8 items-start group cursor-pointer">
               
               {/* Left Content */}
               <div className="flex-1 min-w-0">

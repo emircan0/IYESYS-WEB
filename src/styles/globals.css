@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* Dark mode class ile yönetiliyor */
 @variant dark (&:where(.dark, .dark *));
