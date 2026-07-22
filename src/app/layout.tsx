@@ -19,7 +19,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.iyesys.com'),
-  title: 'Yapay Zeka Destekli İSG ve Forklift Kazası Önleme Sistemleri | IYESYS',
+  title: {
+    template: '%s | IYESYS',
+    default: 'IYESYS | Endüstriyel Yapay Zeka',
+  },
   description: 'IYESYS, fabrikalar ve endüstriyel sahalar için yapay zeka destekli iş güvenliği, forklift kazası önleme, yaya algılama ve İSG kamera sistemleri geliştirir.',
   keywords: 'Yapay Zeka, İş Sağlığı ve Güvenliği, İSG, Forklift Kaza Önleme Sistemi, Forklift Güvenlik Sistemi, Forklift Yavaşlatma Sistemi, Forklift Durdurma Sistemi, Forklift Hassas Mesafe Kontrol Sistemi, Forklift Kamera Sistemi, Forklift Operatör Uyarı Sistemi, Forklift Geri Görüş Kamerası, Forklift Sesli Uyarı Sistemi, İş Kazası Önleme Sistemleri, Fabrika İş Kazası Önleyici',
   authors: [{ name: 'IYESYS' }],
@@ -40,7 +43,7 @@ export const metadata: Metadata = {
     locale: 'tr_TR',
     url: 'https://iyesys.com',
     siteName: 'IYESYS',
-    title: 'Yapay Zeka Destekli İSG ve Forklift Kazası Önleme Sistemleri | IYESYS',
+    title: 'IYESYS | Endüstriyel Yapay Zeka',
     description: 'IYESYS, fabrikalar ve endüstriyel sahalar için yapay zeka destekli iş güvenliği ve forklift kazası önleme sistemleri geliştirir.',
   }
 }

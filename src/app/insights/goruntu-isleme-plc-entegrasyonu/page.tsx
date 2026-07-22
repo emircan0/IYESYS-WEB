@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Görüntü İşleme Sistemlerinin PLC ve SCADA ile Entegrasyonu | IYESYS',
+  title: 'Görüntü İşleme Sistemlerinin PLC ile Entegrasyonu',
   description: 'Yapay zeka (Machine Vision) kameralarının endüstriyel otomasyon (PLC) sistemleriyle nasıl haberleştiğini ve düşük gecikmeli makine kontrolünü inceleyin.',
   openGraph: {
     title: 'Görüntü İşleme ve PLC Entegrasyonu: Sahada Nasıl Uygulanır?',

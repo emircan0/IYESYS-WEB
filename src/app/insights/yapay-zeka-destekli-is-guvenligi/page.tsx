@@ -3,11 +3,11 @@ import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Yapay Zeka Destekli İş Güvenliği (İSG) Sistemleri Nelerdir? | IYESYS',
-  description: 'Endüstri 4.0 çağında klasik İSG yöntemlerinin yerini alan yapay zeka ve görüntü işleme tabanlı otonom iş güvenliği sistemlerinin teknik altyapısı ve saha uygulamaları.',
+  title: 'Yapay Zeka Destekli İSG',
+  description: 'Yapay Zeka (AI) destekli İş Sağlığı ve Güvenliği (İSG) sistemlerinin endüstriyel fabrikalarda iş kazalarını nasıl önlediğini teknik detaylarıyla keşfedin.',
   openGraph: {
-    title: 'Yapay Zeka Destekli İş Güvenliği (İSG) Sistemleri Nelerdir?',
-    description: 'Yapay zeka tabanlı otonom iş güvenliği denetimlerinin üretim sahalarına ve kaza oranlarına etkileri.',
+    title: 'Yapay Zeka Destekli İSG',
+    description: 'Edge computing ve derin öğrenme ile donatılmış yeni nesil İSG sistemleri.',
   }
 }
 

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Forklift ve Yaya Çarpışma Önleyici Uyarı Sistemleri Nasıl Çalışır? | IYESYS',
+  title: 'Forklift ve Yaya Çarpışma Önleyici Sistemler',
   description: 'Lojistik depoları ve fabrikalardaki forklift kazalarını önlemek için geliştirilen yapay zeka (AI) destekli yaya uyarı ve çarpışma önleyici sistemlerin teknik analizi.',
   openGraph: {
     title: 'Forklift ve Yaya Çarpışma Önleyici Uyarı Sistemleri Nasıl Çalışır?',

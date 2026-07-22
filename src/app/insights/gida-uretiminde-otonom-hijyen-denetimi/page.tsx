@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Gıda Üretiminde Kamera Sistemleri ile Otonom Hijyen Kontrolü | IYESYS',
+  title: 'Gıda Üretiminde Otonom Hijyen Kontrolü',
   description: 'Gıda tesislerinde bone, maske, eldiven denetimlerini otonomlaştıran yapay zeka kamera sistemlerinin BRC ve IFS kalite standartlarına etkisi.',
   openGraph: {
     title: 'Gıda Üretiminde Otonom Hijyen ve Kalite Kontrolü',
