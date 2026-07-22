@@ -2,15 +2,15 @@ export default function ProductsPage() {
   const products = [
     {
       name: "Hareketli Ekipman - Yaya Güvenliği",
-      desc: "AI ve UWB tabanlı gelişmiş sistemlerimizle hareketli ekipman ve yayalar arasındaki olası çarpışmaları önleyin. Depo içi operasyonlarınızda maksimum güvenlik sağlayın."
+      desc: "Forklift kazalarını önlemek için kamera izleme, UWB hassas mesafe kontrolü, operatör uyarısı, sesli ikaz ve otomatik yavaşlatma/durdurma senaryolarını birlikte çalıştırın."
     },
     {
       name: "Bölge Yaya Güvenliği",
-      desc: "Kavşak, kör nokta ve yasaklı alan kontrollerini otomatikleştirin. Riskli bölgelerde yaya trafiğini akıllı sensörlerle yöneterek iş kazalarının önüne geçin."
+      desc: "Köşe, kavşak, kapı ve yaya geçitlerinde kamera, UWB, trafik lambası, hologram, şerit LED ve forklift yavaşlatma senaryolarıyla çarpışma riskini azaltın."
     },
     {
       name: "Yükleme Rampası Güvenliği",
-      desc: "TIR yanaşma ve rampa yükleme/boşaltma operasyonlarını güvenle yönetin. Akıllı uyarı sistemleriyle lojistik süreçlerinizde saha güvenliğini ve verimliliği artırın."
+      desc: "Yapay zeka kamerasıyla TIR arkasındaki kör noktayı izleyin; personel varsa kırmızı ışık ve yüksek sesli uyarı ile güvenli yanaşma sürecini yönetin."
     }
   ]
 

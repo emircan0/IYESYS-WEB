@@ -1,44 +1,58 @@
 @import "tailwindcss";
 
-/* 1. Tailwind v4'e "Dark modu class ile yöneteceğim" diyoruz */
+/* Dark mode class ile yönetiliyor */
 @variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-/* Bilgisayarın sistem teması koyu ise (Varsayılan) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-/* 2. BURASI EKLENDİ: Navbar'daki butonun eklediği 'dark' class'ını dinleyen kısım */
-:root.dark {
-  --background: #0a0a0a !important;
-  --foreground: #ededed !important;
-}
-
-/* Eğer kullanıcı butona basıp aydınlık modu seçerse (Sistem koyu olsa bile) */
-:root.light {
-  --background: #ffffff !important;
-  --foreground: #171717 !important;
+  --foreground: #1A1A2E;
+  --primary: #1B2B4A;
+  --accent: #E8701A;
+  --surface: #F4F6F9;
+  --border: #E2E8F0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  /* 3. Geçişin yumuşak olması için animasyon ekledik */
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+.iyesys-visual-rotator {
+  --visual-duration: calc(var(--visual-count) * 4.5s);
+}
+
+.iyesys-visual-slide {
+  opacity: 0;
+  animation: iyesysVisualFade var(--visual-duration) infinite;
+  animation-delay: calc(var(--visual-index) * 4.5s);
+}
+
+@keyframes iyesysVisualFade {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  50%,
+  95% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

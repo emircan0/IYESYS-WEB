@@ -1,203 +1,199 @@
 'use client'
 
-import { useState } from 'react'
-import { Cpu, BarChart2, Cog, X, Zap, CheckCircle } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { serviceCatalog, serviceCategoryThemes } from '@/lib/serviceCatalog'
 
-const services = [
-  {
-    title: "AI Kamera Sistemleri",
-    desc: "Yapay zekalı kameralar ile forklift kazalarını ve ihlalleri otomatik tespit edin.",
-    icon: Cpu,
-    colorClass: "text-blue-600",
-    gradient: "from-blue-500 to-cyan-500",
-    detail: "Yapay zeka kamera sistemlerimiz, fabrikanızdaki hareketli ekipmanları, yaya hareketlerini ve kör noktaları anlık izleyerek iş kazası önleme sistemleri kurar. Forklift çevresine yaklaşma uyarılarıyla tehlikeyi proaktif olarak engeller.",
-    features: [
-      "Forklift ve yaya algılama",
-      "Kör nokta uyarı sistemleri",
-      "7/24 otomatik izleme",
-      "Gerçek zamanlı hız takibi"
-    ]
-  },
-  {
-    title: "KKD Kontrolü & Veri Analizi",
-    desc: "Yapay zeka destekli donanım kontrolü ile İSG kurallarına tam uyum sağlayın.",
-    icon: BarChart2,
-    colorClass: "text-purple-600",
-    gradient: "from-purple-500 to-pink-500",
-    detail: "Yapay zeka destekli kişisel koruyucu donanım kontrolü ile baret, yelek ve güvenlik ekipmanı kullanımının takibi yapılabilir. IoT cihazlarından gelen verilerle kaza risklerini analiz edin.",
-    features: [
-      "Baret ve yelek algılama",
-      "IoT iş kazaları analizi",
-      "Kural ihlali raporlama",
-      "Gelişmiş risk gösterge paneli"
-    ]
-  },
-  {
-    title: "Forklift Hız Yavaşlatma",
-    desc: "Akıllı yavaşlatma mekanizmalarıyla tesis içi araç trafik güvenliğini artırın.",
-    icon: Cog,
-    colorClass: "text-emerald-600",
-    gradient: "from-emerald-500 to-teal-500",
-    detail: "Forklift hız yavaşlatma sistemi ve otomatik durdurucu mekanizmalarımız sayesinde, yaya ve araç çarpışmalarını sıfıra indirmeyi hedefliyoruz. Endüstriyel otomasyon ile güvenlik standartlarınızı en üst seviyeye taşıyın.",
-    features: [
-      "Otomatik hız kesme",
-      "Çarpışma önleyici sensörler",
-      "Bölgesel hız limiti belirleme",
-      "Mekanik durdurma entegrasyonu"
-    ]
+const intervalMs = 3200
+
+const getIndex = (index: number) => {
+  const total = serviceCatalog.length
+  return (index + total) % total
+}
+
+const getViewport = () => {
+  if (typeof window === 'undefined') {
+    return { compact: false, shift: 520 }
   }
-]
+
+  const width = window.innerWidth
+  return {
+    compact: width < 768,
+    shift: Math.min(620, Math.max(340, width * 0.33)),
+  }
+}
 
 export default function ServicesSection() {
-  const [selectedService, setSelectedService] = useState<number | null>(null)
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null)
+  const [active, setActive] = useState(0)
+  const [timerSeed, setTimerSeed] = useState(0)
+  const [viewport, setViewport] = useState(getViewport)
+  const autoTimerRef = useRef<number | null>(null)
+  const activeService = serviceCatalog[active]
+  const activeTheme = serviceCategoryThemes[activeService.category]
+
+  const visibleServices = useMemo(
+    () =>
+      [-2, -1, 0, 1, 2].map((offset) => {
+        const index = getIndex(active + offset)
+        return { service: serviceCatalog[index], index, offset }
+      }),
+    [active]
+  )
+
+  useEffect(() => {
+    const handleResize = () => setViewport(getViewport())
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    if (autoTimerRef.current !== null) {
+      window.clearTimeout(autoTimerRef.current)
+    }
+
+    autoTimerRef.current = window.setTimeout(() => {
+      setActive((current) => getIndex(current + 1))
+    }, intervalMs)
+
+    return () => {
+      if (autoTimerRef.current !== null) {
+        window.clearTimeout(autoTimerRef.current)
+        autoTimerRef.current = null
+      }
+    }
+  }, [active, timerSeed])
+
+  const resetAutoTimer = () => {
+    if (autoTimerRef.current !== null) {
+      window.clearTimeout(autoTimerRef.current)
+      autoTimerRef.current = null
+    }
+    setTimerSeed((seed) => seed + 1)
+  }
+
+  const selectService = (index: number) => {
+    resetAutoTimer()
+    setActive(index)
+  }
+
+  const go = (direction: -1 | 1) => {
+    resetAutoTimer()
+    setActive((current) => getIndex(current + direction))
+  }
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-br from-[#0b1324] via-[#101a2d] to-[#0b1324] relative overflow-hidden">
+    <section id="solution-flow" className="relative isolate overflow-hidden bg-slate-950 pt-32 text-white sm:pt-36">
+      {serviceCatalog.map((service, index) => (
+        <div
+          key={service.href}
+          className="absolute inset-0 -z-20 bg-cover bg-center transition-opacity duration-700"
+          style={{
+            backgroundImage: `url(${service.image})`,
+            opacity: index === active ? 1 : 0,
+          }}
+        />
+      ))}
+      <div className="absolute inset-0 -z-10 bg-slate-950/78" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-48 bg-gradient-to-t from-slate-950 to-transparent" />
 
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-        {/* Header */}
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
-            Hizmetlerimiz
-          </h2>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Sahanıza ve risklerinize uygun güvenlik çözümleri sunuyoruz.
+      <div className="mx-auto w-full px-4 pb-16 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-8 max-w-4xl text-center">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-white backdrop-blur">
+            <Sparkles className="h-4 w-4" style={{ color: activeService.accent }} />
+            Çözümlerimiz
+          </div>
+          <h1 className="text-3xl font-black leading-[1.14] tracking-tight sm:text-5xl">
+            Sahanız için doğru çözümü buradan seçin
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-sm font-medium leading-7 text-slate-300 sm:text-base">
+            İş güvenliği, üretim verimliliği, otomasyon, özel yazılım, Ar-Ge ve saha operasyonları için geliştirdiğimiz çözümleri tek portföyde inceleyin.
           </p>
         </div>
 
-        {/* Service Cards */}
-        {/* Özellik Kartları (2 Kolonlu Yapı) */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto w-full">
+        <div className="relative mx-auto h-[360px] w-full max-w-[1780px] overflow-hidden py-8 md:h-[370px]">
+          {visibleServices.map(({ service, index, offset }) => {
+            const isCenter = offset === 0
+            const sideVisible = !viewport.compact && Math.abs(offset) === 1
+            const theme = serviceCategoryThemes[service.category]
+            const opacity = isCenter ? 1 : sideVisible ? 0.42 : 0
+            const scale = isCenter ? 1 : sideVisible ? 0.9 : 0.78
+            const blur = isCenter ? 0 : sideVisible ? 1.1 : 2.4
 
-          {/* Kart 1: AI Sistem */}
-          <div className="group relative p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 overflow-hidden text-left hover:-translate-y-1">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            return (
+              <button
+                key={service.href}
+                type="button"
+                onClick={() => selectService(index)}
+                className={`group absolute left-1/2 top-1/2 min-w-0 rounded-2xl px-4 py-8 text-center transition-[transform,opacity,filter] duration-[1150ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  isCenter ? 'w-[88vw] max-w-[700px] md:w-[42vw]' : 'w-[70vw] max-w-[500px] md:w-[27vw]'
+                }`}
+                style={{
+                  transform: `translate3d(calc(-50% + ${offset * viewport.shift}px), -50%, 0) scale(${scale})`,
+                  opacity,
+                  filter: `blur(${blur}px)`,
+                  zIndex: 10 - Math.abs(offset),
+                  pointerEvents: Math.abs(offset) <= 1 ? 'auto' : 'none',
+                }}
+              >
+                <span
+                  className="mx-auto inline-flex max-w-full items-center rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] sm:text-[11px]"
+                  style={{ borderColor: theme.border, backgroundColor: `${service.accent}24`, color: service.accent }}
+                >
+                  {theme.shortLabel}
+                </span>
+                <span
+                  className={`mx-auto mt-4 block text-balance font-black tracking-tight text-white ${
+                    isCenter
+                      ? 'max-w-[680px] text-3xl leading-[1.18] sm:text-4xl xl:text-5xl'
+                      : 'max-w-[500px] text-xl leading-[1.2] lg:text-2xl 2xl:text-3xl'
+                  }`}
+                >
+                  {service.title}
+                </span>
+                <span
+                  className={`mx-auto mt-5 block max-w-xl text-sm font-medium leading-7 text-slate-300 transition ${
+                    isCenter ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  {service.desc}
+                </span>
+              </button>
+            )
+          })}
+        </div>
 
-            <div className="relative z-10 flex items-start gap-5">
-              <div className="p-4 rounded-2xl bg-blue-500/20 text-blue-400 group-hover:scale-110 transition-transform duration-300">
-                <Cpu className="w-8 h-8" />
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
-                  İş Güvenliğinde Yapay Zeka Uygulamaları
-                </h3>
-                <p className="text-gray-400 leading-relaxed text-sm">
-                  Görüntü işleme teknolojisi ile fabrika içi yaya ve araç hareketlerini anlık analiz eder. Forklift kazalarını ve riskli durumları insan gözünden daha hızlı tespit eden kaza önleyici sistem sunar.
-                </p>
-              </div>
-            </div>
+        <div className="mx-auto mt-2 flex max-w-4xl flex-col items-center justify-center gap-4 sm:flex-row sm:justify-between">
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur transition hover:bg-white/20"
+              aria-label="Önceki çözüm"
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur transition hover:bg-white/20"
+              aria-label="Sonraki çözüm"
+            >
+              <ArrowRight className="h-5 w-5" />
+            </button>
           </div>
 
-          {/* Kart 2: Uyarı Sistemleri */}
-          <div className="group relative p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-500 overflow-hidden text-left hover:-translate-y-1">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-
-            <div className="relative z-10 flex items-start gap-5">
-              <div className="p-4 rounded-2xl bg-purple-500/20 text-purple-400 group-hover:scale-110 transition-transform duration-300">
-                <Zap className="w-8 h-8" />
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
-                  Aktif Çarpışma ve Uyarı Sistemleri
-                </h3>
-                <p className="text-gray-400 leading-relaxed text-sm">
-                  Tehlike anında sesli ve görsel alarmları otomatik tetikler. Forklift operatörü ve yayaları milisaniyeler içinde uyararak, fabrika iş kazası oranlarını sıfıra indirmeyi hedefler.
-                </p>
-              </div>
-            </div>
-          </div>
-
+          <Link
+            href={activeService.href}
+            className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-black text-slate-950 transition hover:-translate-y-0.5 hover:bg-slate-200"
+            style={{ boxShadow: `0 18px 44px rgba(${activeTheme.accentRgb}, 0.2)` }}
+          >
+            {activeService.title} sayfasına git
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
-
-      {/* Enhanced Modal */}
-      {selectedService !== null && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
-          {/* Backdrop */}
-          <div
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-            onClick={() => setSelectedService(null)}
-          ></div>
-
-          {/* Modal Content */}
-          <div className="relative bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-10 max-w-2xl w-full shadow-2xl animate-scale-in overflow-hidden">
-
-            {/* Gradient Header Background */}
-            <div className={`absolute top-0 left-0 right-0 h-32 bg-gradient-to-br ${services[selectedService].gradient} opacity-10`}></div>
-
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedService(null)}
-              className="absolute top-6 right-6 p-2 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors z-10"
-            >
-              <X className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-            </button>
-
-            {/* Icon */}
-            <div className="relative z-10 mb-6">
-              <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${services[selectedService].gradient}`}>
-                {(() => {
-                  const Icon = services[selectedService].icon
-                  return <Icon className="w-12 h-12 text-white" />
-                })()}
-              </div>
-            </div>
-
-            {/* Title */}
-            <h3 className="relative z-10 text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              {services[selectedService].title}
-            </h3>
-
-            {/* Description */}
-            <p className="relative z-10 text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
-              {services[selectedService].detail}
-            </p>
-
-            {/* Features List */}
-            <div className="relative z-10 space-y-3">
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                Özellikler:
-              </h4>
-              {services[selectedService].features.map((feature, idx) => (
-                <div key={idx} className="flex items-start gap-3">
-                  <CheckCircle className={`w-6 h-6 ${services[selectedService].colorClass} flex-shrink-0 mt-0.5`} />
-                  <span className="text-gray-700 dark:text-gray-300">{feature}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA Button */}
-            <button
-              className={`relative z-10 mt-8 w-full py-4 rounded-xl bg-gradient-to-r ${services[selectedService].gradient} text-white font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300`}
-            >
-              Teklif Al
-            </button>
-          </div>
-        </div>
-      )}
-
-      <style jsx>{`
-        @keyframes scale-in {
-          from {
-            opacity: 0;
-            transform: scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-        
-        .animate-scale-in {
-          animation: scale-in 0.3s ease-out;
-        }
-      `}</style>
     </section>
   )
 }

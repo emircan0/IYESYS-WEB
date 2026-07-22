@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { serviceCatalog } from '@/lib/serviceCatalog'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.iyesys.com'
@@ -14,9 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/services',
     '/sunum',
     '/terms',
+    ...serviceCatalog.map((service) => service.href),
   ]
 
-  return routes.map((route) => ({
+  return [...new Set(routes)].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: route === '' ? 'daily' : 'weekly',

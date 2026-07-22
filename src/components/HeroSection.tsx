@@ -1,78 +1,49 @@
 'use client'
 
 import Link from 'next/link'
-import { ShieldAlert, Zap, Cpu, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-gray-900">
-
-      {/* Video Arka Plan */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-30" // Opaklık biraz kısıldı, yazı okunurluğu arttı
-      >
-        <source src="/iyesys/video.mp4" type="video/mp4" />
-        Tarayıcınız video etiketini desteklemiyor.
+    <section className="relative flex min-h-[760px] w-full flex-col justify-center overflow-hidden bg-slate-950 pt-24 lg:min-h-[820px]">
+      <video autoPlay loop muted playsInline className="absolute inset-0 h-full w-full object-cover">
+        <source src="/iyesys/anasayfa.mp4" type="video/mp4" />
       </video>
 
-      {/* Gradient Overlay - Daha sinematik bir geçiş */}
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-blue-900/40"></div>
+      <div className="absolute inset-0 bg-black/48" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_48%,rgba(0,0,0,0.08),transparent_36%),linear-gradient(180deg,rgba(0,0,0,0.16)_0%,rgba(0,0,0,0.26)_56%,rgba(0,0,0,0.58)_100%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/58 to-transparent" />
 
-      {/* İçerik */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center pt-20">
+      <div className="relative z-10 w-full">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl text-center">
+            <h1 className="text-4xl font-black leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-[64px]">
+              <span className="block">İş Güvenliği ve Verimliliği İçin</span>
+              <span className="block">Akıllı Endüstriyel Çözümler</span>
+            </h1>
 
-        {/* Ana İçerik Bloğu */}
-        <div className="text-center text-white space-y-8 max-w-5xl mx-auto">
+            <p className="mx-auto mt-7 max-w-4xl text-base font-semibold leading-8 text-slate-100 sm:text-lg">
+              IYESYS; yapay zeka destekli kamera sistemleri, otomasyon altyapıları, özel yazılım, IoT ve saha mühendisliğini bir araya getirir. Tamamen yerli mühendislik yaklaşımıyla işletmenizin risklerini görünür kılar, iş kazası önleme süreçlerini güçlendirir ve üretimden filoya kadar verimliliği ölçülebilir hale getirir.
+            </p>
 
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 backdrop-blur-md animate-fade-in-up">
-            <ShieldAlert className="w-4 h-4 text-blue-400" />
-            <span className="text-sm font-semibold text-blue-200 tracking-wide uppercase">Sıfır Kaza Vizyonu</span>
-          </div>
-
-          {/* Ana Başlık */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight">
-            Yapay Zeka Destekli <br />
-            <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
-              İş Kazası Önleme Sistemleri
-            </span>
-          </h1>
-
-          {/* Alt Başlık */}
-          <p className="mt-6 text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
-            AI destekli endüstriyel güvenlik teknolojilerimizle fabrikanızı koruma altına alın.
-            Forklift kazaları, yaya ihlalleri ve gerçek zamanlı risk analizi ile
-            <span className="text-white font-medium"> İş Sağlığı ve Güvenliği (İSG) standartlarınızı yükseltin.</span>
-          </p>
-
-          {/* CTA Butonları */}
-          <div className="mt-10 flex flex-col sm:flex-row gap-5 justify-center items-center">
-            <Link
-              href="/services"
-              className="group min-w-[200px] px-8 py-4 rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-900/20 hover:scale-105 flex items-center justify-center gap-2"
-            >
-              Sistemleri İncele
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="/contact"
-              className="min-w-[200px] px-8 py-4 rounded-xl border border-white/20 text-white font-semibold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm hover:scale-105"
-            >
-              Demo Talep Et
-            </Link>
+            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center gap-2 rounded-sm bg-white px-7 py-3.5 text-sm font-black text-black transition duration-200 hover:-translate-y-0.5 hover:bg-slate-200"
+              >
+                Çözümleri İncele
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-sm border border-white/70 bg-black/10 px-7 py-3.5 text-sm font-black text-white backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:bg-white/12"
+              >
+                Keşif Görüşmesi Planla
+              </Link>
+            </div>
           </div>
         </div>
-
-
-
       </div>
-
-      {/* Alt Gradient Geçişi (Yumuşak bitiş) */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent pointer-events-none"></div>
     </section>
   )
 }

@@ -12,8 +12,8 @@ export const translations = {
       contact: "İletişim"
     },
     hero: {
-      title: "Yapay Zeka ile Endüstriyel Güvenliğin Geleceği",
-      subtitle: "AI Kamera Sistemleri, UWB Teknolojisi ve IoT Çözümleri ile İşyerinizi Güvenli Hale Getirin",
+      title: "İş Güvenliği ve Verimlilik İçin Akıllı Endüstriyel Çözümler",
+      subtitle: "AI kamera sistemleri, aktif uyarı donanımları, otomasyon ve özel yazılım çözümleriyle sahadaki riski görünür, yönetilebilir ve ölçülebilir hale getirin.",
       cta1: "Çözümlerimizi Keşfedin",
       cta2: "Demo Talep Edin",
       stats: {
@@ -30,7 +30,7 @@ export const translations = {
       subtitle: "Yapay zeka ve IoT teknolojileriyle desteklenen endüstriyel güvenlik çözümlerimiz",
       forklift: {
         title: "Hareketli Ekipman Güvenliği",
-        desc: "AI kameralar ile kör nokta ve kavşaklarda araç ve insan hareketlerini algılayın"
+        desc: "Forklift kazalarını önlemek için kamera izleme, operatör uyarısı ve otomatik yavaşlatma/durdurma senaryolarını birlikte çalıştırın"
       },
       fall: {
         title: "Düşme / Bayılma Algılama",
@@ -38,11 +38,11 @@ export const translations = {
       },
       loading: {
         title: "Akıllı Güvenli Yükleme Rampası",
-        desc: "TIR algılama ve plaka okuma ile yanaşma süreçlerini kaydedin"
+        desc: "Yapay zeka kamerasıyla TIR arkasındaki kör noktayı izleyin, risk varsa sürücüyü ve yayayı uyarın"
       },
       uwb: {
-        title: "Ekipmanlar Arası Haberleşme",
-        desc: "UWB tag'ler ile hareketli ekipmanlar arası mesafeyi hassas biçimde ölçün"
+        title: "Bölgesel Yaklaşım Algısı",
+        desc: "UWB cihazlarıyla riskli bölge, ekipman ve yaklaşma senaryolarını aktif uyarıya bağlayın"
       }
     },
     about: {
@@ -85,8 +85,8 @@ export const translations = {
       contact: "Contact"
     },
     hero: {
-      title: "The Future of Industrial Safety with AI",
-      subtitle: "Secure Your Workplace with AI Camera Systems, UWB Technology, and IoT Solutions",
+      title: "Smart Industrial Solutions for Safety and Efficiency",
+      subtitle: "Make field risks visible, manageable, and measurable with AI camera systems, active warning hardware, automation, and custom software.",
       cta1: "Explore Solutions",
       cta2: "Request Demo",
       stats: {
@@ -103,7 +103,7 @@ export const translations = {
       subtitle: "Industrial safety solutions powered by artificial intelligence and IoT technologies",
       forklift: {
         title: "Mobile Equipment Safety",
-        desc: "Detect vehicle/human movements in blind spots and intersections with AI cameras"
+        desc: "Prevent forklift accidents with camera monitoring, operator alerts, and automatic speed reduction/stop scenarios"
       },
       fall: {
         title: "Fall / Fainting Detection",
@@ -111,11 +111,11 @@ export const translations = {
       },
       loading: {
         title: "Smart Safe Loading Dock",
-        desc: "Record docking processes with truck detection and license plate recognition"
+        desc: "Monitor the blind spot behind reversing trucks with AI cameras and warn both driver and pedestrian when risk appears"
       },
       uwb: {
-        title: "Equipment-to-Equipment Communication",
-        desc: "Precisely measure distance between mobile equipment with UWB tags"
+        title: "Regional Proximity Detection",
+        desc: "Connect UWB-based proximity scenarios to active warnings for risk zones, people, and mobile equipment"
       }
     },
     about: {

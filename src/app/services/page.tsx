@@ -1,178 +1,207 @@
 'use client'
 
-import { Shield, AlertTriangle, Truck, CheckCircle, Zap, Eye, Radio, Activity, Settings } from 'lucide-react'
+import type { CSSProperties } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
+import {
+  ArrowRight,
+  BellRing,
+  Boxes,
+  BrainCircuit,
+  Camera,
+  ChartNoAxesCombined,
+  ClipboardCheck,
+  Code2,
+  Cpu,
+  Factory,
+  Gauge,
+  HardHat,
+  Layers3,
+  MapPinned,
+  PackageCheck,
+  Radar,
+  Route,
+  ScanLine,
+  Settings2,
+  ShieldCheck,
+  Sparkles,
+  Truck,
+  Wrench,
+} from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+import ServicesSection from '@/components/ServicesSection'
+import {
+  serviceCatalog,
+  serviceCategoryOrder,
+  serviceCategoryThemes,
+  type ServiceCatalogItem,
+  type ServiceCategory,
+} from '@/lib/serviceCatalog'
 
-export default function ServicesPage() {
-  const services = [
-    {
-      title: "Hareketli Ekipman - Yaya Güvenliği",
-      desc: "AI tabanlı görüntü işleme teknolojisi ile kör noktaları ve yaya hareketlerini anlık analiz eden aktif koruma sistemi. Riskli durumlarda otonom yavaşlatma ve operatör uyarı protokollerini devreye sokar.",
-      icon: <Shield className="w-8 h-8" />,
-      color: "from-blue-600 to-cyan-500",
-      checkColor: "text-blue-500",
-      features: ["Otonom Hız Kontrolü", "AI Nesne Tanıma", "Aktif Operatör Arayüzü"],
-      href: "/services/forklift-safety"
-    },
-    {
-      title: "Alan Güvenliği",
-      desc: "Tesis içerisindeki kritik bölgeleri kesintisiz izleyen ve izinsiz girişleri milisaniyeler içinde raporlayan güvenlik ağı. Entegre ikaz birimleri ile sahadaki durumsal farkındalığı maksimize eder.",
-      icon: <AlertTriangle className="w-8 h-8" />,
-      color: "from-emerald-500 to-teal-500",
-      checkColor: "text-emerald-500",
-      features: ["Sürekli Alan Analizi", "Otonom İkaz Yönetimi", "Erişim Kontrol Protokolleri"],
-      href: "/services/area-safety"
-    },
-    {
-      title: "Rampa Güvenliği",
-      desc: "Lojistik operasyonlarında tır yanaşma ve yükleme süreçlerini denetleyen akıllı kontrol sistemi. Personel güvenliğini önceliklendirerek rampa kapılarını ve uyarı sistemlerini otonom olarak yönetir.",
-      icon: <Truck className="w-8 h-8" />,
-      color: "from-blue-600 to-slate-500",
-      checkColor: "text-blue-500",
-      features: ["AI Arka Bölge Tespiti", "Akıllı Kapı Kilit Entegrasyonu", "Sürücü Rehberlik Sistemleri"],
-      href: "/services/dock-safety"
-    },
-    {
-      title: "İşletmeye Özel Çözümler",
-      desc: "İşletmenizin operasyonel verimliliğini artıran özel yazılım ve IoT altyapıları. Mevcut ERP/MES sistemlerinizle tam entegre, ölçeklenebilir ve yüksek güvenlikli teknoloji çözümleri.",
-      icon: <Settings className="w-8 h-8" />,
-      color: "from-blue-600 to-indigo-600",
-      checkColor: "text-indigo-500",
-      features: ["Özel Yazılım & Dashboard", "Endüstriyel IoT Sensör Ağları", "Sistem Entegrasyonları"],
-      href: "/services/custom-solutions"
-    },
-    {
-      title: "Aktif Uyarı Sistemleri",
-      desc: "İşletmenizin özel senaryolarına göre tetiklenebilen, PLC ve otomasyon sistemleri ile tam uyumlu modüler uyarı donanımları. Görsel ve işitsel ikaz birimlerini ihtiyacınıza göre yapılandırın.",
-      icon: <Zap className="w-8 h-8" />,
-      color: "from-amber-500 to-orange-600",
-      checkColor: "text-amber-500",
-      features: ["Modüler Uyarı Birimleri", "PLC & Buton Entegrasyonu", "Özel Senaryo Desteği"],
-      href: "/services/warning-systems"
-    }
-  ]
+const categoryIcons: Record<ServiceCategory, LucideIcon> = {
+  safety: ShieldCheck,
+  efficiency: Gauge,
+  automation: Cpu,
+  software: Code2,
+  engineering: Wrench,
+  operations: Truck,
+}
 
-  const benefits = [
-    {
-      icon: <Zap className="w-5 h-5" />,
-      title: "Hızlı Kurulum",
-      desc: "Minimum kesinti ile devreye alma"
-    },
-    {
-      icon: <Eye className="w-5 h-5" />,
-      title: "7/24 İzleme",
-      desc: "Kesintisiz güvenlik takibi"
-    },
-    {
-      icon: <Radio className="w-5 h-5" />,
-      title: "Anlık Uyarı",
-      desc: "Gerçek zamanlı tehlike bildirimi"
-    },
-    {
-      icon: <CheckCircle className="w-5 h-5" />,
-      title: "Kanıtlanmış Teknoloji",
-      desc: "Endüstride test edilmiş çözümler"
-    }
-  ]
+const serviceIcons: Record<string, LucideIcon> = {
+  '/services/forklift-safety': Radar,
+  '/services/area-safety': ShieldCheck,
+  '/services/dock-safety': Truck,
+  '/services/tehlikeli-alan': HardHat,
+  '/services/kamera-sistemi-isg-entegrasyonu': Camera,
+  '/services/gida-firmalari-kamera-hijyen': ClipboardCheck,
+  '/services/kalite-kontrol': ScanLine,
+  '/services/uretim-verimlilik': Gauge,
+  '/services/magaza-isletme-verimlilik': ChartNoAxesCombined,
+  '/services/warning-systems': BellRing,
+  '/services/plc-scada-io-sistemler': Cpu,
+  '/services/pnomatik-hidrolik-sistemler': Settings2,
+  '/services/mobil-web-uygulamalari': Code2,
+  '/services/custom-solutions': Layers3,
+  '/services/mekanik-tasarim-cizim': Wrench,
+  '/services/arge-danismanlik': BrainCircuit,
+  '/services/urun-gelistirme': PackageCheck,
+  '/services/arac-takip': Route,
+  '/services/hakedis': MapPinned,
+}
+
+function SolutionCard({ service }: { service: ServiceCatalogItem }) {
+  const Icon = serviceIcons[service.href] || Boxes
+  const theme = serviceCategoryThemes[service.category]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-300 via-blue-200 to-slate-300">
-      <section className="max-w-7xl mx-auto px-4 py-12 sm:py-20">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Çözümlerimiz
-          </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
-          <p className="text-gray-700 text-lg max-w-3xl mx-auto leading-relaxed">
-            Endüstriyel güvenlik ve akıllı otomasyon çözümlerimiz, sahanızdaki riskleri yönetmenizi ve operasyonel verimliliği artırmanızı sağlar.
+    <Link
+      href={service.href}
+      className="group relative overflow-hidden rounded-lg border bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
+      style={{ borderColor: `${service.accent}30`, '--accent': service.accent } as CSSProperties}
+    >
+      <div className="relative overflow-hidden bg-slate-100">
+        <Image
+          src={service.image}
+          alt={service.title}
+          width={760}
+          height={480}
+          sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
+          className="aspect-[16/10] w-full object-cover transition duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/72 via-slate-950/10 to-transparent" />
+        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-slate-950">
+            <Icon className="h-3.5 w-3.5" style={{ color: service.accent }} />
+            {theme.shortLabel}
+          </div>
+          <ArrowRight className="h-5 w-5 text-white transition group-hover:translate-x-1" />
+        </div>
+      </div>
+
+      <div className="p-5">
+        <div className="mb-4 h-1 w-10 rounded-full transition duration-300 group-hover:w-20" style={{ backgroundColor: service.accent }} />
+        <h3 className="text-xl font-black leading-tight text-slate-950 transition group-hover:text-[var(--accent)]">
+          {service.title}
+        </h3>
+        <p className="mt-3 text-sm leading-7 text-slate-600">{service.desc}</p>
+
+        <div className="mt-5">
+          <div className="mb-2 text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Odak alanları</div>
+          <div className="flex flex-wrap gap-2">
+            {service.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border px-2.5 py-1 text-[11px] font-bold"
+                style={{ borderColor: theme.border, backgroundColor: theme.soft, color: theme.text }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
+export default function ServicesPage() {
+  return (
+    <div className="min-h-screen bg-white text-slate-950">
+      <ServicesSection />
+
+      <section className="border-b border-slate-200 bg-white py-18 sm:py-20">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:px-8">
+          <div>
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-slate-700">
+              <Sparkles className="h-4 w-4 text-slate-950" />
+              Çözüm Portföyü
+            </div>
+            <h2 className="max-w-3xl text-3xl font-black leading-[1.08] tracking-tight text-slate-950 sm:text-5xl">
+              Sahada ölçülebilir sonuç üreten çözüm portföyü
+            </h2>
+          </div>
+          <p className="max-w-3xl text-base font-medium leading-8 text-slate-600">
+            İşletmenizdeki riskleri, verimlilik kayıplarını, otomasyon eksiklerini ve dijital takip ihtiyacını doğru başlık altında değerlendirin. Her çözüm sayfası; ne işe yaradığını, hangi sahalarda kullanıldığını ve nasıl devreye alınabileceğini anlaşılır bir dille açıklar.
           </p>
         </div>
+      </section>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, idx) => (
-            <Link
-              key={idx}
-              href={service.href}
-              className="group relative bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 hover:border-slate-300 hover:-translate-y-2 overflow-hidden block"
-            >
-              {/* Gradient Background on Hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity`}></div>
+      <section className="bg-slate-50 py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl space-y-14 px-4 sm:px-6 lg:px-8">
+          {serviceCategoryOrder.map((category) => {
+            const theme = serviceCategoryThemes[category]
+            const Icon = categoryIcons[category]
+            const services = serviceCatalog.filter((service) => service.category === category)
 
-              <div className="relative z-10">
-                {/* Icon */}
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} text-white mb-6 group-hover:scale-110 transition-transform shadow-lg`}>
-                  {service.icon}
+            return (
+              <div key={category} className="grid gap-6 lg:grid-cols-[360px_1fr]">
+                <div className="lg:sticky lg:top-28 lg:self-start">
+                  <div className="rounded-lg border bg-white p-6 shadow-sm" style={{ borderColor: theme.border }}>
+                    <div
+                      className="mb-5 flex h-14 w-14 items-center justify-center rounded-lg text-white shadow-lg"
+                      style={{ background: theme.gradient, boxShadow: `0 18px 42px rgba(${theme.accentRgb}, 0.22)` }}
+                    >
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <div className="text-xs font-black uppercase tracking-[0.18em]" style={{ color: theme.text }}>
+                      {services.length} çözüm
+                    </div>
+                    <h2 className="mt-3 text-2xl font-black leading-tight text-slate-950">{theme.label}</h2>
+                    <p className="mt-3 text-sm leading-7 text-slate-600">{theme.desc}</p>
+                  </div>
                 </div>
 
-                {/* Title */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  {service.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  {service.desc}
-                </p>
-
-                {/* Features */}
-                <div className="space-y-2">
-                  {service.features.map((feature, fIdx) => (
-                    <div key={fIdx} className="flex items-center gap-2 text-sm text-gray-600">
-                      <CheckCircle className={`w-4 h-4 ${service.checkColor} flex-shrink-0`} />
-                      <span>{feature}</span>
-                    </div>
+                <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                  {services.map((service) => (
+                    <SolutionCard key={service.href} service={service} />
                   ))}
                 </div>
               </div>
-
-              {/* Corner Accent */}
-              <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-20 rounded-bl-full transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform`}></div>
-            </Link>
-          ))}
+            )
+          })}
         </div>
+      </section>
 
-        {/* Benefits Section 
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-10 shadow-xl border border-gray-100 relative z-10">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Neden IYESYS Çözümleri?
-          </h2>
-
-          <div className="grid md:grid-cols-4 gap-6">
-            {benefits.map((benefit, idx) => (
-              <div key={idx} className="text-center group">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 text-white mb-4 group-hover:scale-110 transition-transform shadow-lg">
-                  {benefit.icon}
-                </div>
-                <h4 className="font-bold text-gray-900 mb-2">
-                  {benefit.title}
-                </h4>
-                <p className="text-sm text-gray-600">
-                  {benefit.desc}
-                </p>
-              </div>
-            ))}
+      <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-8 rounded-lg border border-slate-200 bg-slate-950 p-8 text-white shadow-2xl sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:p-12">
+          <div className="flex items-start gap-5">
+            <div className="hidden h-12 w-12 items-center justify-center rounded-lg bg-white/10 text-white sm:flex">
+              <Factory className="h-6 w-6" />
+            </div>
+            <div>
+              <span className="text-xs font-black uppercase tracking-[0.18em] text-slate-300">Sahaya özel kurgu</span>
+              <h2 className="mt-3 text-3xl font-black tracking-tight text-white sm:text-4xl">
+                Hangi çözümden başlayacağınızı birlikte netleştirelim.
+              </h2>
+              <p className="mt-4 max-w-3xl text-base leading-8 text-slate-300">
+                Kamera altyapınız, otomasyon seviyeniz, üretim akışınız ve öncelikli riskleriniz üzerinden en doğru ilk adımı çıkaralım.
+              </p>
+            </div>
           </div>
-        </div>  
-        */}
-
-        {/* CTA Section */}
-        <div className="mt-16 text-center relative z-10">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 sm:p-12 text-white shadow-2xl">
-            <h3 className="text-3xl font-bold mb-4">
-              İşyerinizin Güvenliğini Artırın
-            </h3>
-            <p className="text-blue-100 text-lg max-w-2xl mx-auto mb-8">
-              İhtiyaçlarınıza özel çözümler geliştirmek için sizinle çalışmaya hazırız
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition-all hover:scale-105 shadow-xl"
-            >
-              Demo Talep Edin
-            </Link>
-          </div>
+          <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-6 py-4 text-sm font-black text-slate-950 transition hover:-translate-y-0.5 hover:bg-slate-200">
+            Demo Talep Et
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
     </div>

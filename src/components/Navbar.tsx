@@ -1,193 +1,259 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, ChevronDown, Car, ShieldCheck, Warehouse, ArrowRight, Zap, Settings } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { ArrowRight, ChevronDown, Code2, Cpu, Menu, ShieldCheck, Truck, Wrench, X, Zap } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+import { useEffect, useMemo, useState } from 'react'
 import clsx from 'clsx'
+import {
+  serviceCatalog,
+  serviceCategoryOrder,
+  serviceCategoryThemes,
+  type ServiceCategory,
+} from '@/lib/serviceCatalog'
+
+const categoryIcons: Record<ServiceCategory, LucideIcon> = {
+  safety: ShieldCheck,
+  efficiency: Zap,
+  automation: Cpu,
+  software: Code2,
+  engineering: Wrench,
+  operations: Truck,
+}
+
+const darkHeroRoutes = new Set(['/', '/services', '/about'])
 
 export default function Navbar() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeCategory, setActiveCategory] = useState<ServiceCategory>('safety')
+  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false)
+  const headerOnDarkHero = !scrolled && darkHeroRoutes.has(pathname)
+  const servicesActive = pathname === '/services' || pathname.startsWith('/services/')
+
+  const menuData = useMemo(
+    () =>
+      serviceCategoryOrder.map((category) => {
+        const theme = serviceCategoryThemes[category]
+        return {
+          id: category,
+          icon: categoryIcons[category],
+          category: theme.label,
+          desc: theme.desc,
+          accent: theme.accent,
+          soft: theme.soft,
+          text: theme.text,
+          items: serviceCatalog
+            .filter((service) => service.category === category)
+            .map((service) => ({ href: service.href, label: service.title })),
+        }
+      }),
+    []
+  )
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10)
     }
     window.addEventListener('scroll', handleScroll)
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Alt menü verileri
-  const solutions = [
-    {
-      category: 'Güvenlik Çözümleri',
-      items: [
-        {
-          href: '/services/forklift-safety',
-          label: 'Hareketli Ekipman - Yaya Güvenliği',
-          desc: 'Hareketli ekipman ve yaya çarpışma önleme',
-          icon: <Car className="w-5 h-5" />
-        },
-        {
-          href: '/services/area-safety',
-          label: 'Bölge Yaya Güvenliği',
-          desc: 'Kavşak ve yasaklı alan kontrolü',
-          icon: <ShieldCheck className="w-5 h-5" />
-        },
-        {
-          href: '/services/dock-safety',
-          label: 'Yükleme Rampası Güvenliği',
-          desc: 'TIR ve rampa operasyon yönetimi',
-          icon: <Warehouse className="w-5 h-5" />
-        },
-      ]
-    },
-    {
-      category: 'Diğer Çözümler',
-      items: [
-        {
-          href: '/services/custom-solutions',
-          label: 'İşletmelere Özel Çözümler',
-          desc: 'IoT ve AI destekli saha yönetimi',
-          icon: <Settings className="w-5 h-5" />
-        },
-        {
-          href: '/services/warning-systems',
-          label: 'Aktif Uyarı Sistemleri',
-          desc: 'Sesli ve görsel aktif ikazlar',
-          icon: <Zap className="w-5 h-5" />
-        },
-      ]
-    }
-  ]
-
   const navLinkClass = (active: boolean) =>
     clsx(
-      'px-4 py-2 rounded-lg font-medium transition-all hover:text-blue-300',
-      active ? 'text-blue-300' : 'text-slate-200'
+      'px-3 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap',
+      active ? 'text-black' : 'text-slate-600 hover:text-black'
     )
 
-  return (
-    <nav className={clsx(
-      "bg-[#0b1324]/95 text-white backdrop-blur-xl fixed top-0 left-0 w-full z-50 border-b border-white/10 transition-all duration-300",
-      scrolled ? "shadow-lg shadow-black/25" : "shadow-md shadow-black/10"
-    )}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+  const activeCategoryData = menuData.find((m) => m.id === activeCategory) || menuData[0]
 
-          {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <div className="relative">
-              <div className="absolute inset-0 bg-blue-400/10 rounded-full blur-xl opacity-80 group-hover:opacity-100 transition-opacity"></div>
-              <div className="relative p-1 overflow-hidden flex items-center">
-                <img
-                  src="/img/11.png"
-                  alt="IYESYS Logo"
-                  className="h-26 w-auto object-contain relative z-10"
-                />
-              </div>
-            </div>
+  return (
+    <nav
+      className={clsx(
+        'fixed left-0 top-0 z-50 w-full transition-all duration-300',
+        scrolled ? 'border-b border-slate-200 bg-white shadow-sm' : 'bg-transparent'
+      )}
+    >
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+        <div className="flex h-24 items-center justify-between">
+          <Link href="/" className="mr-8 flex shrink-0 items-center gap-3">
+            <Image
+              src="/icon.png"
+              alt="IYESYS Logo"
+              width={48}
+              height={48}
+              priority
+              className={clsx(
+                'h-11 w-11 object-contain transition-all duration-300',
+                headerOnDarkHero ? 'brightness-0 invert' : 'brightness-0'
+              )}
+            />
+            <span className={clsx('text-2xl font-bold tracking-widest', headerOnDarkHero ? 'text-white' : 'text-black')}>IYESYS</span>
           </Link>
 
-          {/* Masaüstü Menü */}
-          <div className="hidden lg:flex items-center gap-1">
-            <Link href="/" className={navLinkClass(pathname === '/')}>Ana Sayfa</Link>
-            <Link href="/about" className={navLinkClass(pathname === '/about')}>Hakkımızda</Link>
+          <div className="hidden flex-1 items-center justify-center gap-6 lg:flex">
+            <Link
+              href="/"
+                className={clsx(
+                  'px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap',
+                  headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/')
+                )}
+              >
+              Ana Sayfa
+            </Link>
 
-            {/* Çözümlerimiz Dropdown */}
-            <div className="relative group px-4 py-2 cursor-pointer">
-              <Link href="/services" className={clsx(
-                "flex items-center gap-1 font-medium transition-all group-hover:text-blue-300",
-                pathname.startsWith('/services') ? "text-blue-300" : "text-slate-200"
-              )}>
-                Çözümlerimiz <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
+            <div
+              className="relative px-2 py-4"
+              onMouseEnter={() => setIsMegaMenuOpen(true)}
+              onMouseLeave={() => setIsMegaMenuOpen(false)}
+            >
+              <Link
+                href="/services"
+                className={clsx(
+                  'flex items-center gap-1.5 text-[15px] font-bold transition-colors duration-200 whitespace-nowrap',
+                  headerOnDarkHero
+                    ? servicesActive
+                      ? 'text-white'
+                      : 'text-slate-300 hover:text-white'
+                    : servicesActive
+                      ? 'text-black'
+                      : 'text-slate-600 hover:text-black'
+                )}
+              >
+                Çözümlerimiz
+                <ChevronDown className={clsx('h-4 w-4 transition-transform duration-300', isMegaMenuOpen && 'rotate-180')} />
               </Link>
 
-              {/* Dropdown Content */}
-              <div className="absolute left-1/2 mt-2 w-[620px] max-w-[calc(100vw-2rem)] -translate-x-1/2 translate-y-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300">
-                <div className="bg-[#101a2d]/95 rounded-2xl shadow-2xl border border-white/10 p-5 overflow-hidden">
-                  <div className="grid grid-cols-[1.15fr_0.85fr] gap-5">
-                    {solutions.map((section, sectionIndex) => (
-                      <div
-                        key={section.category}
-                        className={clsx("min-w-0", sectionIndex > 0 && "border-l border-white/10 pl-5")}
-                      >
-                        <h3 className="text-xs font-bold text-blue-300 uppercase tracking-widest mb-4">
-                          {section.category}
-                        </h3>
-                        <div className="grid gap-2">
-                          {section.items.map((item) => (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              className="flex flex-col gap-1 p-2 rounded-xl hover:bg-white/10 transition-colors group/item"
-                            >
-                              <div className="text-sm font-bold text-white group-hover/item:text-blue-300 transition-colors">
-                                {item.label}
-                              </div>
-                              <div className="text-[11px] text-slate-400 leading-tight">
-                                {item.desc}
-                              </div>
-                            </Link>
-                          ))}
+              <div
+                className={clsx(
+                  'absolute left-0 z-50 mt-4 w-[900px] transition-all duration-300',
+                  isMegaMenuOpen ? 'visible translate-y-0 opacity-100' : 'invisible translate-y-2 opacity-0'
+                )}
+              >
+                <div className="absolute -top-4 left-0 h-4 w-full bg-transparent" />
+                <div className="flex min-h-[400px] overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-2xl">
+                  <div className="flex w-5/12 flex-col gap-1 border-r border-slate-100 bg-slate-50 p-4">
+                    {menuData.map((menu) => {
+                      const Icon = menu.icon
+                      const isActive = activeCategory === menu.id
+                      return (
+                        <div
+                          key={menu.id}
+                          onMouseEnter={() => setActiveCategory(menu.id)}
+                          className={clsx(
+                            'flex cursor-pointer items-center gap-3 rounded-xl border p-3 transition-all duration-200',
+                            isActive ? 'border-slate-100 bg-white shadow-sm' : 'border-transparent hover:bg-slate-100/60'
+                          )}
+                        >
+                          <div
+                            className="rounded-lg p-2 transition-colors"
+                            style={{
+                              backgroundColor: isActive ? menu.accent : '#E2E8F0',
+                              color: isActive ? '#FFFFFF' : '#64748B',
+                            }}
+                          >
+                            <Icon className="h-5 w-5" />
+                          </div>
+                          <div className="flex min-w-0 flex-col">
+                            <span className="text-[13px] font-bold text-black">{menu.category}</span>
+                            <span className="truncate text-[11px] text-slate-500">{menu.desc}</span>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      )
+                    })}
                   </div>
-                  <div className="border-t border-white/10 mt-6 pt-4">
-                    <Link href="/services" className="text-xs font-bold text-blue-300 hover:underline flex items-center gap-1">
-                      Tüm Çözümleri Gör <ArrowRight className="w-3 h-3" />
-                    </Link>
+
+                  <div className="w-7/12 bg-white p-8">
+                    <h3
+                      className="mb-6 border-b border-slate-100 pb-3 text-[11px] font-bold uppercase tracking-widest"
+                      style={{ color: activeCategoryData.text }}
+                    >
+                      {activeCategoryData.category}
+                    </h3>
+                    <div className="flex flex-col gap-2">
+                      {activeCategoryData.items.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="group/link flex items-center justify-between rounded-lg border border-transparent p-3 transition-colors hover:border-slate-100 hover:bg-slate-50"
+                        >
+                          <span className="text-[14px] font-semibold text-slate-700 transition-colors group-hover/link:text-black">
+                            {item.label}
+                          </span>
+                          <ArrowRight className="h-4 w-4 -translate-x-2 text-slate-300 opacity-0 transition-all group-hover/link:translate-x-0 group-hover/link:opacity-100" />
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <Link href="/contact" className={navLinkClass(pathname === '/contact')}>İletişim</Link>
-            <Link href="/careers" className={navLinkClass(pathname === '/careers')}>Kariyer</Link>
+            <Link href="/about" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/about'))}>Hakkımızda</Link>
+            <Link href="/insights" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/insights'))}>Makaleler</Link>
+            <Link href="/careers" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/careers'))}>Kariyer</Link>
+            <Link href="/contact" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/contact'))}>İletişim</Link>
           </div>
 
-          {/* Sağ Taraf Butonlar */}
-          <div className="flex items-center gap-2">
+          <div className="hidden shrink-0 items-center lg:flex">
+            <Link
+              href="/contact"
+              className={clsx(
+                'rounded-sm px-7 py-3 text-[14px] font-bold transition-colors duration-200',
+                headerOnDarkHero ? 'bg-white text-black hover:bg-slate-200' : 'bg-black text-white hover:bg-slate-800'
+              )}
+            >
+              Demo Talep Et
+            </Link>
+          </div>
+
+          <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 rounded-xl bg-white/10 text-white border border-white/10 hover:bg-white/15 transition-colors"
-              aria-label="Toggle Mobile Menu"
+              className={clsx('rounded-md p-2 transition-colors', headerOnDarkHero ? 'text-white' : 'text-black')}
+              aria-label="Menüyü aç"
             >
-              {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
 
-        {/* Mobil Menü */}
-        <div className={clsx("lg:hidden overflow-hidden transition-all duration-300", mobileOpen ? "max-h-[1000px] pb-6" : "max-h-0")}>
-          <div className="flex flex-col gap-2 pt-4 border-t border-white/10">
-            <Link href="/" className="px-4 py-3 font-medium text-slate-100 hover:text-blue-300" onClick={() => setMobileOpen(false)}>Ana Sayfa</Link>
-            <Link href="/about" className="px-4 py-3 font-medium text-slate-100 hover:text-blue-300 border-t border-white/10 mt-2" onClick={() => setMobileOpen(false)}>Hakkımızda</Link>
-            
-            <Link
-              href="/services"
-              className="px-4 py-2 font-bold text-xs uppercase text-slate-400 hover:text-blue-300 tracking-widest mt-2 border-t border-white/10 pt-4"
-              onClick={() => setMobileOpen(false)}
-            >
-              Çözümlerimiz
-            </Link>
-            
-            {solutions.map(section => (
-              <div key={section.category} className="px-4 py-2">
-                <div className="text-[10px] font-bold text-blue-300 uppercase mb-2 ml-2">{section.category}</div>
-                {section.items.map(link => (
-                  <Link key={link.href} href={link.href} className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white flex items-center gap-2" onClick={() => setMobileOpen(false)}>
-                    {link.icon} {link.label}
-                  </Link>
+        <div className={clsx('absolute left-0 w-full overflow-y-auto bg-white shadow-2xl transition-all duration-300 lg:hidden', mobileOpen ? 'max-h-[85vh] border-b border-slate-200 opacity-100' : 'max-h-0 opacity-0')}>
+          <div className="flex flex-col gap-2 px-4 py-6">
+            <Link href="/" className="rounded-lg px-4 py-3 text-base font-semibold text-black hover:bg-slate-50" onClick={() => setMobileOpen(false)}>Ana Sayfa</Link>
+            <div className="px-4 py-3">
+              <Link href="/services" className="mb-4 block text-base font-semibold text-black" onClick={() => setMobileOpen(false)}>Çözümlerimiz</Link>
+              <div className="flex flex-col gap-6 border-l-2 border-slate-100 pl-4">
+                {menuData.map((section) => (
+                  <div key={section.category}>
+                    <span className="mb-3 flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest text-slate-800">
+                      <section.icon className="h-4 w-4" style={{ color: section.accent }} />
+                      {section.category}
+                    </span>
+                    <div className="flex flex-col gap-1">
+                      {section.items.map((item) => (
+                        <Link key={item.href} href={item.href} className="rounded-lg px-3 py-2 text-[14px] font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-black" onClick={() => setMobileOpen(false)}>
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
-            ))}
-
-            <Link href="/contact" className="px-4 py-3 font-medium text-slate-100 hover:text-blue-300 border-t border-white/10 mt-2" onClick={() => setMobileOpen(false)}>İletişim</Link>
-            <Link href="/careers" className="px-4 py-3 font-medium text-slate-100 hover:text-blue-300" onClick={() => setMobileOpen(false)}>Kariyer</Link>
+            </div>
+            <Link href="/about" className="rounded-lg px-4 py-3 text-base font-semibold text-black hover:bg-slate-50" onClick={() => setMobileOpen(false)}>Hakkımızda</Link>
+            <Link href="/insights" className="rounded-lg px-4 py-3 text-base font-semibold text-black hover:bg-slate-50" onClick={() => setMobileOpen(false)}>Makaleler</Link>
+            <Link href="/careers" className="rounded-lg px-4 py-3 text-base font-semibold text-black hover:bg-slate-50" onClick={() => setMobileOpen(false)}>Kariyer</Link>
+            <Link href="/contact" className="rounded-lg px-4 py-3 text-base font-semibold text-black hover:bg-slate-50" onClick={() => setMobileOpen(false)}>İletişim</Link>
+            <div className="mt-4 border-t border-slate-100 pb-4 pt-4">
+              <Link href="/contact" className="flex justify-center rounded-lg bg-black px-4 py-3 text-base font-bold text-white" onClick={() => setMobileOpen(false)}>
+                Demo Talep Et
+              </Link>
+            </div>
           </div>
         </div>
       </div>
