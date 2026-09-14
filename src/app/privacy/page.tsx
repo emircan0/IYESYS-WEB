@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
                     <section>
                         <h2 className="text-2xl font-bold text-black mb-4 tracking-tight">1. Giriş ve Veri Sorumlusunun Kimliği</h2>
                         <p className="font-medium">
-                            <strong>IYESYS YAZILIM BİLİŞİM VE TEKNOLOJİ A.Ş.</strong> ("IYESYS", "Şirket", "Biz") olarak, müşterilerimizin, çalışanların ve web sitemizi ziyaret eden kullanıcıların mahremiyetine ve kişisel verilerinin korunmasına büyük önem vermekteyiz. İşbu Gizlilik ve Kişisel Verilerin Korunması Politikası ("Politika"), 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") ve ilgili mevzuat uyarınca kişisel verilerinizin toplanması, işlenmesi, aktarılması ve korunmasına ilişkin esasları belirlemektedir.
+                            <strong>IYESYS YAZILIM BİLİŞİM VE TEKNOLOJİ A.Ş.</strong> (&quot;IYESYS&quot;, &quot;Şirket&quot;, &quot;Biz&quot;) olarak, müşterilerimizin, çalışanların ve web sitemizi ziyaret eden kullanıcıların mahremiyetine ve kişisel verilerinin korunmasına büyük önem vermekteyiz. İşbu Gizlilik ve Kişisel Verilerin Korunması Politikası (&quot;Politika&quot;), 6698 sayılı Kişisel Verilerin Korunması Kanunu (&quot;KVKK&quot;) ve ilgili mevzuat uyarınca kişisel verilerinizin toplanması, işlenmesi, aktarılması ve korunmasına ilişkin esasları belirlemektedir.
                         </p>
                     </section>
 
@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage() {
 
                     <section>
                         <h2 className="text-2xl font-bold text-black mb-4 tracking-tight">3. Kişisel Verilerin İşlenme Amaçları</h2>
-                        <p className="mb-4 font-medium">Topladığımız kişisel veriler, KVKK'nın 5. ve 6. maddelerinde belirtilen şartlara uygun olarak aşağıdaki amaçlarla işlenmektedir:</p>
+                        <p className="mb-4 font-medium">Topladığımız kişisel veriler, KVKK&apos;nın 5. ve 6. maddelerinde belirtilen şartlara uygun olarak aşağıdaki amaçlarla işlenmektedir:</p>
                         <ul className="list-disc pl-6 space-y-3 font-medium">
                             <li>Endüstriyel iş güvenliği çözümlerimizin (Hareketli ekipman güvenliği, bölge güvenliği vb.) kurulumu, işletilmesi ve optimizasyonunun sağlanması,</li>
                             <li>Olası iş kazalarını önlemek amacıyla yapay zeka algoritmalarımızın eğitilmesi ve sistem doğruluk oranlarının artırılması (veriler anonimleştirilerek kullanılır),</li>
@@ -58,7 +58,7 @@ export default function PrivacyPolicyPage() {
                     <section>
                         <h2 className="text-2xl font-bold text-black mb-4 tracking-tight">4. Kişisel Verilerin Aktarılması</h2>
                         <p className="font-medium">
-                            IYESYS, kişisel verilerinizi kural olarak üçüncü şahıslarla paylaşmaz. Ancak, hizmetin gereği olarak (örneğin; güvenli bulut sunucu hizmetleri alınması) gizlilik sözleşmeleri çerçevesinde hizmet sağlayıcılarımızla veya yasal bir zorunluluk doğması halinde yetkili kamu kurum ve kuruluşlarıyla KVKK'nın 8. ve 9. maddelerine uygun olarak paylaşabilir.
+                            IYESYS, kişisel verilerinizi kural olarak üçüncü şahıslarla paylaşmaz. Ancak, hizmetin gereği olarak (örneğin; güvenli bulut sunucu hizmetleri alınması) gizlilik sözleşmeleri çerçevesinde hizmet sağlayıcılarımızla veya yasal bir zorunluluk doğması halinde yetkili kamu kurum ve kuruluşlarıyla KVKK&apos;nın 8. ve 9. maddelerine uygun olarak paylaşabilir.
                         </p>
                     </section>
 
@@ -71,7 +71,7 @@ export default function PrivacyPolicyPage() {
 
                     <section>
                         <h2 className="text-2xl font-bold text-black mb-4 tracking-tight">6. İlgili Kişinin Hakları (KVKK Madde 11)</h2>
-                        <p className="mb-4 font-medium">Kişisel veri sahibi olarak KVKK'nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p>
+                        <p className="mb-4 font-medium">Kişisel veri sahibi olarak KVKK&apos;nın 11. maddesi uyarınca aşağıdaki haklara sahipsiniz:</p>
                         <ul className="list-disc pl-6 space-y-3 font-medium">
                             <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme,</li>
                             <li>Kişisel verileriniz işlenmişse buna ilişkin bilgi talep etme,</li>

@@ -36,7 +36,7 @@ export default function CareersPage() {
             Kariyer Fırsatları
           </h1>
           <p className="text-lg text-slate-600 leading-relaxed">
-            IYESYS'e ve yapay zeka tabanlı endüstriyel güvenlik çözümlerimize gösterdiğiniz ilgi için teşekkür ederiz. 
+            IYESYS&apos;e ve yapay zeka tabanlı endüstriyel güvenlik çözümlerimize gösterdiğiniz ilgi için teşekkür ederiz.
             Alanında fark yaratan, dinamik ekibimizi büyütmeye her zaman değer veriyoruz.
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function CareersPage() {
                 başvurularını her zaman değerlendirmeye alıyoruz.
               </p>
               <p className="text-sm text-slate-500 font-medium">
-                Başvurunuzda pozisyon tercihinizi, deneyimlerinizi ve neden IYESYS'te çalışmak istediğinizi belirtmeniz değerlendirme sürecini hızlandıracaktır.
+                Başvurunuzda pozisyon tercihinizi, deneyimlerinizi ve neden IYESYS&apos;te çalışmak istediğinizi belirtmeniz değerlendirme sürecini hızlandıracaktır.
               </p>
             </div>
 

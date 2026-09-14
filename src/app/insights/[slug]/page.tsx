@@ -57,7 +57,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
             className="inline-flex items-center text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Teknoloji & Blog'a Dön
+            Teknoloji & Blog&apos;a Dön
           </Link>
         </div>
 
