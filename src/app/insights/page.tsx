@@ -1,6 +1,9 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Metadata } from 'next'
 import { getAllArticles } from '@/lib/articles'
+
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Teknoloji & Blog | IYESYS',
@@ -11,8 +14,8 @@ export const metadata: Metadata = {
   }
 }
 
-export default function InsightsPage() {
-  const articles = getAllArticles()
+export default async function InsightsPage() {
+  const articles = await getAllArticles()
 
   return (
     <div className="bg-white min-h-screen font-sans text-slate-900 pt-32 pb-24">
@@ -75,11 +78,13 @@ export default function InsightsPage() {
 
                 {/* Right Image */}
                 {article.image && (
-                  <div className="w-[110px] h-[75px] sm:w-[160px] sm:h-[107px] md:w-[220px] md:h-[145px] shrink-0 mt-1 sm:mt-2">
-                    <img 
-                      src={article.image} 
-                      alt={article.title} 
-                      className="w-full h-full object-cover rounded-md border border-slate-100 group-hover:opacity-95 transition-opacity"
+                  <div className="relative w-[110px] h-[75px] sm:w-[160px] sm:h-[107px] md:w-[220px] md:h-[145px] shrink-0 mt-1 sm:mt-2">
+                    <Image
+                      src={article.image}
+                      alt={article.title}
+                      fill
+                      sizes="(min-width: 768px) 220px, (min-width: 640px) 160px, 110px"
+                      className="object-cover rounded-md border border-slate-100 group-hover:opacity-95 transition-opacity"
                     />
                   </div>
                 )}
