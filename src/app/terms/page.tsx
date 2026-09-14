@@ -30,7 +30,7 @@ export default function TermsOfServicePage() {
                     <section>
                         <h2 className="text-2xl font-bold text-black mb-4 tracking-tight">1. Taraflar ve Kabul</h2>
                         <p className="font-medium">
-                            Bu Kullanım Şartları Sözleşmesi ("Sözleşme"), iyesys.com web sitesini ve <strong className="text-black">IYESYS YAZILIM BİLİŞİM VE TEKNOLOJİ A.Ş.</strong> ("IYESYS") tarafından sağlanan yapay zeka tabanlı iş güvenliği yazılımları ve donanımlarını ("Hizmetler") kullanan her gerçek veya tüzel kişi ("Kullanıcı" veya "Müşteri") arasında akdedilmiştir. Hizmetlerimizi kullanarak veya web sitemizi ziyaret ederek bu şartları okuduğunuzu, anladığınızı ve kabul ettiğinizi beyan edersiniz.
+                            Bu Kullanım Şartları Sözleşmesi (&quot;Sözleşme&quot;), iyesys.com web sitesini ve <strong className="text-black">IYESYS YAZILIM BİLİŞİM VE TEKNOLOJİ A.Ş.</strong> (&quot;IYESYS&quot;) tarafından sağlanan yapay zeka tabanlı iş güvenliği yazılımları ve donanımlarını (&quot;Hizmetler&quot;) kullanan her gerçek veya tüzel kişi (&quot;Kullanıcı&quot; veya &quot;Müşteri&quot;) arasında akdedilmiştir. Hizmetlerimizi kullanarak veya web sitemizi ziyaret ederek bu şartları okuduğunuzu, anladığınızı ve kabul ettiğinizi beyan edersiniz.
                         </p>
                     </section>
 
@@ -40,7 +40,7 @@ export default function TermsOfServicePage() {
                             IYESYS, endüstriyel sahalarda (hareketli ekipman, yükleme rampası, fabrika içi yaya bölgeleri vb.) kaza risklerini azaltmayı hedefleyen yapay zeka destekli kamera ve sensör uyarı sistemleri üretir. Ancak Kullanıcı aşağıdaki hususları peşinen kabul eder:
                         </p>
                         <ul className="list-disc pl-6 space-y-3 font-semibold text-black bg-slate-50 p-6 rounded-sm border border-slate-200">
-                            <li>Sistemlerimiz birer <strong>"Erken Uyarı ve Destek"</strong> sistemidir. İnsan dikkatinin, operatör eğitiminin ve fiziksel iş güvenliği önlemlerinin yerini tutmaz.</li>
+                            <li>Sistemlerimiz birer <strong>&quot;Erken Uyarı ve Destek&quot;</strong> sistemidir. İnsan dikkatinin, operatör eğitiminin ve fiziksel iş güvenliği önlemlerinin yerini tutmaz.</li>
                             <li>Yapay zeka sistemleri çevresel faktörlere (ışık, toz, kör noktalar, kamera kirlenmesi) bağlı olarak %100 doğrulukla çalışmayabilir veya hatalı/eksik uyarı (false-positive / false-negative) üretebilir.</li>
                             <li>IYESYS, donanım veya yazılımın kullanımından veya uyarı vermemesinden kaynaklanabilecek doğrudan, dolaylı, maddi veya bedensel (yaralanma, ölüm dahil) hiçbir kazadan veya zarardan yasal olarak sorumlu tutulamaz. İş güvenliğinin sağlanmasında nihai sorumluluk tamamen işverene ve ilgili operatörlere aittir.</li>
                         </ul>
@@ -49,7 +49,7 @@ export default function TermsOfServicePage() {
                     <section>
                         <h2 className="text-2xl font-bold text-black mb-4 tracking-tight">3. Fikri Mülkiyet Hakları</h2>
                         <p className="font-medium">
-                            IYESYS tarafından geliştirilen tüm yapay zeka modelleri, kaynak kodları, yazılım mimarisi, tasarımlar, logolar, metinler, grafikler ve markalar <strong className="text-black">IYESYS YAZILIM BİLİŞİM VE TEKNOLOJİ A.Ş.</strong>'nin münhasır mülkiyetindedir ve ulusal/uluslararası telif hakları yasaları ile korunmaktadır. Kullanıcı, IYESYS'in yazılı izni olmaksızın donanımların içini açamaz, yazılımlara tersine mühendislik (reverse-engineering) yapamaz, kodları kopyalayamaz, çoğaltamaz veya ticari amaçla 3. partilere satamaz.
+                            IYESYS tarafından geliştirilen tüm yapay zeka modelleri, kaynak kodları, yazılım mimarisi, tasarımlar, logolar, metinler, grafikler ve markalar <strong className="text-black">IYESYS YAZILIM BİLİŞİM VE TEKNOLOJİ A.Ş.</strong>&apos;nin münhasır mülkiyetindedir ve ulusal/uluslararası telif hakları yasaları ile korunmaktadır. Kullanıcı, IYESYS&apos;in yazılı izni olmaksızın donanımların içini açamaz, yazılımlara tersine mühendislik (reverse-engineering) yapamaz, kodları kopyalayamaz, çoğaltamaz veya ticari amaçla 3. partilere satamaz.
                         </p>
                     </section>
 
@@ -73,14 +73,14 @@ export default function TermsOfServicePage() {
                     <section>
                         <h2 className="text-2xl font-bold text-black mb-4 tracking-tight">6. Sözleşmenin Değiştirilmesi</h2>
                         <p className="font-medium">
-                            IYESYS, yasal gereklilikler veya yeni teknolojilerin entegrasyonu gibi nedenlerle bu Kullanım Şartları'nı önceden haber vermeksizin tek taraflı olarak değiştirme hakkını saklı tutar. Güncel şartlar web sitemizde yayınlandığı andan itibaren geçerlilik kazanır.
+                            IYESYS, yasal gereklilikler veya yeni teknolojilerin entegrasyonu gibi nedenlerle bu Kullanım Şartları&apos;nı önceden haber vermeksizin tek taraflı olarak değiştirme hakkını saklı tutar. Güncel şartlar web sitemizde yayınlandığı andan itibaren geçerlilik kazanır.
                         </p>
                     </section>
 
                     <section>
                         <h2 className="text-2xl font-bold text-black mb-4 tracking-tight">7. Uyuşmazlıkların Çözümü</h2>
                         <p className="font-medium">
-                            İşbu Sözleşme'nin uygulanmasından ve yorumlanmasından doğacak her türlü uyuşmazlıkta Türkiye Cumhuriyeti kanunları uygulanacak olup, uyuşmazlıkların çözümünde İstanbul Mahkemeleri ve İcra Daireleri münhasıran yetkilidir.
+                            İşbu Sözleşme&apos;nin uygulanmasından ve yorumlanmasından doğacak her türlü uyuşmazlıkta Türkiye Cumhuriyeti kanunları uygulanacak olup, uyuşmazlıkların çözümünde İstanbul Mahkemeleri ve İcra Daireleri münhasıran yetkilidir.
                         </p>
                     </section>
 
