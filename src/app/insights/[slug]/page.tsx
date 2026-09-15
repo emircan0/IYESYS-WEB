@@ -1,8 +1,11 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
 import { getAllArticles, getArticleBySlug } from '@/lib/articles'
+
+export const revalidate = 60
 
 interface ArticlePageProps {
   params: Promise<{
@@ -11,7 +14,7 @@ interface ArticlePageProps {
 }
 
 export async function generateStaticParams() {
-  const articles = getAllArticles()
+  const articles = await getAllArticles()
   return articles.map((article) => ({
     slug: article.slug,
   }))
@@ -87,11 +90,14 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
 
         {/* Hero Image */}
         {article.image && (
-          <div className="w-full h-[250px] sm:h-[400px] mb-12 rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
-            <img 
-              src={article.image} 
-              alt={article.title} 
-              className="w-full h-full object-cover"
+          <div className="relative w-full h-[250px] sm:h-[400px] mb-12 rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+            <Image
+              src={article.image}
+              alt={article.title}
+              fill
+              priority
+              sizes="(min-width: 640px) 768px, 100vw"
+              className="object-cover"
             />
           </div>
         )}
