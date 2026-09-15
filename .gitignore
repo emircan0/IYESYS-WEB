@@ -26,3 +26,5 @@ data/submissions.json
 
 # vercel
 .verceltmp/
+.vercel
+.env*
