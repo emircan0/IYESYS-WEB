@@ -1,5 +1,24 @@
-import DOMPurify from 'isomorphic-dompurify'
+import sanitizeHtml from 'sanitize-html'
 import { getSupabaseClient } from './supabaseClient'
+
+const ALLOWED_TAGS = [
+  'p', 'br', 'hr',
+  'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+  'strong', 'em', 's', 'code', 'pre',
+  'blockquote', 'ul', 'ol', 'li',
+  'a', 'img',
+]
+
+function sanitizeArticleHtml(html: string): string {
+  return sanitizeHtml(html, {
+    allowedTags: ALLOWED_TAGS,
+    allowedAttributes: {
+      a: ['href', 'target', 'rel'],
+      img: ['src', 'alt', 'title'],
+    },
+    allowedSchemes: ['http', 'https', 'mailto'],
+  })
+}
 
 export interface ArticleMeta {
   slug: string
@@ -97,6 +116,6 @@ export async function getArticleBySlug(slug: string): Promise<ArticleDetail | nu
 
   return {
     ...toMeta(row),
-    contentHtml: DOMPurify.sanitize(row.content_html),
+    contentHtml: sanitizeArticleHtml(row.content_html),
   }
 }
