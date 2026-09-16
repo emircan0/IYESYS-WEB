@@ -1,0 +1,55 @@
+# IYESYS
+
+> Endüstriyel yapay zeka destekli iş güvenliği, üretim verimliliği ve otomasyon çözümleri geliştiren, %100 yerli mühendislik ekibine sahip bir Türk teknoloji şirketi.
+
+IYESYS; fabrikalar ve endüstriyel sahalar için forklift kazası önleme, yaya algılama, İSG (iş sağlığı ve güvenliği) kamera sistemleri, üretim verimliliği analizi, otomasyon ve özel yazılım çözümleri geliştirir. Kamera, sensör, UWB, PLC ve IoT sistemlerini işletmenin mevcut düzenine uyumlu şekilde birleştirerek sahadaki gerçek riski, kayıp zamanı ve karar ihtiyacını ölçülebilir hale getirir. Tüm yazılım altyapısı yerli olarak geliştirilir.
+
+## Şirket
+
+- [Hakkımızda](https://www.iyesys.com/about): Misyon, vizyon ve mühendislik yaklaşımı
+- [İletişim](https://www.iyesys.com/contact): İletişim bilgileri ve konum
+- [Kariyer](https://www.iyesys.com/careers): Açık pozisyonlar
+- [Teknoloji & Blog](https://www.iyesys.com/insights): Teknik yazılar ve vaka analizleri
+
+## İş Güvenliği Çözümleri
+
+- [Hareketli Ekipman - Yaya Güvenliği](https://www.iyesys.com/services/forklift-safety): Forklift ve yaya çarpışma önleme sistemleri
+- [Bölge Yaya Güvenliği](https://www.iyesys.com/services/area-safety): Tehlikeli alanlarda yaya tespiti ve uyarı
+- [Yükleme Rampası Güvenliği](https://www.iyesys.com/services/dock-safety): Yükleme/dock rampalarında güvenlik izleme
+- [Tehlikeli Alan Yönetimi](https://www.iyesys.com/services/tehlikeli-alan): Kısıtlı alanlara erişim ve ihlal tespiti
+- [Mevcut Kamera Sistemleri ile İSG Entegrasyonu](https://www.iyesys.com/services/kamera-sistemi-isg-entegrasyonu): Var olan kamera altyapısına yapay zeka entegrasyonu
+- [Gıda Sektörü Hijyen Tespiti](https://www.iyesys.com/services/gida-firmalari-kamera-hijyen): Gıda üretiminde hijyen kural ihlali tespiti
+
+## Verimlilik Çözümleri
+
+- [Yapay Zeka Destekli Kalite Kontrol](https://www.iyesys.com/services/kalite-kontrol): Görüntü işleme tabanlı otomatik kalite kontrol
+- [Üretim Süreçleri ve Verimlilik Analizi](https://www.iyesys.com/services/uretim-verimlilik): Üretim hattı performans ve verimlilik analizi
+- [Mağaza ve İşletme Verimlilik Analizi](https://www.iyesys.com/services/magaza-isletme-verimlilik): Perakende ve mağaza operasyon analizi
+
+## Otomasyon Çözümleri
+
+- [Aktif Uyarı Sistemleri](https://www.iyesys.com/services/warning-systems): Gerçek zamanlı uyarı ve alarm sistemleri
+- [PLC, SCADA ve IO Sistemleri](https://www.iyesys.com/services/plc-scada-io-sistemler): Endüstriyel otomasyon altyapısı
+- [Pnömatik ve Hidrolik Sistemler](https://www.iyesys.com/services/pnomatik-hidrolik-sistemler): Mekanik otomasyon sistemleri
+
+## Yazılım Çözümleri
+
+- [Mobil, Web ve Masaüstü Uygulamaları](https://www.iyesys.com/services/mobil-web-uygulamalari): Özel yazılım geliştirme
+- [Gömülü Yazılım ve IoT Çözümleri](https://www.iyesys.com/services/custom-solutions): Gömülü sistemler ve IoT entegrasyonları
+
+## Mühendislik Çözümleri
+
+- [Mekanik Tasarım / Çizim](https://www.iyesys.com/services/mekanik-tasarim-cizim): Mekanik tasarım ve teknik çizim hizmetleri
+- [Ar-Ge ve Mühendislik Danışmanlığı](https://www.iyesys.com/services/arge-danismanlik): Ar-Ge ve mühendislik danışmanlığı
+- [Ürün Geliştirme](https://www.iyesys.com/services/urun-gelistirme): Uçtan uca ürün geliştirme
+
+## Operasyon Çözümleri
+
+- [Filo Yönetimi ve Araç Takip Sistemleri](https://www.iyesys.com/services/arac-takip): Filo ve araç takip sistemleri
+- [Hakediş ve Operasyon Yönetimi](https://www.iyesys.com/services/hakedis): Hakediş ve operasyon yönetim sistemleri
+
+## Optional
+
+- [Tüm Çözümler](https://www.iyesys.com/services): Tüm hizmetlerin listesi
+- [Gizlilik Politikası](https://www.iyesys.com/privacy): Gizlilik politikası
+- [Kullanım Şartları](https://www.iyesys.com/terms): Kullanım şartları
