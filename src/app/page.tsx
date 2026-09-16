@@ -3,7 +3,6 @@
 import HeroSection from '../components/HeroSection'
 import HomeSolutionsGrid from '../components/HomeSolutionsGrid'
 import SeoContentSection from '../components/SeoContentSection'
-import FAQSection from '../components/FAQSection'
 
 export default function Home() {
   return (
@@ -11,7 +10,6 @@ export default function Home() {
       <HeroSection />
       <HomeSolutionsGrid />
       <SeoContentSection />
-      <FAQSection />
     </div>
   )
 }
