@@ -195,6 +195,7 @@ export default function Navbar() {
 
             <Link href="/about" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/about'))}>Hakkımızda</Link>
             <Link href="/insights" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/insights'))}>Teknoloji & Blog</Link>
+            <Link href="/faq" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/faq'))}>SSS</Link>
             <Link href="/careers" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/careers'))}>Kariyer</Link>
             <Link href="/contact" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/contact'))}>İletişim</Link>
           </div>
@@ -247,6 +248,7 @@ export default function Navbar() {
             </div>
             <Link href="/about" className="rounded-lg px-4 py-3 text-base font-semibold text-black hover:bg-slate-50" onClick={() => setMobileOpen(false)}>Hakkımızda</Link>
             <Link href="/insights" className="rounded-lg px-4 py-3 text-base font-semibold text-black hover:bg-slate-50" onClick={() => setMobileOpen(false)}>Teknoloji & Blog</Link>
+            <Link href="/faq" className="rounded-lg px-4 py-3 text-base font-semibold text-black hover:bg-slate-50" onClick={() => setMobileOpen(false)}>SSS</Link>
             <Link href="/careers" className="rounded-lg px-4 py-3 text-base font-semibold text-black hover:bg-slate-50" onClick={() => setMobileOpen(false)}>Kariyer</Link>
             <Link href="/contact" className="rounded-lg px-4 py-3 text-base font-semibold text-black hover:bg-slate-50" onClick={() => setMobileOpen(false)}>İletişim</Link>
             <div className="mt-4 border-t border-slate-100 pb-4 pt-4">

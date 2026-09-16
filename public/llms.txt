@@ -10,6 +10,7 @@ IYESYS; fabrikalar ve endüstriyel sahalar için forklift kazası önleme, yaya 
 - [İletişim](https://www.iyesys.com/contact): İletişim bilgileri ve konum
 - [Kariyer](https://www.iyesys.com/careers): Açık pozisyonlar
 - [Teknoloji & Blog](https://www.iyesys.com/insights): Teknik yazılar ve vaka analizleri
+- [Sıkça Sorulan Sorular](https://www.iyesys.com/faq): Çözümler, entegrasyon ve operasyonel işleyiş hakkında sık sorulan sorular
 
 ## İş Güvenliği Çözümleri
 
