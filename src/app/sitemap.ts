@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next'
-import { serviceCatalog } from '@/lib/serviceCatalog'
+import { getPublishedMenu } from '@/lib/menu'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.iyesys.com'
-  
+  const { items } = await getPublishedMenu()
+
   const routes = [
     '',
     '/about',
@@ -16,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/services',
     '/sunum',
     '/terms',
-    ...serviceCatalog.map((service) => service.href),
+    ...items.map((service) => service.href),
   ]
 
   return [...new Set(routes)].map((route) => ({
