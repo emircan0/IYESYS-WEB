@@ -3,18 +3,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ArrowRight, ChevronDown, Code2, Cpu, Menu, ShieldCheck, Truck, Wrench, X, Zap } from 'lucide-react'
+import { ArrowRight, ChevronDown, Code2, Cpu, Layers3, Menu, ShieldCheck, Truck, Wrench, X, Zap } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 import clsx from 'clsx'
-import {
-  serviceCatalog,
-  serviceCategoryOrder,
-  serviceCategoryThemes,
-  type ServiceCategory,
-} from '@/lib/serviceCatalog'
+import type { ResolvedCategory, MenuItem } from '@/lib/menu'
 
-const categoryIcons: Record<ServiceCategory, LucideIcon> = {
+const categoryIcons: Record<string, LucideIcon> = {
   safety: ShieldCheck,
   efficiency: Zap,
   automation: Cpu,
@@ -25,33 +20,30 @@ const categoryIcons: Record<ServiceCategory, LucideIcon> = {
 
 const darkHeroRoutes = new Set(['/', '/services', '/about'])
 
-export default function Navbar() {
+export default function Navbar({ categories, items }: { categories: ResolvedCategory[]; items: MenuItem[] }) {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [activeCategory, setActiveCategory] = useState<ServiceCategory>('safety')
+  const [activeCategory, setActiveCategory] = useState<string>(categories[0]?.slug ?? '')
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false)
   const headerOnDarkHero = !scrolled && darkHeroRoutes.has(pathname)
   const servicesActive = pathname === '/services' || pathname.startsWith('/services/')
 
   const menuData = useMemo(
     () =>
-      serviceCategoryOrder.map((category) => {
-        const theme = serviceCategoryThemes[category]
-        return {
-          id: category,
-          icon: categoryIcons[category],
-          category: theme.label,
-          desc: theme.desc,
-          accent: theme.accent,
-          soft: theme.soft,
-          text: theme.text,
-          items: serviceCatalog
-            .filter((service) => service.category === category)
-            .map((service) => ({ href: service.href, label: service.title })),
-        }
-      }),
-    []
+      categories.map((category) => ({
+        id: category.slug,
+        icon: categoryIcons[category.slug] ?? Layers3,
+        category: category.label,
+        desc: category.desc,
+        accent: category.accent,
+        soft: category.soft,
+        text: category.text,
+        items: items
+          .filter((item) => item.category === category.slug)
+          .map((item) => ({ href: item.href, label: item.title })),
+      })),
+    [categories, items]
   )
 
   useEffect(() => {
@@ -69,7 +61,16 @@ export default function Navbar() {
       active ? 'text-black' : 'text-slate-600 hover:text-black'
     )
 
-  const activeCategoryData = menuData.find((m) => m.id === activeCategory) || menuData[0]
+  const activeCategoryData = menuData.find((m) => m.id === activeCategory) || menuData[0] || {
+    id: '',
+    icon: Layers3,
+    category: '',
+    desc: '',
+    accent: '#64748B',
+    soft: '#F1F5F9',
+    text: '#334155',
+    items: [] as { href: string; label: string }[],
+  }
 
   return (
     <nav

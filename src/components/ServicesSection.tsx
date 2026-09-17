@@ -3,14 +3,9 @@
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { serviceCatalog, serviceCategoryThemes } from '@/lib/serviceCatalog'
+import type { ResolvedCategory, MenuItem } from '@/lib/menu'
 
 const intervalMs = 3200
-
-const getIndex = (index: number) => {
-  const total = serviceCatalog.length
-  return (index + total) % total
-}
 
 const getViewport = () => {
   if (typeof window === 'undefined') {
@@ -24,21 +19,29 @@ const getViewport = () => {
   }
 }
 
-export default function ServicesSection() {
+export default function ServicesSection({ items, categories }: { items: MenuItem[]; categories: ResolvedCategory[] }) {
   const [active, setActive] = useState(0)
   const [timerSeed, setTimerSeed] = useState(0)
   const [viewport, setViewport] = useState(getViewport)
   const autoTimerRef = useRef<number | null>(null)
-  const activeService = serviceCatalog[active]
-  const activeTheme = serviceCategoryThemes[activeService.category]
+
+  const themeByCategory = useMemo(() => new Map(categories.map((c) => [c.slug, c])), [categories])
+  const getIndex = (index: number) => {
+    const total = items.length
+    return total === 0 ? 0 : (index + total) % total
+  }
+
+  const activeService = items[active]
+  const activeTheme = activeService ? themeByCategory.get(activeService.category) : undefined
 
   const visibleServices = useMemo(
     () =>
       [-2, -1, 0, 1, 2].map((offset) => {
         const index = getIndex(active + offset)
-        return { service: serviceCatalog[index], index, offset }
+        return { service: items[index], index, offset }
       }),
-    [active]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [active, items]
   )
 
   useEffect(() => {
@@ -49,6 +52,7 @@ export default function ServicesSection() {
   }, [])
 
   useEffect(() => {
+    if (items.length === 0) return
     if (autoTimerRef.current !== null) {
       window.clearTimeout(autoTimerRef.current)
     }
@@ -63,7 +67,8 @@ export default function ServicesSection() {
         autoTimerRef.current = null
       }
     }
-  }, [active, timerSeed])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, timerSeed, items.length])
 
   const resetAutoTimer = () => {
     if (autoTimerRef.current !== null) {
@@ -83,9 +88,11 @@ export default function ServicesSection() {
     setActive((current) => getIndex(current + direction))
   }
 
+  if (!activeService || !activeTheme) return null
+
   return (
     <section id="solution-flow" className="relative isolate overflow-hidden bg-slate-950 pt-32 text-white sm:pt-36">
-      {serviceCatalog.map((service, index) => (
+      {items.map((service, index) => (
         <div
           key={service.href}
           className="absolute inset-0 -z-20 bg-cover bg-center transition-opacity duration-700"
@@ -114,9 +121,11 @@ export default function ServicesSection() {
 
         <div className="relative mx-auto h-[360px] w-full max-w-[1780px] overflow-hidden py-8 md:h-[370px]">
           {visibleServices.map(({ service, index, offset }) => {
+            if (!service) return null
             const isCenter = offset === 0
             const sideVisible = !viewport.compact && Math.abs(offset) === 1
-            const theme = serviceCategoryThemes[service.category]
+            const theme = themeByCategory.get(service.category)
+            if (!theme) return null
             const opacity = isCenter ? 1 : sideVisible ? 0.42 : 0
             const scale = isCenter ? 1 : sideVisible ? 0.9 : 0.78
             const blur = isCenter ? 0 : sideVisible ? 1.1 : 2.4

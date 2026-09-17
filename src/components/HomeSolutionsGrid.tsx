@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
 import {
@@ -27,12 +25,7 @@ import {
   Wrench,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
-import {
-  serviceCatalog,
-  serviceCategoryOrder,
-  serviceCategoryThemes,
-  type ServiceCatalogItem,
-} from '@/lib/serviceCatalog'
+import type { ResolvedCategory, MenuItem } from '@/lib/menu'
 
 const serviceIcons: Record<string, LucideIcon> = {
   '/services/forklift-safety': Radar,
@@ -56,9 +49,8 @@ const serviceIcons: Record<string, LucideIcon> = {
   '/services/hakedis': MapPinned,
 }
 
-function SolutionCard({ service, index }: { service: ServiceCatalogItem; index: number }) {
+function SolutionCard({ service, theme, index }: { service: MenuItem; theme: ResolvedCategory; index: number }) {
   const Icon = serviceIcons[service.href] || Boxes
-  const theme = serviceCategoryThemes[service.category]
 
   return (
     <Link
@@ -90,21 +82,22 @@ function SolutionCard({ service, index }: { service: ServiceCatalogItem; index: 
       </h3>
       <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">{service.desc}</p>
 
-      <div className="mt-auto flex items-center justify-between pt-5">
-        <div className="flex flex-wrap gap-1.5">
-          {service.tags.slice(0, 2).map((tag) => (
-            <span key={tag} className="rounded-full bg-slate-100 px-2 py-1 text-[11px] font-bold text-slate-600">
-              {tag}
-            </span>
-          ))}
-        </div>
+      <div className="mt-auto flex items-center justify-end pt-5">
         <ArrowRight className="h-4 w-4 shrink-0 text-slate-300 transition group-hover:translate-x-1" style={{ color: service.accent }} />
       </div>
     </Link>
   )
 }
 
-export default function HomeSolutionsGrid() {
+export default function HomeSolutionsGrid({
+  categories,
+  items,
+}: {
+  categories: ResolvedCategory[]
+  items: MenuItem[]
+}) {
+  const themeByCategory = new Map(categories.map((c) => [c.slug, c]))
+
   return (
     <section className="relative overflow-hidden bg-white py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -124,25 +117,24 @@ export default function HomeSolutionsGrid() {
         </div>
 
         <div className="mb-8 flex flex-wrap gap-2">
-          {serviceCategoryOrder.map((category) => {
-            const theme = serviceCategoryThemes[category]
-            return (
-              <span
-                key={category}
-                className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-black"
-                style={{ borderColor: theme.border, backgroundColor: theme.soft, color: theme.text }}
-              >
-                <span className="h-2 w-2 rounded-full" style={{ backgroundColor: theme.accent }} />
-                {theme.label}
-              </span>
-            )
-          })}
+          {categories.map((theme) => (
+            <span
+              key={theme.slug}
+              className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-black"
+              style={{ borderColor: theme.border, backgroundColor: theme.soft, color: theme.text }}
+            >
+              <span className="h-2 w-2 rounded-full" style={{ backgroundColor: theme.accent }} />
+              {theme.label}
+            </span>
+          ))}
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {serviceCatalog.map((service, index) => (
-            <SolutionCard key={service.href} service={service} index={index} />
-          ))}
+          {items.map((service, index) => {
+            const theme = themeByCategory.get(service.category)
+            if (!theme) return null
+            return <SolutionCard key={service.href} service={service} theme={theme} index={index} />
+          })}
         </div>
       </div>
     </section>

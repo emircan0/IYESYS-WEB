@@ -10,6 +10,9 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { getPublishedMenu } from '../lib/menu'
+
+export const revalidate = 60
 
 const inter = Inter({
   subsets: ['latin'],
@@ -55,14 +58,16 @@ export const viewport = {
   ],
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const { categories, items } = await getPublishedMenu()
+
   return (
     <html lang="tr" className={`scroll-smooth ${inter.variable}`} suppressHydrationWarning>
       <body className="bg-white text-[#1A1A2E] antialiased" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <LanguageProvider>
             <div className="flex flex-col min-h-screen">
-              <Navbar />
+              <Navbar categories={categories} items={items} />
               <main className="flex-1">
                 <RouteResetBoundary>{children}</RouteResetBoundary>
               </main>

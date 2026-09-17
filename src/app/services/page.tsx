@@ -1,5 +1,3 @@
-'use client'
-
 import type { CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -30,15 +28,11 @@ import {
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import ServicesSection from '@/components/ServicesSection'
-import {
-  serviceCatalog,
-  serviceCategoryOrder,
-  serviceCategoryThemes,
-  type ServiceCatalogItem,
-  type ServiceCategory,
-} from '@/lib/serviceCatalog'
+import { getPublishedMenu, type ResolvedCategory, type MenuItem } from '@/lib/menu'
 
-const categoryIcons: Record<ServiceCategory, LucideIcon> = {
+export const revalidate = 60
+
+const categoryIcons: Record<string, LucideIcon> = {
   safety: ShieldCheck,
   efficiency: Gauge,
   automation: Cpu,
@@ -69,9 +63,8 @@ const serviceIcons: Record<string, LucideIcon> = {
   '/services/hakedis': MapPinned,
 }
 
-function SolutionCard({ service }: { service: ServiceCatalogItem }) {
+function SolutionCard({ service, theme }: { service: MenuItem; theme: ResolvedCategory }) {
   const Icon = serviceIcons[service.href] || Boxes
-  const theme = serviceCategoryThemes[service.category]
 
   return (
     <Link
@@ -104,30 +97,17 @@ function SolutionCard({ service }: { service: ServiceCatalogItem }) {
           {service.title}
         </h3>
         <p className="mt-3 text-sm leading-7 text-slate-600">{service.desc}</p>
-
-        <div className="mt-5">
-          <div className="mb-2 text-[11px] font-black uppercase tracking-[0.16em] text-slate-400">Odak alanları</div>
-          <div className="flex flex-wrap gap-2">
-            {service.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border px-2.5 py-1 text-[11px] font-bold"
-                style={{ borderColor: theme.border, backgroundColor: theme.soft, color: theme.text }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
       </div>
     </Link>
   )
 }
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const { categories, items } = await getPublishedMenu()
+
   return (
     <div className="min-h-screen bg-white text-slate-950">
-      <ServicesSection />
+      <ServicesSection items={items} categories={categories} />
 
       <section className="border-b border-slate-200 bg-white py-18 sm:py-20">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:px-8">
@@ -148,13 +128,12 @@ export default function ServicesPage() {
 
       <section className="bg-slate-50 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl space-y-14 px-4 sm:px-6 lg:px-8">
-          {serviceCategoryOrder.map((category) => {
-            const theme = serviceCategoryThemes[category]
-            const Icon = categoryIcons[category]
-            const services = serviceCatalog.filter((service) => service.category === category)
+          {categories.map((theme) => {
+            const Icon = categoryIcons[theme.slug] ?? Layers3
+            const services = items.filter((service) => service.category === theme.slug)
 
             return (
-              <div key={category} className="grid gap-6 lg:grid-cols-[360px_1fr]">
+              <div key={theme.slug} className="grid gap-6 lg:grid-cols-[360px_1fr]">
                 <div className="lg:sticky lg:top-28 lg:self-start">
                   <div className="rounded-lg border bg-white p-6 shadow-sm" style={{ borderColor: theme.border }}>
                     <div
@@ -173,7 +152,7 @@ export default function ServicesPage() {
 
                 <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                   {services.map((service) => (
-                    <SolutionCard key={service.href} service={service} />
+                    <SolutionCard key={service.href} service={service} theme={theme} />
                   ))}
                 </div>
               </div>
