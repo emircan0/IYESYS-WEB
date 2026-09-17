@@ -7,6 +7,7 @@ export type ResolvedCategory = ThemeColors & {
   label: string
   shortLabel: string
   desc: string
+  icon: string
 }
 
 export type MenuItem = {
@@ -27,6 +28,7 @@ type CategoryRow = {
   short_label: string
   description: string
   theme: MenuTheme
+  icon: string
   sort_order: number
 }
 
@@ -47,7 +49,7 @@ export async function getPublishedMenu(): Promise<{ categories: ResolvedCategory
   const [{ data: categoryRows, error: categoryError }, { data: itemRows, error: itemError }] = await Promise.all([
     supabase
       .from('menu_categories')
-      .select('id, slug, label, short_label, description, theme, sort_order')
+      .select('id, slug, label, short_label, description, theme, icon, sort_order')
       .eq('status', 'published')
       .order('sort_order', { ascending: true }),
     supabase
@@ -72,6 +74,7 @@ export async function getPublishedMenu(): Promise<{ categories: ResolvedCategory
     label: row.label,
     shortLabel: row.short_label,
     desc: row.description,
+    icon: row.icon,
     ...MENU_THEME_COLORS[row.theme],
   }))
 

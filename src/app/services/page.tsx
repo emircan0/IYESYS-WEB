@@ -28,18 +28,10 @@ import {
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import ServicesSection from '@/components/ServicesSection'
+import CategoryIcon from '@/components/CategoryIcon'
 import { getPublishedMenu, type ResolvedCategory, type MenuItem } from '@/lib/menu'
 
 export const revalidate = 60
-
-const categoryIcons: Record<string, LucideIcon> = {
-  safety: ShieldCheck,
-  efficiency: Gauge,
-  automation: Cpu,
-  software: Code2,
-  engineering: Wrench,
-  operations: Truck,
-}
 
 const serviceIcons: Record<string, LucideIcon> = {
   '/services/forklift-safety': Radar,
@@ -129,7 +121,6 @@ export default async function ServicesPage() {
       <section className="bg-slate-50 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl space-y-14 px-4 sm:px-6 lg:px-8">
           {categories.map((theme) => {
-            const Icon = categoryIcons[theme.slug] ?? Layers3
             const services = items.filter((service) => service.category === theme.slug)
 
             return (
@@ -140,7 +131,7 @@ export default async function ServicesPage() {
                       className="mb-5 flex h-14 w-14 items-center justify-center rounded-lg text-white shadow-lg"
                       style={{ background: theme.gradient, boxShadow: `0 18px 42px rgba(${theme.accentRgb}, 0.22)` }}
                     >
-                      <Icon className="h-6 w-6" />
+                      <CategoryIcon name={theme.icon} className="h-6 w-6" />
                     </div>
                     <div className="text-xs font-black uppercase tracking-[0.18em]" style={{ color: theme.text }}>
                       {services.length} çözüm

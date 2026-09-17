@@ -3,20 +3,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ArrowRight, ChevronDown, Code2, Cpu, Layers3, Menu, ShieldCheck, Truck, Wrench, X, Zap } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 import clsx from 'clsx'
+import CategoryIcon from '@/components/CategoryIcon'
 import type { ResolvedCategory, MenuItem } from '@/lib/menu'
-
-const categoryIcons: Record<string, LucideIcon> = {
-  safety: ShieldCheck,
-  efficiency: Zap,
-  automation: Cpu,
-  software: Code2,
-  engineering: Wrench,
-  operations: Truck,
-}
 
 const darkHeroRoutes = new Set(['/', '/services', '/about'])
 
@@ -33,7 +24,7 @@ export default function Navbar({ categories, items }: { categories: ResolvedCate
     () =>
       categories.map((category) => ({
         id: category.slug,
-        icon: categoryIcons[category.slug] ?? Layers3,
+        icon: category.icon,
         category: category.label,
         desc: category.desc,
         accent: category.accent,
@@ -63,7 +54,7 @@ export default function Navbar({ categories, items }: { categories: ResolvedCate
 
   const activeCategoryData = menuData.find((m) => m.id === activeCategory) || menuData[0] || {
     id: '',
-    icon: Layers3,
+    icon: 'shapes',
     category: '',
     desc: '',
     accent: '#64748B',
@@ -139,7 +130,6 @@ export default function Navbar({ categories, items }: { categories: ResolvedCate
                 <div className="flex min-h-[400px] overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-2xl">
                   <div className="flex w-5/12 flex-col gap-1 border-r border-slate-100 bg-slate-50 p-4">
                     {menuData.map((menu) => {
-                      const Icon = menu.icon
                       const isActive = activeCategory === menu.id
                       return (
                         <div
@@ -157,7 +147,7 @@ export default function Navbar({ categories, items }: { categories: ResolvedCate
                               color: isActive ? '#FFFFFF' : '#64748B',
                             }}
                           >
-                            <Icon className="h-5 w-5" />
+                            <CategoryIcon name={menu.icon} className="h-5 w-5" />
                           </div>
                           <div className="flex min-w-0 flex-col">
                             <span className="text-[13px] font-bold text-black">{menu.category}</span>
@@ -233,7 +223,7 @@ export default function Navbar({ categories, items }: { categories: ResolvedCate
                 {menuData.map((section) => (
                   <div key={section.category}>
                     <span className="mb-3 flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest text-slate-800">
-                      <section.icon className="h-4 w-4" style={{ color: section.accent }} />
+                      <CategoryIcon name={section.icon} className="h-4 w-4" style={{ color: section.accent }} />
                       {section.category}
                     </span>
                     <div className="flex flex-col gap-1">
