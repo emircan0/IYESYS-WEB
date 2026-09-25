@@ -18,6 +18,8 @@ export default function Navbar({ categories, items }: { categories: ResolvedCate
   const [activeCategory, setActiveCategory] = useState<string>(categories[0]?.slug ?? '')
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false)
   const headerOnDarkHero = !scrolled && darkHeroRoutes.has(pathname)
+  // Over the hero, slate-300 looks gray until hovered; the homepage wants plain white.
+  const heroLinkColor = pathname === '/' ? 'text-white' : 'text-slate-300 hover:text-white'
   const servicesActive = pathname === '/services' || pathname.startsWith('/services/')
 
   const menuData = useMemo(
@@ -92,7 +94,7 @@ export default function Navbar({ categories, items }: { categories: ResolvedCate
               href="/"
                 className={clsx(
                   'px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap',
-                  headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/')
+                  headerOnDarkHero ? heroLinkColor : navLinkClass(pathname === '/')
                 )}
               >
               Ana Sayfa
@@ -110,7 +112,7 @@ export default function Navbar({ categories, items }: { categories: ResolvedCate
                   headerOnDarkHero
                     ? servicesActive
                       ? 'text-white'
-                      : 'text-slate-300 hover:text-white'
+                      : heroLinkColor
                     : servicesActive
                       ? 'text-black'
                       : 'text-slate-600 hover:text-black'
@@ -184,11 +186,11 @@ export default function Navbar({ categories, items }: { categories: ResolvedCate
               </div>
             </div>
 
-            <Link href="/about" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/about'))}>Hakkımızda</Link>
-            <Link href="/insights" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/insights'))}>Teknoloji & Blog</Link>
-            <Link href="/faq" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/faq'))}>SSS</Link>
-            <Link href="/careers" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/careers'))}>Kariyer</Link>
-            <Link href="/contact" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? 'text-slate-300 hover:text-white' : navLinkClass(pathname === '/contact'))}>İletişim</Link>
+            <Link href="/about" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? heroLinkColor : navLinkClass(pathname === '/about'))}>Hakkımızda</Link>
+            <Link href="/insights" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? heroLinkColor : navLinkClass(pathname === '/insights'))}>Teknoloji & Blog</Link>
+            <Link href="/faq" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? heroLinkColor : navLinkClass(pathname === '/faq'))}>SSS</Link>
+            <Link href="/careers" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? heroLinkColor : navLinkClass(pathname === '/careers'))}>Kariyer</Link>
+            <Link href="/contact" className={clsx('px-4 py-2 text-[14px] font-semibold transition-colors duration-200 whitespace-nowrap', headerOnDarkHero ? heroLinkColor : navLinkClass(pathname === '/contact'))}>İletişim</Link>
           </div>
 
           <div className="hidden shrink-0 items-center lg:flex">
