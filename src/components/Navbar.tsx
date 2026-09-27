@@ -20,6 +20,9 @@ export default function Navbar({ categories, items }: { categories: ResolvedCate
   // static HTML. Treat '' the same as '/' everywhere in this component.
   const rawPathname = usePathname()
   const pathname = rawPathname || '/'
+  if (typeof window === 'undefined') {
+    console.log('[navbar-diag] rawPathname=', JSON.stringify(rawPathname), 'typeof=', typeof rawPathname, 'time=', new Date().toISOString())
+  }
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeCategory, setActiveCategory] = useState<string>(categories[0]?.slug ?? '')
