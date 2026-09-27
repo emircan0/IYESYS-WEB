@@ -12,7 +12,14 @@ import type { ResolvedCategory, MenuItem } from '@/lib/menu'
 const darkHeroRoutes = new Set(['/', '/services', '/about'])
 
 export default function Navbar({ categories, items }: { categories: ResolvedCategory[]; items: MenuItem[] }) {
-  const pathname = usePathname()
+  // usePathname() can resolve to '' (not '/') for the index route during some
+  // server render passes - notably ISR background regeneration on Vercel -
+  // even though it's reliably '/' on the client after hydration. Left
+  // unnormalized, every '/' check below silently fails on those renders,
+  // which is what let a stale "not home" navbar get cached as the homepage's
+  // static HTML. Treat '' the same as '/' everywhere in this component.
+  const rawPathname = usePathname()
+  const pathname = rawPathname || '/'
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeCategory, setActiveCategory] = useState<string>(categories[0]?.slug ?? '')
